@@ -1,4 +1,4 @@
-# proyecto
+# Proyecto UIP CRAI - Programación Gráfica
 
 ## Project setup
 ```
