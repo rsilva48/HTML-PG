@@ -9,6 +9,7 @@ import Cubs from './views/Cubs.vue'
 import Cub from './views/CubList.vue'
 import CubSol from './views/CubSol.vue'
 import CubSolReal from "./views/CubSolReal.vue"
+import CubSolList from "./views/CubSolList.vue"
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
             path: '/cub/solicitud/realizado/',
             name: 'Cubiculo Solicitado',
             component: CubSolReal
+        },
+        {
+            path: '/cub/solicitud/all/',
+            name: 'Lista de Solicitudes de Cubiculos',
+            component: CubSolList
         },
         {
             path: '/cub/:id',
