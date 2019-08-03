@@ -12,7 +12,7 @@
               name="cedula"
               class="form-control"
               placeholder="Ingrese su numero de cedula con guiones"
-              v-model="formulario.user.ced"
+              v-model="cub.user.ced"
             >
           </div>
           <h3>Encargado/Representante</h3>
@@ -24,7 +24,7 @@
               class="form-control"
               aria-describedby="nameHelp"
               placeholder="Ingrese su nombre completo"
-              v-model="formulario.user.name"
+              v-model="cub.user.name"
             >
           </div>
         </div>
@@ -53,7 +53,7 @@
               </div>
             </div>
             <br>
-            <input type="checkbox" name="terminos" class="center" v-model.number="formulario.check"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
           </div>
         </div>
 
@@ -68,61 +68,61 @@
                 <label>Nombre</label>
                 <input
                   class="form-control"
-                  v-model="formulario.integrantes.user1.name"
+                  v-model="cub.integrantes.user1.name"
                   placeholder="Estudiante 2"
                 >
               </div>
               <div class="form-group col-4">
                 <label>Cedula</label>
-                <input class="form-control" v-model="formulario.integrantes.user1.ced">
+                <input class="form-control" v-model="cub.integrantes.user1.ced">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8">
                 <input
                   class="form-control"
-                  v-model="formulario.integrantes.user2.name"
+                  v-model="cub.integrantes.user2.name"
                   placeholder="Estudiante 3"
                 >
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="formulario.integrantes.user2.ced">
+                <input class="form-control" v-model="cub.integrantes.user2.ced">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8">
                 <input
                   class="form-control"
-                  v-model="formulario.integrantes.user3.name"
+                  v-model="cub.integrantes.user3.name"
                   placeholder="Estudiante 4"
                 >
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="formulario.integrantes.user3.ced">
+                <input class="form-control" v-model="cub.integrantes.user3.ced">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8">
                 <input
                   class="form-control"
-                  v-model="formulario.integrantes.user4.name"
+                  v-model="cub.integrantes.user4.name"
                   placeholder="Estudiante 5"
                 >
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="formulario.integrantes.user4.ced">
+                <input class="form-control" v-model="cub.integrantes.user4.ced">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8">
                 <input
                   class="form-control"
-                  v-model="formulario.integrantes.user5.name"
+                  v-model="cub.integrantes.user5.name"
                   placeholder="Estudiante 6"
                 >
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="formulario.integrantes.user5.ced">
+                <input class="form-control" v-model="cub.integrantes.user5.ced">
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@ export default {
           icon_class: "fa fa-users"
         }
       ],
-      formulario: {
+      cub: {
         id: null,
         user: {
           id: null,
