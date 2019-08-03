@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <NavBar/>
-    <router-view @cubform='pushcubform2db' />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import { CubDBRef } from './services/firebase'
 import NavBar from "./components/NavBar.vue"
 export default {
   name: 'app',
