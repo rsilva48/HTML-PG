@@ -10,19 +10,9 @@ import { CubDBRef } from './services/firebase'
 import NavBar from "./components/NavBar.vue"
 export default {
   name: 'app',
-  firebase: {
-    formscubs: CubDBRef
-  },
   data() {
     return {
-      ldb: []
     };
-  },
-  methods:{
-    pushcubform2db(form){
-      this.ldb.push(form)
-      CubDBRef.push(form)
-    },
   },
   components:{
     NavBar
