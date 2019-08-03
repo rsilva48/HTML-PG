@@ -133,7 +133,7 @@
           :key="step.id"
           :step="step"
           :stepcount="steps.length"
-          :form="formulario"
+          :form="cub"
           @step-change="stepChanged"
         ></step>
       </div>
