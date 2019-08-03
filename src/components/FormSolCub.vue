@@ -53,7 +53,7 @@
               </div>
             </div>
             <br>
-            <input type="checkbox" name="terminos" class="center" v-model.number="formulario.con"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <input type="checkbox" name="terminos" class="center" v-model.number="formulario.check"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
           </div>
         </div>
 
@@ -208,8 +208,9 @@ export default {
           }
         },
         check: false,
-        date_start: 0,
-        date_end: 0,
+        date_start: new Date(),
+        date_end: new Date(),
+        status: true
       }
     };
   },

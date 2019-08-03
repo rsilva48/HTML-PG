@@ -1,6 +1,8 @@
+
+<script>
 export default {
   name: 'firebaseDB',
-  props: []
+  props: [],
   firebase: {
     formscubs: CubDBRef
   },
@@ -16,3 +18,5 @@ export default {
     },
   },
 }
+</script>
+
