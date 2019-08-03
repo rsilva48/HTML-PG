@@ -13,3 +13,7 @@ let firebaseConfig = {
 let fb = firebase.initializeApp(firebaseConfig);
 let db = fb.database();
 let CubDBRef = db.ref('/cubiculos');
+
+export {
+    CubDBRef
+}
