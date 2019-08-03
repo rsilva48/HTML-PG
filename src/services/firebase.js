@@ -1,13 +1,13 @@
 import { initializeApp } from 'firebase'
 
 const app = initializeApp({
-    apiKey: "AIzaSyArlU8yyk47RyL1TITO2NvPrqeAKRbmfyU",
-    authDomain: "experiecniauip.firebaseapp.com",
-    databaseURL: "https://experiecniauip.firebaseio.com",
-    projectId: "experiecniauip",
-    storageBucket: "experiecniauip.appspot.com",
-    messagingSenderId: "846783682881",
-    appId: "1:846783682881:web:7ed642525bed677c"
+    apiKey: "AIzaSyAm54CIBwZYxCsuWEqhKvaihzQ2NFBjxsI",
+    authDomain: "uip-crai.firebaseapp.com",
+    databaseURL: "https://uip-crai.firebaseio.com",
+    projectId: "uip-crai",
+    storageBucket: "",
+    messagingSenderId: "1020263688707",
+    appId: "1:1020263688707:web:1b93a514cd410dee"
 });
 
 export const db = app.database();
