@@ -7,9 +7,9 @@
       </div>
     </div>
     <div>
-      <tr v-for="form in formCubs" :key="form.ids.e1">
-        <td>{{ form.names.e1 }}</td>
-        <td>{{ form.ids.e1 }}</td>
+      <tr v-for="form in formCubs" :key="form.id">
+        <td>{{ form.user.name }}</td>
+        <td>{{ form.user.ced }}</td>
       </tr>
     </div>
   </div>

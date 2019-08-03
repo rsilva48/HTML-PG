@@ -219,7 +219,7 @@ export default {
       this.currentstep = step;
     },
     addForm() {
-      let form = Object.assign({}, this.formulario);
+      let form = Object.assign({}, this.cub);
       this.$emit("send2view", form);
       this.$router.push("/cub/solicitud/realizado");
     }
