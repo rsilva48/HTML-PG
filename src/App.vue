@@ -1,17 +1,34 @@
 <template>
   <div id="app">
     <NavBar/>
-    <router-view/>
+    <router-view @cubform='pushcubform2db' :formsCub='ldb' />
   </div>
 </template>
 
 <script>
+import { db } from './services/firebase'
 import NavBar from "./components/NavBar.vue"
+
+let CubDBRef = db.ref('/cubiculos');
+
 export default {
   name: 'app',
   data() {
     return {
+      ldb: []
     };
+  },
+  methods:{
+    pushcubform2db(form){
+      this.ldb.push(form)
+      CubDBRef.push(form)
+      .then( res => {
+        console.log(" Se guardo con exito! ")
+      })
+      .catch( error => {
+        console.log(" Error al guarda información ")
+      })
+    },
   },
   components:{
     NavBar
