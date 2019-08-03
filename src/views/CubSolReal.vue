@@ -10,7 +10,6 @@
               class="btn btn-primary btn-lg mr-1"
               href
               role="button"
-              :formsCub='formCub'
             >Lista de Solicitudes</router-link>
         </div>
     </div>
@@ -19,6 +18,6 @@
 
 <script>
 export default {
-  props: ["formCub"]
+  name: 'CubSolReal'
 }
 </script>

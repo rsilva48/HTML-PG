@@ -10,7 +10,16 @@
 </template>
 
 <script>
+import { CubDBRef } from '../services/firebase'
 export default {
-  name: "Lista de Cubiculos"
+  name: "Lista de Cubiculos",
+  created() {
+    this.getCub
+  },
+  methods: {
+    getCub: {
+
+    },
+  }
 };
 </script>
