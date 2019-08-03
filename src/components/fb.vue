@@ -9,7 +9,7 @@ export default {
   },
   data() {
     return {
-      localfb: []
+      localFB: []
     };
   },
   methods: {
@@ -18,15 +18,15 @@ export default {
       // Obtener información
       CubDBRef.once("value")
         .then(res => {
-          this.formCubs = res.val();
-          console.log(" Con datos. ", this.CubDBRef);
+          this.localFB = res.val();
+          console.log(" Con datos. ", this.localFB);
         })
         .catch(error => {
           console.log("Error sin datos ");
         });
     },
     pushcubform2db() {
-      CubDBRef.child(this.cub.id).set(this.form);
+      CubDBRef.child(this.form.cub.id).set(this.form);
     }
   }
 };
