@@ -5,6 +5,16 @@
         <step-navigation :steps="steps" :currentstep="currentstep"></step-navigation>
 
         <div v-show="currentstep == 1">
+          <div class="form-group">
+            <label for="id">Cedula</label>
+            <input
+              type="id"
+              name="cedula"
+              class="form-control"
+              placeholder="Ingrese su numero de cedula con guiones"
+              v-model="formulario.user.ced"
+            >
+          </div>
           <h3>Encargado/Representante</h3>
           <div class="form-group">
             <label for="name">Nombre Completo</label>
@@ -14,18 +24,8 @@
               class="form-control"
               aria-describedby="nameHelp"
               placeholder="Ingrese su nombre completo"
-              v-model="formulario.names.e1"
-            />
-          </div>
-          <div class="form-group">
-            <label for="id">Cedula</label>
-            <input
-              type="id"
-              name="cedula"
-              class="form-control"
-              placeholder="Ingrese su numero de cedula con guiones"
-              v-model="formulario.ids.e1"
-            />
+              v-model="formulario.user.name"
+            >
           </div>
         </div>
 
@@ -52,57 +52,78 @@
                 </ul>
               </div>
             </div>
-            <br />
-            <input type="checkbox" name="terminos" class="center" v-model.number="formulario.con" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <br>
+            <input type="checkbox" name="terminos" class="center" v-model.number="formulario.con"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
           </div>
         </div>
 
         <div v-show="currentstep == 3">
           <h3>Participantes/Integrantes del Grupo</h3>
           <small>Minimo un grupo de 4 estudiantes contando al representante.</small>
-          <br><br>
+          <br>
+          <br>
           <div class="CList">
             <div class="form-row">
-                <div class="form-group col-8">
-                  <label>Nombre</label>
-                  <input class="form-control" v-model="formulario.names.e2" placeholder ="Estudiante 2" />
-                </div>
-                  <div class="form-group col-4">
-                  <label>Cedula</label>
-                  <input class="form-control" v-model="formulario.ids.e2" />
-                  </div>
+              <div class="form-group col-8">
+                <label>Nombre</label>
+                <input
+                  class="form-control"
+                  v-model="formulario.integrantes.user1.name"
+                  placeholder="Estudiante 2"
+                >
+              </div>
+              <div class="form-group col-4">
+                <label>Cedula</label>
+                <input class="form-control" v-model="formulario.integrantes.user1.ced">
+              </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-8">
-                  <input class="form-control" v-model="formulario.names.e3" placeholder ="Estudiante 3"/>
-                </div>
-                  <div class="form-group col-4">
-                  <input class="form-control" v-model="formulario.ids.e3" />
-                  </div>
+              <div class="form-group col-8">
+                <input
+                  class="form-control"
+                  v-model="formulario.integrantes.user2.name"
+                  placeholder="Estudiante 3"
+                >
+              </div>
+              <div class="form-group col-4">
+                <input class="form-control" v-model="formulario.integrantes.user2.ced">
+              </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-8">
-                  <input class="form-control" v-model="formulario.names.e4" placeholder ="Estudiante 4"/>
-                </div>
-                  <div class="form-group col-4">
-                  <input class="form-control" v-model="formulario.ids.e4" />
-                  </div>
+              <div class="form-group col-8">
+                <input
+                  class="form-control"
+                  v-model="formulario.integrantes.user3.name"
+                  placeholder="Estudiante 4"
+                >
+              </div>
+              <div class="form-group col-4">
+                <input class="form-control" v-model="formulario.integrantes.user3.ced">
+              </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-8">
-                  <input class="form-control" v-model="formulario.names.e5" placeholder ="Estudiante 5"/>
-                </div>
-                  <div class="form-group col-4">
-                  <input class="form-control" v-model="formulario.ids.e5" />
-                  </div>
+              <div class="form-group col-8">
+                <input
+                  class="form-control"
+                  v-model="formulario.integrantes.user4.name"
+                  placeholder="Estudiante 5"
+                >
+              </div>
+              <div class="form-group col-4">
+                <input class="form-control" v-model="formulario.integrantes.user4.ced">
+              </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-8">
-                  <input class="form-control" v-model="formulario.names.e6" placeholder ="Estudiante 6"/>
-                </div>
-                  <div class="form-group col-4">
-                  <input class="form-control" v-model="formulario.ids.e6" />
-                  </div>
+              <div class="form-group col-8">
+                <input
+                  class="form-control"
+                  v-model="formulario.integrantes.user5.name"
+                  placeholder="Estudiante 6"
+                >
+              </div>
+              <div class="form-group col-4">
+                <input class="form-control" v-model="formulario.integrantes.user5.ced">
+              </div>
             </div>
           </div>
         </div>
@@ -147,20 +168,49 @@ export default {
         }
       ],
       formulario: {
-        names: {
-          e1: "",
-          e2: "",
-          e3: "",
-          e4: "",
+        id: null,
+        user: {
+          id: null,
+          name: "",
+          ced: "",
+          fac: ""
         },
-        ids: {
-          e1: "",
-          e2: "",
-          e3: "",
-          e4: "",
+        integrantes: {
+          user1: {
+            id: null,
+            name: "",
+            ced: "",
+            fac: ""
+          },
+          user2: {
+            id: null,
+            name: "",
+            ced: "",
+            fac: ""
+          },
+          user3: {
+            id: null,
+            name: "",
+            ced: "",
+            fac: ""
+          },
+          user4: {
+            id: null,
+            name: "",
+            ced: "",
+            fac: ""
+          },
+          user5: {
+            id: null,
+            name: "",
+            ced: "",
+            fac: ""
+          }
         },
-        con: false
-      },
+        check: false,
+        date_start: 0,
+        date_end: 0,
+      }
     };
   },
   methods: {
@@ -169,7 +219,7 @@ export default {
     },
     addForm() {
       let form = Object.assign({}, this.formulario);
-      this.$emit('send2view', form);
+      this.$emit("send2view", form);
       this.$router.push("/cub/solicitud/realizado");
     }
   },
