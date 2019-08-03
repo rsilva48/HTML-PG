@@ -1,5 +1,6 @@
 
 <script>
+import { CubDBRef } from '../services/firebase'
 export default {
   name: 'firebaseDB',
   props: [],
