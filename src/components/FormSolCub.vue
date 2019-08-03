@@ -5,6 +5,7 @@
         <step-navigation :steps="steps" :currentstep="currentstep"></step-navigation>
 
         <div v-show="currentstep == 1">
+          <h3>Encargado/Representante</h3>
           <div class="form-group">
             <label for="id">Cedula</label>
             <input
@@ -15,7 +16,6 @@
               v-model="cub.user.ced"
             >
           </div>
-          <h3>Encargado/Representante</h3>
           <div class="form-group">
             <label for="name">Nombre Completo</label>
             <input
