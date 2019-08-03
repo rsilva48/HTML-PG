@@ -6,10 +6,24 @@
 </template>
 
 <script>
-import { db } from './services/firebase'
+import firebase from 'firebase'
 import NavBar from "./components/NavBar.vue"
 
-let CubDBRef = db.ref('/cubiculos');
+// let firebaseConfig = {
+//     apiKey: "AIzaSyAm54CIBwZYxCsuWEqhKvaihzQ2NFBjxsI",
+//     authDomain: "uip-crai.firebaseapp.com",
+//     databaseURL: "https://uip-crai.firebaseio.com",
+//     projectId: "uip-crai",
+//     storageBucket: "",
+//     messagingSenderId: "1020263688707",
+//     appId: "1:1020263688707:web:1b93a514cd410dee"
+// };
+
+// let fb = firebase.initializeApp(firebaseConfig);
+// let db = fb.database();
+// let CubDBRef = db.ref('/cubiculos');
+
+
 
 export default {
   name: 'app',
@@ -22,12 +36,6 @@ export default {
     pushcubform2db(form){
       this.ldb.push(form)
       CubDBRef.push(form)
-      .then( res => {
-        console.log(" Se guardo con exito! ")
-      })
-      .catch( error => {
-        console.log(" Error al guarda información ")
-      })
     },
   },
   components:{
