@@ -39,10 +39,10 @@ export default {
         },
 
         validation(){
-            if (this.form.names.e1 == "" || this.form.ids.e1 =="" && this.currentstep==1){
+            if (this.form.user.name == "" || this.form.user.ced =="" && this.currentstep==1){
                     return true;
             }
-            else if (this.form.con == false && this.currentstep==2){
+            else if (this.form.check == false && this.currentstep==2){
                 return true;
             }
             else if (this.currentstep==this.stepcount){
@@ -55,7 +55,7 @@ export default {
         },
 
         valsubmit(){
-            return (this.form.names.e2 == "" || this.form.ids.e2 == "" || this.form.names.e3 == "" || this.form.ids.e3 == "" || this.form.names.e4 == "" || this.form.ids.e4 == "")
+            return (this.form.integrantes.user1.name == "" || this.form.integrantes.user1.ced == "" ||this.form.integrantes.user2.name == "" || this.form.integrantes.user2.ced == "" ||this.form.integrantes.user3.name == "" || this.form.integrantes.user3.ced == "" ||this.form.integrantes.user4.name == "" || this.form.integrantes.user4.ced == "" ||this.form.integrantes.user5.name == "" || this.form.integrantes.user5.ced == "" ||)
         },
 
         stepWrapperClass() {
