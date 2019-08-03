@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase'
+import firebase from 'firebase'
 
-const app = initializeApp({
+let firebaseConfig = {
     apiKey: "AIzaSyAm54CIBwZYxCsuWEqhKvaihzQ2NFBjxsI",
     authDomain: "uip-crai.firebaseapp.com",
     databaseURL: "https://uip-crai.firebaseio.com",
@@ -8,7 +8,12 @@ const app = initializeApp({
     storageBucket: "",
     messagingSenderId: "1020263688707",
     appId: "1:1020263688707:web:1b93a514cd410dee"
-});
+};
 
-export const db = app.database();
-export const  cubRef = db.ref('/crai/cubiculos')
+let fb = firebase.initializeApp(firebaseConfig);
+let db = fb.database();
+let CubDBRef = db.ref('/cubiculos');
+
+export {
+    CubDBRef
+}
