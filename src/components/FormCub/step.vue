@@ -55,7 +55,7 @@ export default {
         },
 
         valsubmit(){
-            return (this.form.integrantes.user1.name == "" || this.form.integrantes.user1.ced == "" ||this.form.integrantes.user2.name == "" || this.form.integrantes.user2.ced == "" ||this.form.integrantes.user3.name == "" || this.form.integrantes.user3.ced == "" ||this.form.integrantes.user4.name == "" || this.form.integrantes.user4.ced == "" ||this.form.integrantes.user5.name == "" || this.form.integrantes.user5.ced == "" ||)
+            return (this.form.integrantes.user1.name == "" || this.form.integrantes.user1.ced == "" ||this.form.integrantes.user2.name == "" || this.form.integrantes.user2.ced == "" ||this.form.integrantes.user3.name == "" || this.form.integrantes.user3.ced == "" ||this.form.integrantes.user4.name == "" || this.form.integrantes.user4.ced == "" ||this.form.integrantes.user5.name == "" || this.form.integrantes.user5.ced == "")
         },
 
         stepWrapperClass() {
