@@ -275,6 +275,7 @@ export default {
         .once("value")
         .then(res => {
           this.listado = res.val();
+          // eslint-disable-next-line
           console.log("resultado: ", res.val());
           let id = 1;
           for (let cubs in this.listado) {
@@ -285,6 +286,7 @@ export default {
           }
         })
         .catch(error => {
+          // eslint-disable-next-line
           console.log("Error: ", error);
         });
     }
