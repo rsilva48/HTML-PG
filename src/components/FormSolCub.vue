@@ -14,7 +14,7 @@
               class="form-control"
               placeholder="Ingrese su numero de cedula con guiones"
               v-model="cub.user.ced"
-            >
+            />
           </div>
           <div class="form-group">
             <label for="name">Nombre Completo</label>
@@ -25,7 +25,17 @@
               aria-describedby="nameHelp"
               placeholder="Ingrese su nombre completo"
               v-model="cub.user.name"
-            >
+            />
+          </div>
+          <div class="form-group">
+            <label class="label">Facultad</label>
+            <select class="form-control" type="text" v-model="cub.user.fac">
+              <option value="CS">Ciencias de la Salud</option>
+              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+              <option value="DCP">Derecho y Ciencias Políticas</option>
+            </select>
           </div>
         </div>
 
@@ -52,77 +62,125 @@
                 </ul>
               </div>
             </div>
-            <br>
-            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check"> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <br />
+            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
           </div>
         </div>
 
         <div v-show="currentstep == 3">
           <h3>Participantes/Integrantes del Grupo</h3>
           <small>Minimo un grupo de 4 estudiantes contando al representante.</small>
-          <br>
-          <br>
+          <br />
+          <br />
           <div class="CList">
             <div class="form-row">
-              <div class="form-group col-8">
-                <label>Nombre</label>
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user1.name"
-                  placeholder="Estudiante 2"
-                >
-              </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <label>Cedula</label>
-                <input class="form-control" v-model="cub.integrantes.user1.ced">
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user1.ced"
+                  placeholder="Estudiante 2"
+                />
+              </div>
+
+              <div class="form-group col-5">
+                <label>Nombre</label>
+                <input class="form-control" v-model="cub.integrantes.user1.name" />
+              </div>
+              <div class="form-group col-4">
+                <label class="label">Facultad</label>
+                <select class="form-control" type="text" v-model="cub.integrantes.user1.fac">
+                  <option value="CS">Ciencias de la Salud</option>
+                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-8">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
-                  v-model="cub.integrantes.user2.name"
+                  v-model="cub.integrantes.user2.ced"
                   placeholder="Estudiante 3"
-                >
+                />
+              </div>
+              <div class="form-group col-5">
+                <input class="form-control" v-model="cub.integrantes.user2.name" />
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="cub.integrantes.user2.ced">
+                <select class="form-control" type="text" v-model="cub.integrantes.user2.fac">
+                  <option value="CS">Ciencias de la Salud</option>
+                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-8">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
-                  v-model="cub.integrantes.user3.name"
+                  v-model="cub.integrantes.user3.ced"
                   placeholder="Estudiante 4"
-                >
+                />
+              </div>
+              <div class="form-group col-5">
+                <input class="form-control" v-model="cub.integrantes.user3.name" />
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="cub.integrantes.user3.ced">
+                <select class="form-control" type="text" v-model="cub.integrantes.user3.fac">
+                  <option value="CS">Ciencias de la Salud</option>
+                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                </select>
               </div>
             </div>
+
             <div class="form-row">
-              <div class="form-group col-8">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
-                  v-model="cub.integrantes.user4.name"
+                  v-model="cub.integrantes.user4.ced"
                   placeholder="Estudiante 5"
-                >
+                />
+              </div>
+              <div class="form-group col-5">
+                <input class="form-control" v-model="cub.integrantes.user4.name" />
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="cub.integrantes.user4.ced">
+                <select class="form-control" type="text" v-model="cub.integrantes.user4.fac">
+                  <option value="CS">Ciencias de la Salud</option>
+                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-8">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
-                  v-model="cub.integrantes.user5.name"
+                  v-model="cub.integrantes.user5.ced"
                   placeholder="Estudiante 6"
-                >
+                />
+              </div>
+              <div class="form-group col-5">
+                <input class="form-control" v-model="cub.integrantes.user5.name" />
               </div>
               <div class="form-group col-4">
-                <input class="form-control" v-model="cub.integrantes.user5.ced">
+                <select class="form-control" type="text" v-model="cub.integrantes.user5.fac">
+                  <option value="CS">Ciencias de la Salud</option>
+                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                </select>
               </div>
             </div>
           </div>
@@ -141,7 +199,9 @@
   </div>
 </template>
 
+
 <script>
+import { cubRef } from "../services/firebase";
 import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
 import stepNavigationVue from "./FormCub/step-navigation.vue";
 import stepVue from "./FormCub/step.vue";
@@ -170,38 +230,32 @@ export default {
       cub: {
         id: null,
         user: {
-          id: null,
           name: "",
           ced: "",
           fac: ""
         },
         integrantes: {
           user1: {
-            id: null,
             name: "",
             ced: "",
             fac: ""
           },
           user2: {
-            id: null,
             name: "",
             ced: "",
             fac: ""
           },
           user3: {
-            id: null,
             name: "",
             ced: "",
             fac: ""
           },
           user4: {
-            id: null,
             name: "",
             ced: "",
             fac: ""
           },
           user5: {
-            id: null,
             name: "",
             ced: "",
             fac: ""
@@ -211,16 +265,40 @@ export default {
         date_start: new Date(),
         date_end: new Date(),
         status: true
-      }
+      },
+      listado: []
     };
+  },
+  created: {
+    getCub() {
+      cubRef
+        .once("value")
+        .then(res => {
+          this.listado = res.val();
+          console.log("resultado: ", res.val());
+          let id = 1;
+          for (let cubs in this.listado) {
+            if (cubs.id == id) {
+              id++;
+            }
+            this.cubs.id = id;
+          }
+        })
+        .catch(error => {
+          console.log("Error: ", error);
+        });
+    }
   },
   methods: {
     stepChanged(step) {
       this.currentstep = step;
     },
     addForm() {
+      this.cub.date_start = new Date();
+      this.cub.date_end = this.cub.date_start;
+      this.cub.date_end.setHours(this.cub.date_start.getHours() + 1);
       let form = Object.assign({}, this.cub);
-      this.$emit("send2view", form);
+      cubRef.child(form.id).set(form);
       this.$router.push("/cub/solicitud/realizado");
     }
   },
