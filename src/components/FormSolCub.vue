@@ -228,7 +228,7 @@ export default {
         }
       ],
       cub: {
-        id: null,
+        id: 1,
         user: {
           name: "",
           ced: "",
@@ -269,27 +269,8 @@ export default {
       listado: []
     };
   },
-  created: {
-    getCub() {
-      cubRef
-        .once("value")
-        .then(res => {
-          this.listado = res.val();
-          // eslint-disable-next-line
-          console.log("resultado: ", res.val());
-          let id = 1;
-          for (let cubs in this.listado) {
-            if (cubs.id == id) {
-              id++;
-            }
-            this.cubs.id = id;
-          }
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-    }
+  created() {
+    this.getCub();
   },
   methods: {
     stepChanged(step) {
@@ -302,8 +283,31 @@ export default {
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
       this.$router.push("/cub/solicitud/realizado");
-    }
-  },
+    },
+    getCub() {
+      let idcub = 1;
+      let cubs;
+      cubRef
+        .once("value")
+        .then(res => {
+          this.listado = res.val();
+          // eslint-disable-next-line
+          console.log("resultado: ", res.val());
+        })
+        .catch(error => {
+          // eslint-disable-next-line
+          console.log("Error: ", error);
+        });
+        for (cubs in this.listado) {
+            // eslint-disable-next-line
+            console.log("cubiculo: ", cubs);
+            if (cubs.id == idcub) {
+              idcub++;
+            }
+            this.cubs.id = idcub;
+            }
+          }
+    },
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,
