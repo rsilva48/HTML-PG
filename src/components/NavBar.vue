@@ -26,15 +26,15 @@
             <ul class="navbar-nav mr-auto">
               <div class="nav-item dropdown-divider"></div>
               <li class="nav-item">
-                <router-link to="/cub" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target="#navbarSupportedContent">Cubiculos</router-link>
+                <router-link to="/cub" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Cubiculos</router-link>
               </li>
               <div class="nav-item dropdown-divider"></div>
               <li class="nav-item">
-                <router-link to="/pc" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target="#navbarSupportedContent">Computadoras</router-link>
+                <router-link to="/pc" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Computadoras</router-link>
               </li>
               <div class="nav-item dropdown-divider"></div>
             </ul>
-            <router-link to="/login" role="button" class="btn btn-outline-light" href data-toggle="collapse" data-target="#navbarSupportedContent">Iniciar sesion</router-link>
+            <router-link to="/login" role="button" class="btn btn-outline-light" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar sesion</router-link>
           </div>
         </div>
       </nav>
