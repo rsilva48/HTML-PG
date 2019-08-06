@@ -10,13 +10,13 @@
     "dependencies": {
         "bootstrap": "^4.3.1",
         "core-js": "^2.6.5",
-        "firebase": "^6.3.3",
+        "firebase": "^6.3.4",
         "font-awesome": "^4.7.0",
         "jquery": "^3.4.1",
         "popper.js": "^1.15.0",
         "vue": "^2.6.10",
-        "vue-router": "^3.0.3",
-        "vuefire": "^2.1.0"
+        "vue-router": "^3.1.1",
+        "vuefire": "^2.1.2"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.9.0",
@@ -25,7 +25,7 @@
         "babel-eslint": "^10.0.1",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.0.0",
-        "sass": "^1.17.4",
+        "sass": "^1.22.9",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.10"
     },

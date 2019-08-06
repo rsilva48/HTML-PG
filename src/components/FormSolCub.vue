@@ -286,8 +286,8 @@ export default {
       this.$router.push("/cub/solicitud/realizado");
     },
     getCub() {
-      let idcub = 1;
-      let cubs;
+      /* let idcub = 1;
+      let cubs; */
       cubRef
         .once("value")
         .then(res => {
