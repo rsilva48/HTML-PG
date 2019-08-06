@@ -280,6 +280,7 @@ export default {
       this.cub.date_start = new Date();
       this.cub.date_end = this.cub.date_start;
       this.cub.date_end.setHours(this.cub.date_start.getHours() + 1);
+      this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
       this.$router.push("/cub/solicitud/realizado");
@@ -290,24 +291,37 @@ export default {
       cubRef
         .once("value")
         .then(res => {
-          this.listado = res.val();
+          let data = res.val();
+          this.listado = Object.values(data);
           // eslint-disable-next-line
-          console.log("resultado: ", res.val());
+          console.log("data: ", data);
+          // eslint-disable-next-line
+          console.log("listado: ", this.listado);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
         });
-        for (cubs in this.listado) {
-            // eslint-disable-next-line
-            console.log("cubiculo: ", cubs);
-            if (cubs.id == idcub) {
-              idcub++;
-            }
-            this.cubs.id = idcub;
-            }
-          }
-    },
+      // eslint-disable-next-line
+      console.log("lenght: ", this.listado.lenght)
+      if (this.listado) {
+        // eslint-disable-next-line
+        console.log("If this.listado = true")
+        this.listado.forEach(item => {
+          // eslint-disable-next-line
+          console.log("For each in listado: ", item.val())
+        });
+      }
+      /* for (cubs in this.listado) {
+        // eslint-disable-next-line
+        console.log("cubiculo: ", cubs);
+        if (cubs.id == idcub) {
+          idcub++;
+        }
+        this.cubs.id = idcub;
+      } */
+    }
+  },
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,
