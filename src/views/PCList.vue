@@ -11,6 +11,6 @@
 
 <script>
 export default {
-  name: "Lista de Computadoras"
+  name: "PCList"
 };
 </script>
