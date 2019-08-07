@@ -46,7 +46,7 @@
             </select>
           </div>
           <div class="form-group">
-                <button type="button" class="btn btn-outline-danger" @click="delUserData(1)">Limpiar</button>
+                <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">Limpiar</button>
               </div>
         </div>
 
@@ -372,10 +372,10 @@ export default {
       this.currentstep = step;
     },
     addForm() {
-      this.cub.date_start = moment().format("LT");
+      this.cub.date_start = moment().format("dddd D/M/YY HH:mm");
       this.cub.date_end = moment()
         .add(1, "h")
-        .format("LT");
+        .format("dddd D/M/YY HH:mm");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);

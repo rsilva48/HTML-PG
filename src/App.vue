@@ -22,11 +22,11 @@ export default {
   computed: {
     CubDate() {
       for (let cub in this.listado) {
-        if (cub.date_end == moment().format("LT")){
+        if (cub.date_end == moment().format("dddd D/M/YY HH:mm")){
           // eslint-disable-next-line
           console.log("Cub Date End: ", cub.date_end)
           // eslint-disable-next-line
-          console.log("Actual Date: ",  moment().format("LT"))
+          console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
           cub.status = true
           this.addForm();
           return true
