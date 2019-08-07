@@ -14,7 +14,7 @@
             <th scope="col">Cedula del encargado</th>
             <th scope="col">Fecha de Inicio</th>
             <th scope="col">Fecha de Fin</th>
-            <th scope="col">Estatus</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>

@@ -34,7 +34,7 @@
               </li>
               <div class="nav-item dropdown-divider"></div>
             </ul>
-            <router-link to="/login" role="button" class="btn btn-outline-light" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar sesion</router-link>
+            <router-link to="/registro" role="button" class="btn btn-outline-light" href data-toggle="collapse" data-target=".navbar-collapse.show">Registrarse</router-link>
           </div>
         </div>
       </nav>
