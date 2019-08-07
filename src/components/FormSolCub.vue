@@ -32,7 +32,12 @@
           </div>
           <div class="form-group">
             <label class="label">Facultad</label>
-            <select class="form-control" type="text" v-model="cub.user.fac" :disabled="cub.user.found">
+            <select
+              class="form-control"
+              type="text"
+              v-model="cub.user.fac"
+              :disabled="cub.user.found"
+            >
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
               <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -40,6 +45,9 @@
               <option value="DCP">Derecho y Ciencias Políticas</option>
             </select>
           </div>
+          <div class="form-group">
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(1)">Limpiar</button>
+              </div>
         </div>
 
         <div v-show="currentstep == 2">
@@ -88,19 +96,32 @@
                 />
               </div>
 
-              <div class="form-group col-5">
+              <div class="form-group col-4">
                 <label>Nombre</label>
-                <input class="form-control" v-model="cub.integrantes.user1.name" :disabled="cub.integrantes.user1.found"/>
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user1.name"
+                  :disabled="cub.integrantes.user1.found"
+                />
               </div>
               <div class="form-group col-4">
                 <label class="label">Facultad</label>
-                <select class="form-control" type="text" v-model="cub.integrantes.user1.fac" :disabled="cub.integrantes.user1.found">
+                <select
+                  class="form-control"
+                  type="text"
+                  v-model="cub.integrantes.user1.fac"
+                  :disabled="cub.integrantes.user1.found"
+                >
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
                   <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                   <option value="DCP">Derecho y Ciencias Políticas</option>
                 </select>
+              </div>
+              <div class="form-group col-1">
+                <label>Eliminar</label>
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(2)">X</button>
               </div>
             </div>
             <div class="form-row">
@@ -113,17 +134,29 @@
                   :disabled="cub.integrantes.user2.found"
                 />
               </div>
-              <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user2.name" :disabled="cub.integrantes.user2.found"/>
+              <div class="form-group col-4">
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user2.name"
+                  :disabled="cub.integrantes.user2.found"
+                />
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user2.fac" :disabled="cub.integrantes.user2.found">
+                <select
+                  class="form-control"
+                  type="text"
+                  v-model="cub.integrantes.user2.fac"
+                  :disabled="cub.integrantes.user2.found"
+                >
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
                   <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                   <option value="DCP">Derecho y Ciencias Políticas</option>
                 </select>
+              </div>
+              <div class="form-group col-1">
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(3)">X</button>
               </div>
             </div>
             <div class="form-row">
@@ -136,17 +169,29 @@
                   :disabled="cub.integrantes.user3.found"
                 />
               </div>
-              <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user3.name" :disabled="cub.integrantes.user3.found"/>
+              <div class="form-group col-4">
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user3.name"
+                  :disabled="cub.integrantes.user3.found"
+                />
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user3.fac" :disabled="cub.integrantes.user3.found">
+                <select
+                  class="form-control"
+                  type="text"
+                  v-model="cub.integrantes.user3.fac"
+                  :disabled="cub.integrantes.user3.found"
+                >
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
                   <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                   <option value="DCP">Derecho y Ciencias Políticas</option>
                 </select>
+              </div>
+              <div class="form-group col-1">
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(4)">X</button>
               </div>
             </div>
 
@@ -160,17 +205,29 @@
                   :disabled="cub.integrantes.user4.found"
                 />
               </div>
-              <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user4.name" :disabled="cub.integrantes.user4.found"/>
+              <div class="form-group col-4">
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user4.name"
+                  :disabled="cub.integrantes.user4.found"
+                />
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user4.fac" :disabled="cub.integrantes.user4.found">
+                <select
+                  class="form-control"
+                  type="text"
+                  v-model="cub.integrantes.user4.fac"
+                  :disabled="cub.integrantes.user4.found"
+                >
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
                   <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                   <option value="DCP">Derecho y Ciencias Políticas</option>
                 </select>
+              </div>
+              <div class="form-group col-1">
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(5)">X</button>
               </div>
             </div>
             <div class="form-row">
@@ -183,17 +240,29 @@
                   :disabled="cub.integrantes.user5.found"
                 />
               </div>
-              <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user5.name" :disabled="cub.integrantes.user5.found" />
+              <div class="form-group col-4">
+                <input
+                  class="form-control"
+                  v-model="cub.integrantes.user5.name"
+                  :disabled="cub.integrantes.user5.found"
+                />
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user5.fac" :disabled="cub.integrantes.user5.found">
+                <select
+                  class="form-control"
+                  type="text"
+                  v-model="cub.integrantes.user5.fac"
+                  :disabled="cub.integrantes.user5.found"
+                >
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
                   <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                   <option value="DCP">Derecho y Ciencias Políticas</option>
                 </select>
+              </div>
+              <div class="form-group col-1">
+                <button type="button" class="btn btn-outline-danger" @click="delUserData(6)">X</button>
               </div>
             </div>
           </div>
@@ -310,7 +379,8 @@ export default {
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
-      this.$router.push("/cub/solicitud/realizado");
+      let ID = String(this.cub.id)
+      this.$router.push({path: `/cub/solicitud/realizado/${ID}`});
     },
     getCub() {
       cubRef
@@ -409,6 +479,54 @@ export default {
           }
         });
       }
+    },
+        delUserData(ID) {
+          if (ID == 1) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.user.ced = "";
+            this.cub.user.name = "";
+            this.cub.user.fac = "";
+            this.cub.user.found = false;
+          } else if (ID == 2) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user1.ced = "";
+            this.cub.integrantes.user1.name = "";
+            this.cub.integrantes.user1.fac ="";
+            this.cub.integrantes.user1.found = false;
+          } else if (ID == 3) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user2.ced = "";
+            this.cub.integrantes.user2.name = "";
+            this.cub.integrantes.user2.fac ="";
+            this.cub.integrantes.user2.found = false;
+          } else if (ID == 4) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user3.ced = "";
+            this.cub.integrantes.user3.name = "";
+            this.cub.integrantes.user3.fac ="";
+            this.cub.integrantes.user3.found = false;
+          } else if (ID == 5) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user4.ced = "";
+            this.cub.integrantes.user4.name = "";
+            this.cub.integrantes.user4.fac ="";
+            this.cub.integrantes.user4.found = false;
+          } else if (ID == 6) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user5.ced = "";
+            this.cub.integrantes.user5.name = "";
+            this.cub.integrantes.user5.fac ="";
+            this.cub.integrantes.user5.found = false;
+          } else {
+            // eslint-disable-next-line
+            console.log("Usuario NO encontrado");
+          }
     }
   },
   components: {

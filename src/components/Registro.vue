@@ -92,7 +92,7 @@ export default {
       this.usuarios.forEach(usuario => {
         if (this.user.ced == usuario.ced) {
           alert("El usuario ya existe.")
-          this.$router.push("/");
+          this.user.ced = ""
         }
       });
     },

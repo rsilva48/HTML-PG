@@ -55,7 +55,7 @@ export default new Router({
             component: CubSol
         },
         {
-            path: '/cub/solicitud/realizado/',
+            path: '/cub/solicitud/realizado/:id',
             name: 'Cubiculo Solicitado',
             component: CubSolReal
         },
