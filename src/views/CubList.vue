@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="container">
-      <!-- <table class="table">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -18,7 +18,6 @@
           </tr>
         </thead>
         <tbody>
-          <div>
             <tr v-for="(cubiculo, index) in listado" :key="index" scope="row">
               <td>{{ cubiculo.id }}</td>
               <td>{{ cubiculo.user.ced }}</td>
@@ -26,12 +25,8 @@
               <td>{{ cubiculo.date_end }}</td>
               <td>{{ cubiculo.status }}</td>
             </tr>
-          </div>
         </tbody>
-      </table> -->
-      <ul>
-        <li v-for="(cubiculo, index) in listado" :key="index"> {{ cubiculo }}</li>
-      </ul>
+      </table>
     </div>
   </div>
 </template>
@@ -53,9 +48,8 @@ export default {
       cubRef
         .once("value")
         .then(res => {
-          this.listado = res.val();
-          // eslint-disable-next-line
-          console.log("resultado: ", res.val());
+          let data = res.val();
+          this.listado = Object.values(data);
         })
         .catch(error => {
           // eslint-disable-next-line

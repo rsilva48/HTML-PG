@@ -14,6 +14,7 @@
               class="form-control"
               placeholder="Ingrese su numero de cedula con guiones"
               v-model="cub.user.ced"
+              @blur="getUserData"
             />
           </div>
           <div class="form-group">
@@ -201,7 +202,9 @@
 
 
 <script>
+import moment from "moment";
 import { cubRef } from "../services/firebase";
+import { userRef } from "../services/firebase";
 import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
 import stepNavigationVue from "./FormCub/step-navigation.vue";
 import stepVue from "./FormCub/step.vue";
@@ -262,66 +265,86 @@ export default {
           }
         },
         check: false,
-        date_start: new Date(),
-        date_end: new Date(),
+        date_start: "",
+        date_end: "",
         status: true
       },
-      listado: []
+      listado: [],
+      usuarios: []
     };
   },
   created() {
     this.getCub();
+    this.getUsers();
   },
   methods: {
+    moment() {
+      return moment();
+    },
     stepChanged(step) {
       this.currentstep = step;
     },
     addForm() {
-      this.cub.date_start = new Date();
-      this.cub.date_end = this.cub.date_start;
-      this.cub.date_end.setHours(this.cub.date_start.getHours() + 1);
+      this.cub.date_start = moment();
+      this.cub.date_end = moment().add(1, "h");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
       this.$router.push("/cub/solicitud/realizado");
     },
     getCub() {
-      /* let idcub = 1;
-      let cubs; */
       cubRef
         .once("value")
         .then(res => {
           let data = res.val();
           this.listado = Object.values(data);
+          let idcub = 1;
+          if (this.listado.length > 0) {
+            this.listado.forEach(function(cubs) {
+              if (cubs.id == idcub && cubs.status == false) {
+                idcub++;
+                // eslint-disable-next-line
+                console.log("ID +1");
+              }
+            });
+          }
+          this.cub.id = idcub;
           // eslint-disable-next-line
-          console.log("data: ", data);
-          // eslint-disable-next-line
-          console.log("listado: ", this.listado);
+          console.log("ID: ", this.cub.id);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
         });
-      // eslint-disable-next-line
-      console.log("lenght: ", this.listado.lenght)
-      if (this.listado) {
-        // eslint-disable-next-line
-        console.log("If this.listado = true")
-        this.listado.forEach(item => {
+    },
+    getUsers() {
+      userRef
+        .once("value")
+        .then(res => {
+          let data = res.val();
+          this.usuarios = Object.values(data);
+        })
+        .catch(error => {
           // eslint-disable-next-line
-          console.log("For each in listado: ", item.val())
+          console.log("Error: ", error);
         });
-      }
-      /* for (cubs in this.listado) {
-        // eslint-disable-next-line
-        console.log("cubiculo: ", cubs);
-        if (cubs.id == idcub) {
-          idcub++;
+    },
+    getUserData() {
+      if (this.usuarios.length > 0) {
+        this.usuarios.forEach(function(user) {
+        console.log(this.cub.user.ced);  
+        if (this.cub.user.ced == user.ced) {
+          // eslint-disable-next-line
+          console.log("Usuario encontrado");
+          // eslint-disable-next-line
+          console.log(this.cub);
+          this.cub.user.name = user.name;
+          this.cub.user.fac = user.fac;
         }
-        this.cubs.id = idcub;
-      } */
+      });
     }
   },
+},
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,

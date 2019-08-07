@@ -6,11 +6,11 @@
             <p class="lead">Puede retirar la llave e ir a utilizarlo.</p>
             <hr class="my-4" />
             <router-link
-              to="/cub/solicitud/all"
+              to="/cub/all"
               class="btn btn-primary btn-lg mr-1"
               href
               role="button"
-            >Lista de Solicitudes</router-link>
+            >Lista de Cubiculos</router-link>
         </div>
     </div>
   </div>
