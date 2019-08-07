@@ -81,6 +81,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user1.ced"
                   placeholder="Estudiante 2"
+                  @blur="getUserData"
                 />
               </div>
 
@@ -105,6 +106,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user2.ced"
                   placeholder="Estudiante 3"
+                  @blur="getUserData"
                 />
               </div>
               <div class="form-group col-5">
@@ -126,6 +128,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user3.ced"
                   placeholder="Estudiante 4"
+                  @blur="getUserData"
                 />
               </div>
               <div class="form-group col-5">
@@ -148,6 +151,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user4.ced"
                   placeholder="Estudiante 5"
+                  @blur="getUserData"
                 />
               </div>
               <div class="form-group col-5">
@@ -169,6 +173,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user5.ced"
                   placeholder="Estudiante 6"
+                  @blur="getUserData"
                 />
               </div>
               <div class="form-group col-5">
@@ -235,33 +240,39 @@ export default {
         user: {
           name: "",
           ced: "",
-          fac: ""
+          fac: "",
+          found: false
         },
         integrantes: {
           user1: {
             name: "",
             ced: "",
-            fac: ""
+            fac: "",
+            found: false
           },
           user2: {
             name: "",
             ced: "",
-            fac: ""
+            fac: "",
+            found: false
           },
           user3: {
             name: "",
             ced: "",
-            fac: ""
+            fac: "",
+            found: false
           },
           user4: {
             name: "",
             ced: "",
-            fac: ""
+            fac: "",
+            found: false
           },
           user5: {
             name: "",
             ced: "",
-            fac: ""
+            fac: "",
+            found: false
           }
         },
         check: false,
@@ -285,8 +296,10 @@ export default {
       this.currentstep = step;
     },
     addForm() {
-      this.cub.date_start = moment();
-      this.cub.date_end = moment().add(1, "h");
+      this.cub.date_start = moment().format("LT");
+      this.cub.date_end = moment()
+        .add(1, "h")
+        .format("LT");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
@@ -331,20 +344,66 @@ export default {
     },
     getUserData() {
       if (this.usuarios.length > 0) {
-        this.usuarios.forEach(function(user) {
-        console.log(this.cub.user.ced);  
-        if (this.cub.user.ced == user.ced) {
-          // eslint-disable-next-line
-          console.log("Usuario encontrado");
-          // eslint-disable-next-line
-          console.log(this.cub);
-          this.cub.user.name = user.name;
-          this.cub.user.fac = user.fac;
-        }
-      });
+        this.usuarios.forEach(user => {
+          if (this.cub.user.ced == user.ced && this.cub.user.found == false) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.user.name = user.name;
+            this.cub.user.fac = user.fac;
+            this.cub.user.found = true;
+          } else if (
+            this.cub.integrantes.user1.ced == user.ced &&
+            this.cub.integrantes.user1.found == false
+          ) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user1.name = user.name;
+            this.cub.integrantes.user1.fac = user.fac;
+            this.cub.integrantes.user1.found = true;
+          } else if (
+            this.cub.integrantes.user2.ced == user.ced &&
+            this.cub.integrantes.user2.found == false
+          ) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user2.name = user.name;
+            this.cub.integrantes.user2.fac = user.fac;
+            this.cub.integrantes.user2.found = true;
+          } else if (
+            this.cub.integrantes.user3.ced == user.ced &&
+            this.cub.integrantes.user3.found == false
+          ) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user3.name = user.name;
+            this.cub.integrantes.user3.fac = user.fac;
+            this.cub.integrantes.user3.found = true;
+          } else if (
+            this.cub.integrantes.user4.ced == user.ced &&
+            this.cub.integrantes.user4.found == false
+          ) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user4.name = user.name;
+            this.cub.integrantes.user4.fac = user.fac;
+            this.cub.integrantes.user4.found = true;
+          } else if (
+            this.cub.integrantes.user5.ced == user.ced &&
+            this.cub.integrantes.user5.found == false
+          ) {
+            // eslint-disable-next-line
+            console.log("Usuario encontrado");
+            this.cub.integrantes.user5.name = user.name;
+            this.cub.integrantes.user5.fac = user.fac;
+            this.cub.integrantes.user5.found = true;
+          } else {
+            // eslint-disable-next-line
+            console.log("Usuario NO encontrado");
+          }
+        });
+      }
     }
   },
-},
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,
