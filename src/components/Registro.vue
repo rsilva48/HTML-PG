@@ -16,6 +16,7 @@
           required
           autofocus
           v-model="user.ced"
+          @blur="exist"
         />
         <label for="id">Numero de Cédula</label>
       </div>
@@ -69,7 +70,8 @@ export default {
         name: "",
         ced: "",
         fac: ""
-      }
+      },
+      usuarios: []
     };
   },
   computed: {
@@ -79,19 +81,25 @@ export default {
       } else {
         return false;
       }
-    }
+    },
+    
   },
   created() {
     this.getUsers();
   },
   methods: {
-    stepChanged(step) {
-      this.currentstep = step;
+    exist() {
+      this.usuarios.forEach(usuario => {
+        if (this.user.ced == usuario.ced) {
+          alert("El usuario ya existe.")
+          this.$router.push("/");
+        }
+      });
     },
     addUser() {
       let form = Object.assign({}, this.user);
       userRef.child(this.user.ced).set(form);
-      alert("Se ha registrado correctamente")
+      alert("Se ha registrado correctamente.")
       this.$router.push("/");
     },
     getUsers() {
