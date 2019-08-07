@@ -1,17 +1,63 @@
 <template>
   <div id="app">
-    <NavBar/>
-    <router-view/>
+    <NavBar />
+    <router-view />
   </div>
 </template>
 
 <script>
+import moment from "moment";
+import { cubRef } from "./services/firebase";
 import NavBar from "./components/NavBar.vue"
 export default {
   name: 'app',
   data() {
     return {
+      listado: []
     };
+  },
+  created() {
+    this.getCub();
+  },
+  computed: {
+    CubDate() {
+      for (let cub in this.listado) {
+        if (cub.date_end == moment().format("LT")){
+          // eslint-disable-next-line
+          console.log("Cub Date End: ", cub.date_end)
+          // eslint-disable-next-line
+          console.log("Actual Date: ",  moment().format("LT"))
+          cub.status = true
+          this.addForm();
+          return true
+        }
+      }
+      return false
+    }
+  },
+  methods: {
+    moment() {
+      return moment();
+    },
+    getCub() {
+      cubRef
+        .once("value")
+        .then(res => {
+          let data = res.val();
+          this.listado = Object.values(data);
+
+        })
+        .catch(error => {
+          // eslint-disable-next-line
+          console.log("Error: ", error);
+        });
+    },
+    addForm() {
+      // eslint-disable-next-line
+      console.log("Actualizando FB")
+      let form = Object.assign({}, this.cub);
+      cubRef.child(form.id).set(form);
+    },
   },
   components:{
     NavBar
