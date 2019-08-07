@@ -15,6 +15,7 @@
               placeholder="Ingrese su numero de cedula con guiones"
               v-model="cub.user.ced"
               @blur="getUserData"
+              :disabled="cub.user.found"
             />
           </div>
           <div class="form-group">
@@ -26,11 +27,12 @@
               aria-describedby="nameHelp"
               placeholder="Ingrese su nombre completo"
               v-model="cub.user.name"
+              :disabled="cub.user.found"
             />
           </div>
           <div class="form-group">
             <label class="label">Facultad</label>
-            <select class="form-control" type="text" v-model="cub.user.fac">
+            <select class="form-control" type="text" v-model="cub.user.fac" :disabled="cub.user.found">
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
               <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -82,16 +84,17 @@
                   v-model="cub.integrantes.user1.ced"
                   placeholder="Estudiante 2"
                   @blur="getUserData"
+                  :disabled="cub.integrantes.user1.found"
                 />
               </div>
 
               <div class="form-group col-5">
                 <label>Nombre</label>
-                <input class="form-control" v-model="cub.integrantes.user1.name" />
+                <input class="form-control" v-model="cub.integrantes.user1.name" :disabled="cub.integrantes.user1.found"/>
               </div>
               <div class="form-group col-4">
                 <label class="label">Facultad</label>
-                <select class="form-control" type="text" v-model="cub.integrantes.user1.fac">
+                <select class="form-control" type="text" v-model="cub.integrantes.user1.fac" :disabled="cub.integrantes.user1.found">
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -107,13 +110,14 @@
                   v-model="cub.integrantes.user2.ced"
                   placeholder="Estudiante 3"
                   @blur="getUserData"
+                  :disabled="cub.integrantes.user2.found"
                 />
               </div>
               <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user2.name" />
+                <input class="form-control" v-model="cub.integrantes.user2.name" :disabled="cub.integrantes.user2.found"/>
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user2.fac">
+                <select class="form-control" type="text" v-model="cub.integrantes.user2.fac" :disabled="cub.integrantes.user2.found">
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -129,13 +133,14 @@
                   v-model="cub.integrantes.user3.ced"
                   placeholder="Estudiante 4"
                   @blur="getUserData"
+                  :disabled="cub.integrantes.user3.found"
                 />
               </div>
               <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user3.name" />
+                <input class="form-control" v-model="cub.integrantes.user3.name" :disabled="cub.integrantes.user3.found"/>
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user3.fac">
+                <select class="form-control" type="text" v-model="cub.integrantes.user3.fac" :disabled="cub.integrantes.user3.found">
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -152,13 +157,14 @@
                   v-model="cub.integrantes.user4.ced"
                   placeholder="Estudiante 5"
                   @blur="getUserData"
+                  :disabled="cub.integrantes.user4.found"
                 />
               </div>
               <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user4.name" />
+                <input class="form-control" v-model="cub.integrantes.user4.name" :disabled="cub.integrantes.user4.found"/>
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user4.fac">
+                <select class="form-control" type="text" v-model="cub.integrantes.user4.fac" :disabled="cub.integrantes.user4.found">
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -174,13 +180,14 @@
                   v-model="cub.integrantes.user5.ced"
                   placeholder="Estudiante 6"
                   @blur="getUserData"
+                  :disabled="cub.integrantes.user5.found"
                 />
               </div>
               <div class="form-group col-5">
-                <input class="form-control" v-model="cub.integrantes.user5.name" />
+                <input class="form-control" v-model="cub.integrantes.user5.name" :disabled="cub.integrantes.user5.found" />
               </div>
               <div class="form-group col-4">
-                <select class="form-control" type="text" v-model="cub.integrantes.user5.fac">
+                <select class="form-control" type="text" v-model="cub.integrantes.user5.fac" :disabled="cub.integrantes.user5.found">
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
