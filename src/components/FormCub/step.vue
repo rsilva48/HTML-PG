@@ -49,7 +49,8 @@ export default {
         this.form.user.name == "" ||
         this.form.user.ced == "" ||
         this.form.user.fac == "" ||
-        (this.form.user.sex == "" && this.currentstep == 1)
+        this.form.user.sex == "" &&
+        this.currentstep == 1
       ) {
         return true;
       } else if (this.form.check == false && this.currentstep == 2) {
