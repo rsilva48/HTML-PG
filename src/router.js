@@ -10,7 +10,15 @@ import Cubs from './views/Cubs.vue'
 import Cub from './views/CubList.vue'
 import CubSol from './views/CubSol.vue'
 import CubSolReal from "./views/CubSolReal.vue"
-
+import Administrador from "./views/Administrador.vue"
+import Adminview from"./views/Adminview.vue"
+import AdminCub from"./views/AdminCub.vue"
+import AdminComp from"./views/AdminComp.vue"
+import AdminCubsol from "./views/AdminCubsol.vue"
+import AdminCubList from "./views/AdminCubList.vue"
+import AdminPCsol from "./views/AdminPCsol.vue"
+import AdminPCs from "./views/AdminPCs.vue"
+import AdminReporte from "./views/AdminReporte.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -64,6 +72,53 @@ export default new Router({
             name: 'Lista de Cubiculos',
             component: Cub
         },
-
+        {
+            path: '/admin',
+            name: 'Administrador',
+            component: Administrador
+        },
+        {
+            path: '/admin/view',
+            name: 'Adminview',
+            component: Adminview
+        },
+       
+        {
+            path: '/admin/cub',
+            name: ' AdminCub',
+            component:  AdminCub
+        },
+        {
+            path: '/admin/comp',
+            name: 'AdminComp',
+            component:  AdminComp
+        },
+        {
+            path: '/admin/admin_cub_sul',
+            name: 'AdminCubsol',
+            component:  AdminCubsol
+        },
+        {
+            path: '/admin/admin_cub_list',
+            name: 'AdminCubList',
+            component:  AdminCubList
+        },
+        {
+            path: '/admin/admin_pc_sul',
+            name: 'AdminPCsol',
+            component:  AdminPCsol
+        },
+        {
+            path: '/admin/admin_pcs',
+            name: 'AdminPCs',
+            component:  AdminPCs
+        },
+        {
+            path: '/admin/report',
+            name:"AdminReporte",
+            component:  AdminReporte
+        },
+        
+        
     ]
 })
