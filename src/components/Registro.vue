@@ -51,6 +51,21 @@
         <label for="fac">Facultad</label>
       </div>
 
+      <div class="form-label-group">
+        <select
+          v-model="user.sex"
+          type="text"
+          id="sex"
+          class="form-control"
+          placeholder="Elegir Sexo"
+          required
+        >
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+        <label for="fac">Sexo</label>
+      </div>
+
       <button
         class="btn btn-lg btn-primary btn-block"
         type="submit"
@@ -69,14 +84,15 @@ export default {
       user: {
         name: "",
         ced: "",
-        fac: ""
+        fac: "",
+        sex: ""
       },
       usuarios: []
     };
   },
   computed: {
     validation() {
-      if (this.user.name == "" || this.user.ced == "" || this.user.fac == "") {
+      if (this.user.name == "" || this.user.ced == "" || this.user.fac == "" || this.user.sex == "") {
         return true;
       } else {
         return false;
