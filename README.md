@@ -1,6 +1,6 @@
 # Proyecto UIP CRAI - Programación Gráfica
 
-## Project setup
+## Project setup (para instalar dependencias y plugins)
 ```
 npm install
 ```
