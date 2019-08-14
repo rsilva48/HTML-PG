@@ -362,9 +362,42 @@ export default {
   },
   created() {
     this.getCub();
-    this.getUsers();
+    this.getUsers(); 
+    // setInterval( () => {
+    //   this.rutina()
+    // }, 1000)   
   },
-  methods: {
+  methods: {    
+    rutina () {
+      
+      this.getCub()
+      this.listado.forEach( cub => {
+        const fecha = moment().format("dddd D/M/YY HH:mm")
+        // console.log(cub.id, cub.date_end, "====> ",  fecha, cub.date_end === fecha )
+        if (cub.date_end === fecha){
+          console.log('??????????????')
+          // eslint-disable-next-line
+          console.log("Cub Date End: ", cub.date_end)
+          // eslint-disable-next-line
+          console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
+          this.setForm();
+          return true
+        }
+      })
+      //  for (let cub in this.listado) {
+      //    const fecha = moment().format("dddd D/M/YY HH:mm")
+      //    console.log(cub.date_end, fecha, cub.date_end === fecha )
+      //   if (cub.date_end === fecha){
+      //     // eslint-disable-next-line
+      //     console.log("Cub Date End: ", cub.date_end)
+      //     // eslint-disable-next-line
+      //     console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
+      //     cub.status = true
+      //     this.addForm();
+      //     return true
+      //   }
+      // }
+    },
     moment() {
       return moment();
     },
@@ -374,9 +407,16 @@ export default {
     addForm() {
       this.cub.date_start = moment().format("dddd D/M/YY HH:mm");
       this.cub.date_end = moment()
-        .add(1, "h")
+        .add(1, "m")
         .format("dddd D/M/YY HH:mm");
       this.cub.status = false;
+      let form = Object.assign({}, this.cub);
+      cubRef.child(form.id).set(form);
+      let ID = String(this.cub.id)
+      this.$router.push({path: `/cub/solicitud/realizado/${ID}`});
+    },
+    setForm() {
+      this.cub.status = true;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
       let ID = String(this.cub.id)

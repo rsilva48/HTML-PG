@@ -9,6 +9,7 @@
 import moment from "moment";
 import { cubRef } from "./services/firebase";
 import NavBar from "./components/NavBar.vue"
+import { setInterval } from 'timers';
 export default {
   name: 'app',
   data() {
@@ -22,7 +23,7 @@ export default {
   computed: {
     CubDate() {
       for (let cub in this.listado) {
-        if (cub.date_end == moment().format("dddd D/M/YY HH:mm")){
+        if (cub.date_end === moment().format("dddd D/M/YY HH:mm")){
           // eslint-disable-next-line
           console.log("Cub Date End: ", cub.date_end)
           // eslint-disable-next-line
@@ -32,7 +33,7 @@ export default {
           return true
         }
       }
-      return false
+      return false 
     }
   },
   methods: {
@@ -57,6 +58,7 @@ export default {
       console.log("Actualizando FB")
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
+      this.getCub()
     },
   },
   components:{
