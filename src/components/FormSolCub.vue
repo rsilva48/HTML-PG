@@ -373,7 +373,6 @@ export default {
       this.getCub()
       this.listado.forEach( cub => {
         const fecha = moment().format("dddd D/M/YY HH:mm")
-        // console.log(cub.id, cub.date_end, "====> ",  fecha, cub.date_end === fecha )
         if (cub.date_end === fecha){
           // eslint-disable-next-line
           console.log("Cub Date End: ", cub.date_end)
@@ -383,19 +382,6 @@ export default {
           return true
         }
       })
-      //  for (let cub in this.listado) {
-      //    const fecha = moment().format("dddd D/M/YY HH:mm")
-      //    console.log(cub.date_end, fecha, cub.date_end === fecha )
-      //   if (cub.date_end === fecha){
-      //     // eslint-disable-next-line
-      //     console.log("Cub Date End: ", cub.date_end)
-      //     // eslint-disable-next-line
-      //     console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
-      //     cub.status = true
-      //     this.addForm();
-      //     return true
-      //   }
-      // }
     },
     moment() {
       return moment();
