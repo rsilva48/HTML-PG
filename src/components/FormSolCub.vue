@@ -432,7 +432,14 @@ export default {
           if (this.listado.length > 0) {
             this.listado.forEach(function(cubs) {
               if (cubs.id == idcub && cubs.status == false) {
-                idcub++;
+                if (idcub < 10){
+                  idcub++;
+                }
+                else{
+                  alert("No hay cubiculos disponibles.")
+                  this.$router.push("/cub/all");
+                }
+                
                 // eslint-disable-next-line
                 console.log("ID +1");
               }
