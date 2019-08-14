@@ -363,26 +363,8 @@ export default {
   created() {
     this.getCub();
     this.getUsers(); 
-    setInterval( () => {
-     this.rutina()
-    }, 1000)   
   },
   methods: {    
-    rutina () {
-      
-      this.getCub()
-      this.listado.forEach( cub => {
-        const fecha = moment().format("dddd D/M/YY HH:mm")
-        if (cub.date_end === fecha){
-          // eslint-disable-next-line
-          console.log("Cub Date End: ", cub.date_end)
-          // eslint-disable-next-line
-          console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
-          this.setForm(cub.id);
-          return true
-        }
-      })
-    },
     moment() {
       return moment();
     },
@@ -399,11 +381,6 @@ export default {
       cubRef.child(form.id).set(form);
       let ID = String(this.cub.id)
       this.$router.push({path: `/cub/solicitud/realizado/${ID}`});
-    },
-    setForm(id) {
-      this.listado[id-1].status = true;
-      let form = Object.assign({}, this.listado[id-1]);
-      cubRef.child(form.id).set(form);
     },
     getCub() {
       cubRef

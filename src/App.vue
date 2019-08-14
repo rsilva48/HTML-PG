@@ -6,65 +6,56 @@
 </template>
 
 <script>
+import NavBar from "./components/NavBar.vue";
 import moment from "moment";
 import { cubRef } from "./services/firebase";
-import NavBar from "./components/NavBar.vue"
-import { setInterval } from 'timers';
+import { setInterval } from "timers";
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
       listado: []
     };
   },
   created() {
-    this.getCub();
-  },
-  computed: {
-    CubDate() {
-      for (let cub in this.listado) {
-        if (cub.date_end === moment().format("dddd D/M/YY HH:mm")){
-          // eslint-disable-next-line
-          console.log("Cub Date End: ", cub.date_end)
-          // eslint-disable-next-line
-          console.log("Actual Date: ",  moment().format("dddd D/M/YY HH:mm"))
-          cub.status = true
-          this.addForm();
-          return true
-        }
-      }
-      return false 
-    }
+    setInterval(() => {
+      this.rutina();
+    }, 1000);
   },
   methods: {
+    rutina() {
+      this.getCub();
+      this.listado.forEach(cub => {
+        const fecha = moment().format("dddd D/M/YY HH:mm");
+        if (cub.date_end === fecha) {
+          // eslint-disable-next-line
+          console.log("Cub Date End: ", cub.date_end);
+          // eslint-disable-next-line
+          console.log("Actual Date: ", moment().format("dddd D/M/YY HH:mm"));
+          this.setForm(cub.id);
+          return true;
+        }
+      });
+    },
     moment() {
       return moment();
     },
-    getCub() {
-      cubRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-    },
-    addForm() {
-      // eslint-disable-next-line
-      console.log("Actualizando FB")
-      let form = Object.assign({}, this.cub);
+    setForm(id) {
+      this.listado[id - 1].status = true;
+      let form = Object.assign({}, this.listado[id - 1]);
       cubRef.child(form.id).set(form);
-      this.getCub()
     },
+    getCub() {
+      cubRef.once("value").then(res => {
+        let data = res.val();
+        this.listado = Object.values(data);
+      });
+    }
   },
-  components:{
+  components: {
     NavBar
   }
-}
+};
 </script>
 
 
