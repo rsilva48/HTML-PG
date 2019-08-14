@@ -38,10 +38,10 @@
           v-model="user.fac"
           type="text"
           id="fac"
-          class="form-control"
-          placeholder="Facultad"
+          class="custom-select"
           required
         >
+          <option selected disabled value="">Eliga su facultad</option>
           <option value="CS">Ciencias de la Salud</option>
           <option value="HGT">Hotelería, Gastronomía y Turismo</option>
           <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -56,10 +56,10 @@
           v-model="user.sex"
           type="text"
           id="sex"
-          class="form-control"
-          placeholder="Elegir Sexo"
+          class="custom-select"
           required
         >
+          <option selected disabled value="">Eliga su Sexo</option>
           <option value="M">Masculino</option>
           <option value="F">Femenino</option>
         </select>

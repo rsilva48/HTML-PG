@@ -7,17 +7,18 @@
         <div v-show="currentstep == 1">
           <h3>Encargado/Representante</h3>
           <div class="form-group">
-            <label for="id">Cedula</label>
+            <label for="id">Cédula</label>
             <input
               type="id"
               name="cedula"
               class="form-control"
-              placeholder="Ingrese su numero de cedula con guiones"
+              placeholder="Ingrese su numero de cédula con guiones"
               v-model="cub.user.ced"
               @blur="getUserData"
               :disabled="cub.user.found"
             />
           </div>
+
           <div class="form-group">
             <label for="name">Nombre Completo</label>
             <input
@@ -30,14 +31,16 @@
               :disabled="cub.user.found"
             />
           </div>
+
           <div class="form-group">
             <label class="label">Facultad</label>
             <select
-              class="form-control"
+              class="custom-select"
               type="text"
               v-model="cub.user.fac"
               :disabled="cub.user.found"
             >
+              <option selected disabled value="">Eliga su facultad</option>
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
               <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -45,9 +48,31 @@
               <option value="DCP">Derecho y Ciencias Políticas</option>
             </select>
           </div>
+
           <div class="form-group">
-                <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">Limpiar</button>
-              </div>
+            <label class="label">Sexo</label>
+            <select
+              v-model="cub.user.sex"
+              type="text"
+              id="sex"
+              class="custom-select"
+              placeholder="Elegir Sexo"
+              :disabled="cub.user.found"
+              required
+            >
+              <option selected disabled value>Eliga su Sexo</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button
+              type="button"
+              class="btn btn-outline-danger mx-1"
+              @click="delUserData(1)"
+            >Limpiar</button>
+          </div>
         </div>
 
         <div v-show="currentstep == 2">
@@ -85,8 +110,8 @@
           <br />
           <div class="CList">
             <div class="form-row">
-              <div class="form-group col-3">
-                <label>Cedula</label>
+              <div class="form-group col-2">
+                <label>Cédula</label>
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user1.ced"
@@ -104,14 +129,30 @@
                   :disabled="cub.integrantes.user1.found"
                 />
               </div>
+              <div class="form-group col-1">
+                <label class="label">Sexo</label>
+                <select
+                  v-model="cub.integrantes.user1.sex"
+                  type="text"
+                  id="sex"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user1.found"
+                  required
+                >
+                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <div class="form-group col-4">
                 <label class="label">Facultad</label>
                 <select
-                  class="form-control"
+                  class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user1.fac"
                   :disabled="cub.integrantes.user1.found"
                 >
+                  <option selected disabled value="">Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -125,7 +166,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-3">
+              <div class="form-group col-2">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user2.ced"
@@ -141,13 +182,28 @@
                   :disabled="cub.integrantes.user2.found"
                 />
               </div>
+              <div class="form-group col-1">
+                <select
+                  v-model="cub.integrantes.user2.sex"
+                  type="text"
+                  id="sex"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user2.found"
+                  required
+                >
+                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <div class="form-group col-4">
                 <select
-                  class="form-control"
+                  class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user2.fac"
                   :disabled="cub.integrantes.user2.found"
                 >
+                  <option selected disabled value="">Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -160,7 +216,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-3">
+              <div class="form-group col-2">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user3.ced"
@@ -176,13 +232,28 @@
                   :disabled="cub.integrantes.user3.found"
                 />
               </div>
+              <div class="form-group col-1">
+                <select
+                  v-model="cub.integrantes.user3.sex"
+                  type="text"
+                  id="sex"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user3.found"
+                  required
+                >
+                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <div class="form-group col-4">
                 <select
-                  class="form-control"
+                  class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user3.fac"
                   :disabled="cub.integrantes.user3.found"
                 >
+                  <option selected disabled value="">Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -196,7 +267,7 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group col-3">
+              <div class="form-group col-2">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user4.ced"
@@ -212,13 +283,28 @@
                   :disabled="cub.integrantes.user4.found"
                 />
               </div>
+              <div class="form-group col-1">
+                <select
+                  v-model="cub.integrantes.user4.sex"
+                  type="text"
+                  id="sex"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user4.found"
+                  required
+                >
+                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <div class="form-group col-4">
                 <select
-                  class="form-control"
+                  class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user4.fac"
                   :disabled="cub.integrantes.user4.found"
                 >
+                  <option selected disabled value="">Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -231,7 +317,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-3">
+              <div class="form-group col-2">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user5.ced"
@@ -247,13 +333,28 @@
                   :disabled="cub.integrantes.user5.found"
                 />
               </div>
+              <div class="form-group col-1">
+                <select
+                  v-model="cub.integrantes.user5.sex"
+                  type="text"
+                  id="sex"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user5.found"
+                  required
+                >
+                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <div class="form-group col-4">
                 <select
-                  class="form-control"
+                  class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user5.fac"
                   :disabled="cub.integrantes.user5.found"
                 >
+                  <option selected disabled value="">Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -317,6 +418,7 @@ export default {
           name: "",
           ced: "",
           fac: "",
+          sex: "",
           found: false
         },
         integrantes: {
@@ -324,30 +426,35 @@ export default {
             name: "",
             ced: "",
             fac: "",
+            sex: "",
             found: false
           },
           user2: {
             name: "",
             ced: "",
             fac: "",
+            sex: "",
             found: false
           },
           user3: {
             name: "",
             ced: "",
             fac: "",
+            sex: "",
             found: false
           },
           user4: {
             name: "",
             ced: "",
             fac: "",
+            sex: "",
             found: false
           },
           user5: {
             name: "",
             ced: "",
             fac: "",
+            sex: "",
             found: false
           }
         },
@@ -362,9 +469,9 @@ export default {
   },
   created() {
     this.getCub();
-    this.getUsers(); 
+    this.getUsers();
   },
-  methods: {    
+  methods: {
     moment() {
       return moment();
     },
@@ -379,8 +486,8 @@ export default {
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
-      let ID = String(this.cub.id)
-      this.$router.push({path: `/cub/solicitud/realizado/${ID}`});
+      let ID = String(this.cub.id);
+      this.$router.push({ path: `/cub/solicitud/realizado/${ID}` });
     },
     getCub() {
       cubRef
@@ -392,14 +499,13 @@ export default {
           if (this.listado.length > 0) {
             this.listado.forEach(function(cubs) {
               if (cubs.id == idcub && cubs.status == false) {
-                if (idcub < 10){
+                if (idcub < 10) {
                   idcub++;
-                }
-                else{
-                  alert("No hay cubiculos disponibles.")
+                } else {
+                  alert("No hay cubiculos disponibles.");
                   this.$router.push("/cub/all");
                 }
-                
+
                 // eslint-disable-next-line
                 console.log("ID +1");
               }
@@ -434,6 +540,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.user.name = user.name;
             this.cub.user.fac = user.fac;
+            this.cub.user.sex = user.sex;
             this.cub.user.found = true;
           } else if (
             this.cub.integrantes.user1.ced == user.ced &&
@@ -443,6 +550,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.integrantes.user1.name = user.name;
             this.cub.integrantes.user1.fac = user.fac;
+            this.cub.integrantes.user1.sex = user.sex;
             this.cub.integrantes.user1.found = true;
           } else if (
             this.cub.integrantes.user2.ced == user.ced &&
@@ -452,6 +560,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.integrantes.user2.name = user.name;
             this.cub.integrantes.user2.fac = user.fac;
+            this.cub.integrantes.user2.sex = user.sex;
             this.cub.integrantes.user2.found = true;
           } else if (
             this.cub.integrantes.user3.ced == user.ced &&
@@ -461,6 +570,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.integrantes.user3.name = user.name;
             this.cub.integrantes.user3.fac = user.fac;
+            this.cub.integrantes.user3.sex = user.sex;
             this.cub.integrantes.user3.found = true;
           } else if (
             this.cub.integrantes.user4.ced == user.ced &&
@@ -470,6 +580,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.integrantes.user4.name = user.name;
             this.cub.integrantes.user4.fac = user.fac;
+            this.cub.integrantes.user4.sex = user.sex;
             this.cub.integrantes.user4.found = true;
           } else if (
             this.cub.integrantes.user5.ced == user.ced &&
@@ -479,6 +590,7 @@ export default {
             console.log("Usuario encontrado");
             this.cub.integrantes.user5.name = user.name;
             this.cub.integrantes.user5.fac = user.fac;
+            this.cub.integrantes.user5.sex = user.sex;
             this.cub.integrantes.user5.found = true;
           } else {
             // eslint-disable-next-line
@@ -487,53 +599,59 @@ export default {
         });
       }
     },
-        delUserData(ID) {
-          if (ID == 1) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.user.ced = "";
-            this.cub.user.name = "";
-            this.cub.user.fac = "";
-            this.cub.user.found = false;
-          } else if (ID == 2) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.integrantes.user1.ced = "";
-            this.cub.integrantes.user1.name = "";
-            this.cub.integrantes.user1.fac ="";
-            this.cub.integrantes.user1.found = false;
-          } else if (ID == 3) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.integrantes.user2.ced = "";
-            this.cub.integrantes.user2.name = "";
-            this.cub.integrantes.user2.fac ="";
-            this.cub.integrantes.user2.found = false;
-          } else if (ID == 4) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.integrantes.user3.ced = "";
-            this.cub.integrantes.user3.name = "";
-            this.cub.integrantes.user3.fac ="";
-            this.cub.integrantes.user3.found = false;
-          } else if (ID == 5) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.integrantes.user4.ced = "";
-            this.cub.integrantes.user4.name = "";
-            this.cub.integrantes.user4.fac ="";
-            this.cub.integrantes.user4.found = false;
-          } else if (ID == 6) {
-            // eslint-disable-next-line
-            console.log("Usuario encontrado");
-            this.cub.integrantes.user5.ced = "";
-            this.cub.integrantes.user5.name = "";
-            this.cub.integrantes.user5.fac ="";
-            this.cub.integrantes.user5.found = false;
-          } else {
-            // eslint-disable-next-line
-            console.log("Usuario NO encontrado");
-          }
+    delUserData(ID) {
+      if (ID == 1) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.user.ced = "";
+        this.cub.user.name = "";
+        this.cub.user.fac = "";
+        this.cub.user.sex = "";
+        this.cub.user.found = false;
+      } else if (ID == 2) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.integrantes.user1.ced = "";
+        this.cub.integrantes.user1.name = "";
+        this.cub.integrantes.user1.fac = "";
+        this.cub.integrantes.user1.sex = "";
+        this.cub.integrantes.user1.found = false;
+      } else if (ID == 3) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.integrantes.user2.ced = "";
+        this.cub.integrantes.user2.name = "";
+        this.cub.integrantes.user2.fac = "";
+        this.cub.integrantes.user2.sex = "";
+        this.cub.integrantes.user2.found = false;
+      } else if (ID == 4) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.integrantes.user3.ced = "";
+        this.cub.integrantes.user3.name = "";
+        this.cub.integrantes.user3.fac = "";
+        this.cub.integrantes.user3.sex = "";
+        this.cub.integrantes.user3.found = false;
+      } else if (ID == 5) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.integrantes.user4.ced = "";
+        this.cub.integrantes.user4.name = "";
+        this.cub.integrantes.user4.fac = "";
+        this.cub.integrantes.user4.sex = "";
+        this.cub.integrantes.user4.found = false;
+      } else if (ID == 6) {
+        // eslint-disable-next-line
+        console.log("Usuario encontrado");
+        this.cub.integrantes.user5.ced = "";
+        this.cub.integrantes.user5.name = "";
+        this.cub.integrantes.user5.fac = "";
+        this.cub.integrantes.user5.sex = "";
+        this.cub.integrantes.user5.found = false;
+      } else {
+        // eslint-disable-next-line
+        console.log("Usuario NO encontrado");
+      }
     }
   },
   components: {

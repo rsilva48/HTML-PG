@@ -48,8 +48,8 @@ export default {
       if (
         this.form.user.name == "" ||
         this.form.user.ced == "" ||
-        this.form.user.fac == "" &&
-        this.currentstep == 1
+        this.form.user.fac == "" ||
+        (this.form.user.sex == "" && this.currentstep == 1)
       ) {
         return true;
       } else if (this.form.check == false && this.currentstep == 2) {
@@ -65,10 +65,13 @@ export default {
       return (
         this.form.integrantes.user1.name == "" ||
         this.form.integrantes.user1.ced == "" ||
+        this.form.integrantes.user1.sex == "" ||
         this.form.integrantes.user2.name == "" ||
         this.form.integrantes.user2.ced == "" ||
+        this.form.integrantes.user2.sex == "" ||
         this.form.integrantes.user3.name == "" ||
         this.form.integrantes.user3.ced == "" ||
+        this.form.integrantes.user3.sex == "" ||
         this.form.integrantes.user1.fac == "" ||
         this.form.integrantes.user2.fac == "" ||
         this.form.integrantes.user3.fac == ""
