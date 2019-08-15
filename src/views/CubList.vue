@@ -14,7 +14,7 @@
               class="custom-control-input"
               id="customSwitch1"
             />
-            <label class="custom-control-label" for="customSwitch1">Vista Admin/ Vista Usuario</label>
+            <label class="custom-control-label" for="customSwitch1">Vista Usuario/Vista Admin</label>
           </div>
           <div v-if="status">
             <!--vista de admin -->
