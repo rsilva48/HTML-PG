@@ -127,11 +127,8 @@ export default {
     },
     date2hour() {
       this.listado.forEach(cubs => {
-        var hora_inicial = moment(cubs.date_start, "dddd D/M/YY HH:mm")
-        var hora_final = moment(cubs.date_end, "dddd D/M/YY HH:mm")
-        //var remaintime = moment().to(moment(cubs.date_end, "dddd D/M/YY HH:mm"))
-        moment.locale('es')
-        var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm").toNow()
+        var remaintime = moment().to(moment(cubs.date_end, "dddd D/M/YY HH:mm"))
+        //var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm").fromNow()
         this.horas[cubs.id-1]=remaintime
       })
     }

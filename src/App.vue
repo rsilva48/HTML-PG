@@ -18,6 +18,7 @@ export default {
     };
   },
   created() {
+    moment.locale('es')
     setInterval(() => {
       this.rutina();
     }, 1000);
