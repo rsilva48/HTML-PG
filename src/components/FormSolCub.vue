@@ -476,7 +476,7 @@ export default {
     addForm() {
       this.cub.date_start = moment().format("dddd D/M/YY HH:mm");
       this.cub.date_end = moment()
-        .add(1, "m")
+        .add(2, "m")
         .format("dddd D/M/YY HH:mm");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);

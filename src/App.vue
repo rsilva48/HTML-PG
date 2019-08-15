@@ -21,7 +21,7 @@ export default {
     moment.locale('es')
     setInterval(() => {
       this.rutina();
-    }, 1000);
+    }, 10000);
   },
   methods: {
     rutina() {
@@ -42,8 +42,8 @@ export default {
         this.listado.forEach(cub => {
           let end = moment(cub.date_end, "dddd D/M/YY HH:mm")
           let now = moment()
-          let dif = end.diff(now, 'minutes')
-        if (dif <= 0) {
+          let dif = end.diff(now, 'seconds')
+        if (dif <= 0 && cub.status == false) {
           this.setForm(cub.id);
           return true;
         }

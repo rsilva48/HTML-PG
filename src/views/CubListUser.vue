@@ -106,7 +106,7 @@ export default {
   created() {
     setInterval(() => {
       this.rutina();
-    }, 1000);
+    }, 10);
   },
   methods: {
     rutina() {
