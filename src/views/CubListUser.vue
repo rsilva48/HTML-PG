@@ -6,52 +6,53 @@
       </div><!--Disponibilidad -->
  <div class="container">
   <div class="row">
-    <div class="col-md-6"><p><h3 style="color:green">VERDE</h3>si esta disponible el cubiculo</div><hr>
+    <div class="col-md-6"><h3 style="color:green">VERDE</h3>si esta disponible el cubiculo</div><hr>
     <div class="col-md-6">  <h3 style="color:red">ROJO</h3> rojo con uno que no esta disponible.</div>
   </div>
+  <br>
 </div>
 <div class="container">
   <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[0].status">Cub. 01</li>
           <li class="list-group-item list-group-item-general" v-if="listado[0].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[0].status">Cub. 01</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[0].status">{{ horas[0] }}</li>
 				</div>
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[1].status">Cub. 02</li>
           <li class="list-group-item list-group-item-general" v-if="listado[1].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[1].status">Cub. 02</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[1].status">{{ horas[1] }}</li>
 				</div>
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[2].status">Cub. 03</li>
           <li class="list-group-item list-group-item-general" v-if="listado[2].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[2].status">Cub. 03</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[2].status">{{ horas[2] }}</li>
 				</div>
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[3].status">Cub. 04</li>
           <li class="list-group-item list-group-item-general" v-if="listado[3].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[3].status">Cub. 04</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[3].status">{{ horas[3] }}</li>
 				</div>
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[4].status">Cub. 05</li>
           <li class="list-group-item list-group-item-general" v-if="listado[4].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[4].status">Cub. 05</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[4].status">{{ horas[4] }}</li>
 				</div>
-				<div class="col-md-2"><br>
+				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[5].status">Cub. 06</li>
           <li class="list-group-item list-group-item-general" v-if="listado[5].status">Disponible</li>
           <li class="list-group-item list-group-item-danger" v-if="!listado[5].status">Cub. 06</li>
           <li class="list-group-item list-group-item-general" v-if="!listado[5].status">{{ horas[5] }}</li>
 				</div>
-			</div>
+			</div><br>
 			<div class="row">
 				<div class="col-md-2">
           <li class="list-group-item list-group-item-success" v-if="listado[6].status">Cub. 07</li>

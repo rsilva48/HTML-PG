@@ -40,8 +40,10 @@ export default {
         let data = res.val();
         this.listado = Object.values(data);
         this.listado.forEach(cub => {
-        const fecha = moment().format("dddd D/M/YY HH:mm");
-        if (cub.date_end === fecha) {
+          let end = moment(cub.date_end, "dddd D/M/YY HH:mm")
+          let now = moment()
+          let dif = end.diff(now, 'minutes')
+        if (dif <= 0) {
           this.setForm(cub.id);
           return true;
         }
