@@ -137,7 +137,6 @@
                   id="sex"
                   class="custom-select"
                   :disabled="cub.integrantes.user1.found"
-                  required
                 >
                   <option selected disabled value="">Eliga su Sexo</option>
                   <option value="M">M</option>
@@ -189,7 +188,6 @@
                   id="sex"
                   class="custom-select"
                   :disabled="cub.integrantes.user2.found"
-                  required
                 >
                   <option selected disabled value="">Eliga su Sexo</option>
                   <option value="M">M</option>
@@ -239,7 +237,6 @@
                   id="sex"
                   class="custom-select"
                   :disabled="cub.integrantes.user3.found"
-                  required
                 >
                   <option selected disabled value="">Eliga su Sexo</option>
                   <option value="M">M</option>
@@ -290,7 +287,6 @@
                   id="sex"
                   class="custom-select"
                   :disabled="cub.integrantes.user4.found"
-                  required
                 >
                   <option selected disabled value="">Eliga su Sexo</option>
                   <option value="M">M</option>
@@ -340,7 +336,6 @@
                   id="sex"
                   class="custom-select"
                   :disabled="cub.integrantes.user5.found"
-                  required
                 >
                   <option selected disabled value="">Eliga su Sexo</option>
                   <option value="M">M</option>
@@ -497,13 +492,13 @@ export default {
           this.listado = Object.values(data);
           let idcub = 1;
           if (this.listado.length > 0) {
-            this.listado.forEach(function(cubs) {
+            this.listado.forEach(cubs => {
               if (cubs.id == idcub && cubs.status == false) {
                 if (idcub < 10) {
                   idcub++;
                 } else {
                   alert("No hay cubiculos disponibles.");
-                  this.$router.push("/cub/all");
+                  this.$router.push("/cub/");
                 }
 
                 // eslint-disable-next-line

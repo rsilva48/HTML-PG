@@ -25,17 +25,6 @@ export default {
   methods: {
     rutina() {
       this.getCub();
-      this.listado.forEach(cub => {
-        const fecha = moment().format("dddd D/M/YY HH:mm");
-        if (cub.date_end === fecha) {
-          // eslint-disable-next-line
-          console.log("Cub Date End: ", cub.date_end);
-          // eslint-disable-next-line
-          console.log("Actual Date: ", moment().format("dddd D/M/YY HH:mm"));
-          this.setForm(cub.id);
-          return true;
-        }
-      });
     },
     moment() {
       return moment();
@@ -49,6 +38,13 @@ export default {
       cubRef.once("value").then(res => {
         let data = res.val();
         this.listado = Object.values(data);
+        this.listado.forEach(cub => {
+        const fecha = moment().format("dddd D/M/YY HH:mm");
+        if (cub.date_end === fecha) {
+          this.setForm(cub.id);
+          return true;
+        }
+      });
       });
     }
   },
