@@ -6,7 +6,7 @@
             <p class="lead">Puede retirar la llave e ir a utilizarlo.</p>
             <hr class="my-4" />
             <router-link
-              to="/cub/all"
+              to="/cub/list"
               class="btn btn-primary btn-lg mr-1"
               href
               role="button"
