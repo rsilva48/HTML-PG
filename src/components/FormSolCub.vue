@@ -381,6 +381,7 @@
 <script>
 import moment from "moment";
 import { cubRef } from "../services/firebase";
+import { cublogRef } from "../services/firebase";
 import { userRef } from "../services/firebase";
 import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
 import stepNavigationVue from "./FormCub/step-navigation.vue";
@@ -459,7 +460,9 @@ export default {
         status: true
       },
       listado: [],
-      usuarios: []
+      usuarios: [],
+      log: [],
+      logid: 1,
     };
   },
   created() {
@@ -481,6 +484,7 @@ export default {
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
+      cublogRef.child(this.logid).set(form)
       let ID = String(this.cub.id);
       this.$router.push({ path: `/cub/solicitud/realizado/${ID}` });
     },
@@ -506,6 +510,21 @@ export default {
           this.cub.id = idcub;
           // eslint-disable-next-line
           console.log("ID: ", this.cub.id);
+        })
+        .catch(error => {
+          // eslint-disable-next-line
+          console.log("Error: ", error);
+        });
+      cublogRef
+        .once("value")
+        .then(logdb => {
+          let logdata = logdb.val();
+          this.log = Object.values(logdata);
+          if (this.log.length > 0) {
+            this.log.forEach(cublog => {
+              this.logid++;
+            });
+          }
         })
         .catch(error => {
           // eslint-disable-next-line

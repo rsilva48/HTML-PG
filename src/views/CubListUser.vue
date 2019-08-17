@@ -8,11 +8,11 @@
     <div class="container" v-if="!loading">
       <div class="row">
         <div class="col-md-6">
-          <h3 style="color:green">VERDE</h3>si esta disponible el cubiculo
+          <h3 style="color:green">VERDE</h3>Si esta disponible
         </div>
         <hr />
         <div class="col-md-6">
-          <h3 style="color:red">ROJO</h3>rojo con uno que no esta disponible.
+          <h3 style="color:red">ROJO</h3>Cuando no esta disponible.
         </div>
       </div>
       <br />
