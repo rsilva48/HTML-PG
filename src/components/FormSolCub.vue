@@ -459,8 +459,7 @@ export default {
         status: true
       },
       listado: [],
-      usuarios: [],
-      cubuser: []
+      usuarios: []
     };
   },
   created() {
@@ -501,9 +500,6 @@ export default {
                   alert("No hay cubiculos disponibles.");
                   this.$router.push("/cub/");
                 }
-
-                // eslint-disable-next-line
-                console.log("ID +1");
               }
             });
           }
@@ -539,8 +535,6 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.user.name = user.name;
               this.cub.user.fac = user.fac;
               this.cub.user.sex = user.sex;
@@ -553,8 +547,6 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.integrantes.user1.name = user.name;
               this.cub.integrantes.user1.fac = user.fac;
               this.cub.integrantes.user1.sex = user.sex;
@@ -567,8 +559,6 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.integrantes.user2.name = user.name;
               this.cub.integrantes.user2.fac = user.fac;
               this.cub.integrantes.user2.sex = user.sex;
@@ -581,8 +571,6 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.integrantes.user3.name = user.name;
               this.cub.integrantes.user3.fac = user.fac;
               this.cub.integrantes.user3.sex = user.sex;
@@ -595,8 +583,6 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.integrantes.user4.name = user.name;
               this.cub.integrantes.user4.fac = user.fac;
               this.cub.integrantes.user4.sex = user.sex;
@@ -609,16 +595,11 @@ export default {
           ) {
             exist = this.ExistingUser(ID);
             if (!exist) {
-              // eslint-disable-next-line
-              console.log("Usuario encontrado");
               this.cub.integrantes.user5.name = user.name;
               this.cub.integrantes.user5.fac = user.fac;
               this.cub.integrantes.user5.sex = user.sex;
               this.cub.integrantes.user5.found = true;
             }
-          } else {
-            // eslint-disable-next-line
-            console.log("Usuario NO encontrado");
           }
         });
       }
@@ -801,8 +782,6 @@ export default {
                   return res;
                 }
               } else {
-                // eslint-disable-next-line
-                console.log("Usuario NO encontrado en otro cubiculo");
                 res = false;
               }
             }
