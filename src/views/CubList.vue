@@ -57,7 +57,9 @@ import { cubRef } from "../services/firebase";
 export default {
   name: "CubList",
   created() {
-    this.getCub();
+    setInterval(() => {
+      this.getCub();
+    }, 1000);
   },
   data() {
     return {
