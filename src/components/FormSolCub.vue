@@ -40,7 +40,7 @@
               v-model="cub.user.fac"
               :disabled="cub.user.found"
             >
-              <option selected disabled value="">Eliga su facultad</option>
+              <option selected disabled value>Eliga su facultad</option>
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
               <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -138,7 +138,7 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user1.found"
                 >
-                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option selected disabled value>Eliga su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
@@ -151,7 +151,7 @@
                   v-model="cub.integrantes.user1.fac"
                   :disabled="cub.integrantes.user1.found"
                 >
-                  <option selected disabled value="">Eliga su facultad</option>
+                  <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -189,7 +189,7 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user2.found"
                 >
-                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option selected disabled value>Eliga su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
@@ -201,7 +201,7 @@
                   v-model="cub.integrantes.user2.fac"
                   :disabled="cub.integrantes.user2.found"
                 >
-                  <option selected disabled value="">Eliga su facultad</option>
+                  <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -238,7 +238,7 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user3.found"
                 >
-                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option selected disabled value>Eliga su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
@@ -250,7 +250,7 @@
                   v-model="cub.integrantes.user3.fac"
                   :disabled="cub.integrantes.user3.found"
                 >
-                  <option selected disabled value="">Eliga su facultad</option>
+                  <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -288,7 +288,7 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user4.found"
                 >
-                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option selected disabled value>Eliga su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
@@ -300,7 +300,7 @@
                   v-model="cub.integrantes.user4.fac"
                   :disabled="cub.integrantes.user4.found"
                 >
-                  <option selected disabled value="">Eliga su facultad</option>
+                  <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -337,7 +337,7 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user5.found"
                 >
-                  <option selected disabled value="">Eliga su Sexo</option>
+                  <option selected disabled value>Eliga su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
@@ -349,7 +349,7 @@
                   v-model="cub.integrantes.user5.fac"
                   :disabled="cub.integrantes.user5.found"
                 >
-                  <option selected disabled value="">Eliga su facultad</option>
+                  <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -527,7 +527,7 @@ export default {
           console.log("Error: ", error);
         });
     },
-    getUserData() {
+    getUserData(ced) {
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {
           if (this.cub.user.ced == user.ced && this.cub.user.found == false) {
@@ -591,13 +591,6 @@ export default {
             // eslint-disable-next-line
             console.log("Usuario NO encontrado");
           }
-          if (this.listado.length > 0) {
-        this.listado.forEach(cubs => {
-          if (cubs.user.ced == user.ced){
-
-          }
-        });
-      }
         });
       }
     },
@@ -654,6 +647,126 @@ export default {
         // eslint-disable-next-line
         console.log("Usuario NO encontrado");
       }
+    },
+    ExistingUser(ID) {
+      if (this.listado.length > 0) {
+        this.listado.forEach(cubs => {
+          if (ID == 1) {
+            if (cubs.user.ced == this.cub.user.ced && cubs.status == false) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (cubsuser.ced == this.cub.user.ced && cubs.status == false) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+            this.cub.user.found = false;
+          } else if (ID == 2) {
+            if (
+              cubs.user.ced == this.cub.integrantes.user1.ced &&
+              cubs.status == false
+            ) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (
+                cubsuser.ced == this.cub.integrantes.user1.ced &&
+                cubs.status == false
+              ) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+          } else if (ID == 3) {
+            if (
+              cubs.user.ced == this.cub.integrantes.user2.ced &&
+              cubs.status == false
+            ) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (
+                cubsuser.ced == this.cub.integrantes.user2.ced &&
+                cubs.status == false
+              ) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+          } else if (ID == 4) {
+            if (
+              cubs.user.ced == this.cub.integrantes.user3.ced &&
+              cubs.status == false
+            ) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (
+                cubsuser.ced == this.cub.integrantes.user3.ced &&
+                cubs.status == false
+              ) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+          } else if (ID == 5) {
+            if (
+              cubs.user.ced == this.cub.integrantes.user4.ced &&
+              cubs.status == false
+            ) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (
+                cubsuser.ced == this.cub.integrantes.user4.ced &&
+                cubs.status == false
+              ) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+          } else if (ID == 6) {
+            if (
+              cubs.user.ced == this.cub.integrantes.user5.ced &&
+              cubs.status == false
+            ) {
+              this.cub.user.ced = "";
+              alert("El usuario ya esta en otro cubiculo");
+              return true;
+            }
+            cubs.integrantes.forEach(cubuser => {
+              if (
+                cubsuser.ced == this.cub.integrantes.user5.ced &&
+                cubs.status == false
+              ) {
+                this.cubuser.ced = "";
+                alert("El usuario ya esta en otro cubiculo");
+                return true;
+              }
+            });
+          } else {
+            // eslint-disable-next-line
+            console.log("Usuario NO encontrado en otro cubiculo");
+          }
+        });
+      }
+      return false;
     }
   },
   components: {
