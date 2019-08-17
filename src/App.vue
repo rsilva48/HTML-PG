@@ -40,7 +40,7 @@ export default {
         let data = res.val();
         this.listado = Object.values(data);
         this.listado.forEach(cub => {
-          let end = moment(cub.date_end, "dddd D/M/YY HH:mm")
+          let end = moment(cub.date_end, "dddd D/M/YY HH:mm:ss")
           let now = moment()
           let dif = end.diff(now, 'seconds')
         if (dif <= 0 && cub.status == false) {

@@ -474,10 +474,10 @@ export default {
       this.currentstep = step;
     },
     addForm() {
-      this.cub.date_start = moment().format("dddd D/M/YY HH:mm");
+      this.cub.date_start = moment().format("dddd D/M/YY HH:mm:ss");
       this.cub.date_end = moment()
         .add(2, "m")
-        .format("dddd D/M/YY HH:mm");
+        .format("dddd D/M/YY HH:mm:ss");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
       cubRef.child(form.id).set(form);
@@ -591,6 +591,13 @@ export default {
             // eslint-disable-next-line
             console.log("Usuario NO encontrado");
           }
+          if (this.listado.length > 0) {
+        this.listado.forEach(cubs => {
+          if (cubs.user.ced == user.ced){
+
+          }
+        });
+      }
         });
       }
     },

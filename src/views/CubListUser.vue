@@ -128,8 +128,8 @@ export default {
     },
     date2hour() {
       this.listado.forEach(cubs => {
-        var remaintime = moment().to(moment(cubs.date_end, "dddd D/M/YY HH:mm"))
-        //var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm").fromNow()
+        var remaintime = moment().to(moment(cubs.date_end, "dddd D/M/YY HH:mm:ss"))
+        //var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm:ss").fromNow()
         this.horas[cubs.id-1]=remaintime
       })
     }
