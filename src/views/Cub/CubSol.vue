@@ -13,14 +13,14 @@
 <script>
 import FormSolCub from '@/components/Cub/FormSolCub.vue'
 export default {
-    name: 'CubSol',
-    components:{
-        FormSolCub
-    },
-    methods:{
-        send2app(childform){
-            this.$emit('cubform',childform)
-        }
+  name: 'CubSol',
+  components: {
+    FormSolCub
+  },
+  methods: {
+    send2app (childform) {
+      this.$emit('cubform', childform)
     }
+  }
 }
 </script>

@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          
+
         </div>
       </div>
     </nav>
@@ -18,8 +18,6 @@
       </div>
     </header>
 
-    
-
     <section id="main">
       <div class="container">
         <div class="row">
@@ -31,7 +29,7 @@
              <router-link to="/admin/comp" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Computadoras <span class="badge">12</span></router-link>
              <router-link to="/admin/cub" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Cubiculos <span class="badge">33</span></router-link>
              <router-link to="/admin/report" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Reportes <span class="badge">203</span></router-link>
-            
+
             </div>
 
             <div class="well">
@@ -101,7 +99,7 @@
 
 <script>
 export default {
-name: 'Adminview',
+  name: 'Adminview'
 }
 </script>
 

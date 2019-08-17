@@ -76,62 +76,62 @@
   </div>
 </template>
 <script>
-import { userRef } from "../services/firebase";
+import { userRef } from '../services/firebase'
 export default {
-  name: "Registro",
-  data() {
+  name: 'Registro',
+  data () {
     return {
       user: {
-        name: "",
-        ced: "",
-        fac: "",
-        sex: ""
+        name: '',
+        ced: '',
+        fac: '',
+        sex: ''
       },
       usuarios: []
-    };
+    }
   },
   computed: {
-    validation() {
-      if (this.user.name == "" || this.user.ced == "" || this.user.fac == "" || this.user.sex == "") {
-        return true;
+    validation () {
+      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '') {
+        return true
       } else {
-        return false;
+        return false
       }
-    },
-    
+    }
+
   },
-  created() {
-    this.getUsers();
+  created () {
+    this.getUsers()
   },
   methods: {
-    exist() {
+    exist () {
       this.usuarios.forEach(usuario => {
         if (this.user.ced == usuario.ced) {
-          alert("El usuario ya existe.")
-          this.user.ced = ""
+          alert('El usuario ya existe.')
+          this.user.ced = ''
         }
-      });
+      })
     },
-    addUser() {
-      let form = Object.assign({}, this.user);
-      userRef.child(this.user.ced).set(form);
-      alert("Se ha registrado correctamente.")
-      this.$router.push("/");
+    addUser () {
+      let form = Object.assign({}, this.user)
+      userRef.child(this.user.ced).set(form)
+      alert('Se ha registrado correctamente.')
+      this.$router.push('/')
     },
-    getUsers() {
+    getUsers () {
       userRef
-        .once("value")
+        .once('value')
         .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
+          let data = res.val()
+          this.usuarios = Object.values(data)
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        });
+        })
     }
   }
-};
+}
 </script>
 
 <style>

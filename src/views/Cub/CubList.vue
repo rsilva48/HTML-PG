@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import vistaUsuario from "@/components/Cub/CubListUser";
+import vistaUsuario from '@/components/Cub/CubListUser'
 export default {
-  name: "CubList",
+  name: 'CubList',
   components: {
     vistaUsuario
-  },
-};
+  }
+}
 </script>

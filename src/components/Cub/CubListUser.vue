@@ -154,54 +154,54 @@
 </template>
 
 <script>
-import moment from "moment";
-import { cubRef } from "@/services/firebase";
-import { setInterval } from "timers";
+import moment from 'moment'
+import { cubRef } from '@/services/firebase'
+import { setInterval } from 'timers'
 export default {
-  name: "CubList",
-  data() {
+  name: 'CubList',
+  data () {
     return {
       loading: Boolean,
       listado: [],
       horas: []
-    };
+    }
   },
-  created() {
+  created () {
     this.loading = true
     setInterval(() => {
-      this.rutina();
-    }, 1000);
+      this.rutina()
+    }, 1000)
   },
   methods: {
-    rutina() {
-      this.getCub();
+    rutina () {
+      this.getCub()
     },
-    moment() {
-      return moment();
+    moment () {
+      return moment()
     },
-    getCub() {
+    getCub () {
       cubRef
-        .once("value")
+        .once('value')
         .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          this.date2hour();
+          let data = res.val()
+          this.listado = Object.values(data)
+          this.date2hour()
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        });
+        })
     },
-    date2hour() {
+    date2hour () {
       this.listado.forEach(cubs => {
         var remaintime = moment().to(
-          moment(cubs.date_end, "dddd D/M/YY HH:mm:ss")
-        );
-        //var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm:ss").fromNow()
-        this.horas[cubs.id - 1] = remaintime;
-      });
-      this.loading = false;
+          moment(cubs.date_end, 'dddd D/M/YY HH:mm:ss')
+        )
+        // var remaintime = moment(cubs.date_end, "dddd D/M/YY HH:mm:ss").fromNow()
+        this.horas[cubs.id - 1] = remaintime
+      })
+      this.loading = false
     }
   }
-};
+}
 </script>

@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import stepNavigationStepVue from './step-navigation-step.vue';
+import stepNavigationStepVue from './step-navigation-step.vue'
 export default {
-  name: "step-navigation",
-  props: ["steps", "currentstep"],
+  name: 'step-navigation',
+  props: ['steps', 'currentstep'],
   components: {
-      "step-navigation-step": stepNavigationStepVue
+    'step-navigation-step': stepNavigationStepVue
   }
-};
+}
 </script>

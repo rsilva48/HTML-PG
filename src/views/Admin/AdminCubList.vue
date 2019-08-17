@@ -55,40 +55,40 @@
 </template>
 
 <script>
-import vistaUsuario from "@/components/Cub/CubListUser";
-import { cubRef } from "@/services/firebase";
+import vistaUsuario from '@/components/Cub/CubListUser'
+import { cubRef } from '@/services/firebase'
 export default {
-  name: "AdminCubList",
-  created() {
-    this.loading = true;
+  name: 'AdminCubList',
+  created () {
+    this.loading = true
     setInterval(() => {
-      this.getCub();
-    }, 1000);
+      this.getCub()
+    }, 1000)
   },
-  data() {
+  data () {
     return {
       listado: [],
       loading: Boolean,
       admin: true
-    };
+    }
   },
   components: {
     vistaUsuario
   },
   methods: {
-    getCub() {
+    getCub () {
       cubRef
-        .once("value")
+        .once('value')
         .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          this.loading = false;
+          let data = res.val()
+          this.listado = Object.values(data)
+          this.loading = false
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        });
+        })
     }
   }
-};
+}
 </script>

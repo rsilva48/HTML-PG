@@ -107,7 +107,7 @@
 
 <script>
 export default {
-name:"AdminComp"
+  name: 'AdminComp'
 }
 </script>
 

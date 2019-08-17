@@ -11,19 +11,18 @@
   </li>
 </template>
 
-
 <script>
 export default {
-  name: "step-navigation-step",
-  props: ["step", "currentstep"],
+  name: 'step-navigation-step',
+  props: ['step', 'currentstep'],
 
   computed: {
-    indicatorclass() {
+    indicatorclass () {
       return {
         active: this.step.id == this.currentstep,
         complete: this.currentstep > this.step.id
-      };
+      }
     }
-  },
-};
+  }
+}
 </script>

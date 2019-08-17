@@ -13,7 +13,7 @@ export default {
   components: {
     LineChart
   },
-  data(){
+  data () {
     return {
       datacollection: null
     }
@@ -23,10 +23,9 @@ export default {
   },
   methods: {
 
-    fillData ()
-    {
+    fillData () {
       this.datacollection = {
-        labels: ['Lunes','Martes','Miercoles','Jueves','Viernes', 'Sabado' , 'Domingo'],
+        labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
         datasets: [
           {
             label: 'Masculino',
@@ -37,7 +36,7 @@ export default {
             label: 'Femenino',
             backgroundColor: '#e40078',
             data: [ 20, 40, 50, 20, 50, 40]
-          },
+          }
         ]
       }
     }

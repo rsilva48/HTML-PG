@@ -7,9 +7,9 @@
 <script>
 import Registro from '@/components/Registro.vue'
 export default {
-    name: "RegView",
-    components: {
-        Registro
-    }
+  name: 'RegView',
+  components: {
+    Registro
+  }
 }
 </script>

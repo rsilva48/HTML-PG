@@ -26,12 +26,11 @@
 
 <script>
 export default {
-  name: "PCs",
+  name: 'PCs',
   methods: {},
   components: {}
-};
+}
 </script>
 
 <style>
 </style>
-

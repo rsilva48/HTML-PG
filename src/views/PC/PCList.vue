@@ -92,7 +92,7 @@
         <div class="col-md-12">
           <h5>Piso2</h5>
         </div>
-        
+
 				<div class="col-md-2">
             <li class="list-group-item list-group-item-success">PC. 09</li>00:00:00<hr>
 				</div>
@@ -163,6 +163,6 @@
 
 <script>
 export default {
-  name: "PCList"
-};
+  name: 'PCList'
+}
 </script>

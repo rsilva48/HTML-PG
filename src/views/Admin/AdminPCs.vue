@@ -13,7 +13,7 @@
 
 <script>
 export default {
-name: 'AdminPCs',
+  name: 'AdminPCs'
 }
 </script>
 

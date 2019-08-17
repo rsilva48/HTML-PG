@@ -83,7 +83,7 @@
                 <chartjs-bar :datalabel="mylabel" :labels="mylabels" :data="mydata"></chartjs-bar>
               </div>
               <div class="panel-body">
-                
+
               </div>
             </div>
           </div>
@@ -95,32 +95,31 @@
 
 <script>
 export default {
-  name: "AdminReporte",
-  data(){
-    return{
-      labels: ["Manzanas","Bananana","Tusieresfresa"],
+  name: 'AdminReporte',
+  data () {
+    return {
+      labels: ['Manzanas', 'Bananana', 'Tusieresfresa'],
       datasets: [
         {
-          position: "bottom",
-          data:[20, 30, 50],
-          backgroundColor: ["Red","Yellow","Purple"],
-          
+          position: 'bottom',
+          data: [20, 30, 50],
+          backgroundColor: ['Red', 'Yellow', 'Purple']
+
         }
       ],
-      option:{
-        title:{
-          display:true,
-          position: "top",
-          text: "Frutascas"
+      option: {
+        title: {
+          display: true,
+          position: 'top',
+          text: 'Frutascas'
         }
       },
-        mylabel : 'Graficos blabla',
-        mylabels : ['depresión', 'estrés', 'ansiedad'],
-        mydata : [70, 50, 10]
+      mylabel: 'Graficos blabla',
+      mylabels: ['depresión', 'estrés', 'ansiedad'],
+      mydata: [70, 50, 10]
     }
-
   }
-};
+}
 </script>
 <style>
 </style>

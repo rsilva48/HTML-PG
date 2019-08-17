@@ -107,8 +107,8 @@
 
 <script>
 export default {
-  name: "AdminCub"
-};
+  name: 'AdminCub'
+}
 </script>
 
 <style>

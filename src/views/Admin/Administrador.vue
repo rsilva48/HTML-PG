@@ -33,77 +33,73 @@
         <label for="name">Nombre o usuario</label>
       </div>
 
-     
       <router-link to="/admin/view" role="button" class="btn btn-lg btn-primary btn-block" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar sesion</router-link>
     </form>
 
-
-
-    
   </div>
 </template>
 <script>
- /*<button
+/* <button
         class="btn btn-lg btn-primary btn-block"
         type="submit"
         :disabled="validation"
         @click="addUser"
-      >Registrarse</button>*/
-import { userRef } from "@/services/firebase";
+      >Registrarse</button> */
+import { userRef } from '@/services/firebase'
 export default {
-  name: "Administrador",
-  data() {
+  name: 'Administrador',
+  data () {
     return {
       user: {
-        name: "",
-        ced: "",
-        fac: ""
+        name: '',
+        ced: '',
+        fac: ''
       },
       usuarios: []
-    };
+    }
   },
   computed: {
-    validation() {
-      if (this.user.name == "" || this.user.ced == "" || this.user.fac == "") {
-        return true;
+    validation () {
+      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '') {
+        return true
       } else {
-        return false;
+        return false
       }
-    },
-    
+    }
+
   },
-  created() {
-    this.getUsers();
+  created () {
+    this.getUsers()
   },
   methods: {
-    exist() {
+    exist () {
       this.usuarios.forEach(usuario => {
         if (this.user.ced == usuario.ced) {
-          alert("El usuario ya existe.")
-          this.user.ced = ""
+          alert('El usuario ya existe.')
+          this.user.ced = ''
         }
-      });
+      })
     },
-    addUser() {
-      let form = Object.assign({}, this.user);
-      userRef.child(this.user.ced).set(form);
-      alert("Se ha registrado correctamente.")
-      this.$router.push("/");
+    addUser () {
+      let form = Object.assign({}, this.user)
+      userRef.child(this.user.ced).set(form)
+      alert('Se ha registrado correctamente.')
+      this.$router.push('/')
     },
-    getUsers() {
+    getUsers () {
       userRef
-        .once("value")
+        .once('value')
         .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
+          let data = res.val()
+          this.usuarios = Object.values(data)
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        });
+        })
     }
   }
-};
+}
 </script>
 
 <style>

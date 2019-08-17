@@ -81,7 +81,6 @@
 
 <script>
 export default {
-  name: "PCSol"
-};
+  name: 'PCSol'
+}
 </script>
-
