@@ -1,5 +1,4 @@
 # Proyecto UIP CRAI - Programación Gráfica
-#2019
 
 ## Project setup (para instalar dependencias y plugins)
 ```
