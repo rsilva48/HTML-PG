@@ -92,7 +92,7 @@
                       <p class="lead">En esta seccion permite vizualizar los Cubiculos utilizados.</p>
                       <hr class="my-4" />
                       <p>Para una mayor comodidad se mostrara el tiempos restante y las disponibilidad de los Cubiculos.</p>
-                      <router-link to="/admin/admin_cub_list" class="btn btn-primary btn-lg"  role="button">Ver Cubiculos</router-link>
+                      <router-link to="/admin/admin_cub_list/all" class="btn btn-primary btn-lg"  role="button">Ver Cubiculos</router-link>
                     </div>
                   </div>
                 </div>
