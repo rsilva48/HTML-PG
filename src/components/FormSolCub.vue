@@ -531,62 +531,68 @@ export default {
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {
           if (this.cub.user.ced == user.ced && this.cub.user.found == false) {
+            if (!ExistingUser(1)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.user.name = user.name;
             this.cub.user.fac = user.fac;
             this.cub.user.sex = user.sex;
-            this.cub.user.found = true;
+            this.cub.user.found = true;}
           } else if (
             this.cub.integrantes.user1.ced == user.ced &&
             this.cub.integrantes.user1.found == false
           ) {
+            if (!ExistingUser(2)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.integrantes.user1.name = user.name;
             this.cub.integrantes.user1.fac = user.fac;
             this.cub.integrantes.user1.sex = user.sex;
-            this.cub.integrantes.user1.found = true;
+            this.cub.integrantes.user1.found = true;}
           } else if (
             this.cub.integrantes.user2.ced == user.ced &&
             this.cub.integrantes.user2.found == false
           ) {
+            if (!ExistingUser(3)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.integrantes.user2.name = user.name;
             this.cub.integrantes.user2.fac = user.fac;
             this.cub.integrantes.user2.sex = user.sex;
-            this.cub.integrantes.user2.found = true;
+            this.cub.integrantes.user2.found = true;}
           } else if (
             this.cub.integrantes.user3.ced == user.ced &&
             this.cub.integrantes.user3.found == false
           ) {
+            if (!ExistingUser(4)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.integrantes.user3.name = user.name;
             this.cub.integrantes.user3.fac = user.fac;
             this.cub.integrantes.user3.sex = user.sex;
-            this.cub.integrantes.user3.found = true;
+            this.cub.integrantes.user3.found = true;}
           } else if (
             this.cub.integrantes.user4.ced == user.ced &&
             this.cub.integrantes.user4.found == false
           ) {
+            if (!ExistingUser(5)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.integrantes.user4.name = user.name;
             this.cub.integrantes.user4.fac = user.fac;
             this.cub.integrantes.user4.sex = user.sex;
-            this.cub.integrantes.user4.found = true;
+            this.cub.integrantes.user4.found = true;}
           } else if (
             this.cub.integrantes.user5.ced == user.ced &&
             this.cub.integrantes.user5.found == false
           ) {
+            if (!ExistingUser(6)){
             // eslint-disable-next-line
             console.log("Usuario encontrado");
             this.cub.integrantes.user5.name = user.name;
             this.cub.integrantes.user5.fac = user.fac;
             this.cub.integrantes.user5.sex = user.sex;
-            this.cub.integrantes.user5.found = true;
+            this.cub.integrantes.user5.found = true;}
           } else {
             // eslint-disable-next-line
             console.log("Usuario NO encontrado");
@@ -664,7 +670,6 @@ export default {
                 return true;
               }
             });
-            this.cub.user.found = false;
           } else if (ID == 2) {
             if (
               cubs.user.ced == this.cub.integrantes.user1.ced &&
