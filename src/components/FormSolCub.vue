@@ -14,7 +14,7 @@
               class="form-control"
               placeholder="Ingrese su numero de cédula con guiones"
               v-model="cub.user.ced"
-              @blur="getUserData"
+              @blur="getUserData(1)"
               :disabled="cub.user.found"
             />
           </div>
@@ -116,7 +116,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user1.ced"
                   placeholder="Estudiante 2"
-                  @blur="getUserData"
+                  @blur="getUserData(2)"
                   :disabled="cub.integrantes.user1.found"
                 />
               </div>
@@ -170,7 +170,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user2.ced"
                   placeholder="Estudiante 3"
-                  @blur="getUserData"
+                  @blur="getUserData(3)"
                   :disabled="cub.integrantes.user2.found"
                 />
               </div>
@@ -219,7 +219,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user3.ced"
                   placeholder="Estudiante 4"
-                  @blur="getUserData"
+                  @blur="getUserData(4)"
                   :disabled="cub.integrantes.user3.found"
                 />
               </div>
@@ -269,7 +269,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user4.ced"
                   placeholder="Estudiante 5"
-                  @blur="getUserData"
+                  @blur="getUserData(5)"
                   :disabled="cub.integrantes.user4.found"
                 />
               </div>
@@ -318,7 +318,7 @@
                   class="form-control"
                   v-model="cub.integrantes.user5.ced"
                   placeholder="Estudiante 6"
-                  @blur="getUserData"
+                  @blur="getUserData(6)"
                   :disabled="cub.integrantes.user5.found"
                 />
               </div>
@@ -527,10 +527,14 @@ export default {
           console.log("Error: ", error);
         });
     },
-    getUserData(ced) {
+    getUserData(ID) {
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {
-          if (this.cub.user.ced == user.ced && this.cub.user.found == false) {
+          if (
+            this.cub.user.ced == user.ced &&
+            this.cub.user.found == false &&
+            ID == 1
+          ) {
             if (!this.ExistingUser(1)) {
               // eslint-disable-next-line
               console.log("Usuario encontrado");
@@ -541,7 +545,8 @@ export default {
             }
           } else if (
             this.cub.integrantes.user1.ced == user.ced &&
-            this.cub.integrantes.user1.found == false
+            this.cub.integrantes.user1.found == false &&
+            ID == 2
           ) {
             if (!this.ExistingUser(2)) {
               // eslint-disable-next-line
@@ -553,7 +558,8 @@ export default {
             }
           } else if (
             this.cub.integrantes.user2.ced == user.ced &&
-            this.cub.integrantes.user2.found == false
+            this.cub.integrantes.user2.found == false &&
+            ID == 3
           ) {
             if (!this.ExistingUser(3)) {
               // eslint-disable-next-line
@@ -565,7 +571,8 @@ export default {
             }
           } else if (
             this.cub.integrantes.user3.ced == user.ced &&
-            this.cub.integrantes.user3.found == false
+            this.cub.integrantes.user3.found == false &&
+            ID == 4
           ) {
             if (!this.ExistingUser(4)) {
               // eslint-disable-next-line
@@ -577,7 +584,8 @@ export default {
             }
           } else if (
             this.cub.integrantes.user4.ced == user.ced &&
-            this.cub.integrantes.user4.found == false
+            this.cub.integrantes.user4.found == false &&
+            ID == 5
           ) {
             if (!this.ExistingUser(5)) {
               // eslint-disable-next-line
@@ -589,7 +597,8 @@ export default {
             }
           } else if (
             this.cub.integrantes.user5.ced == user.ced &&
-            this.cub.integrantes.user5.found == false
+            this.cub.integrantes.user5.found == false &&
+            ID == 6
           ) {
             if (!this.ExistingUser(6)) {
               // eslint-disable-next-line
@@ -670,8 +679,8 @@ export default {
               return true;
             }
             cubs.integrantes.forEach(cubuser => {
-              if (cubsuser.ced == this.cub.user.ced && cubs.status == false) {
-                this.cubuser.ced = "";
+              if (cubuser.ced == this.cub.user.ced && cubs.status == false) {
+                this.cub.user.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
@@ -681,16 +690,16 @@ export default {
               cubs.user.ced == this.cub.integrantes.user1.ced &&
               cubs.status == false
             ) {
-              this.cub.user.ced = "";
+              this.cub.integrantes.user1.ced = "";
               alert("El usuario ya esta en otro cubiculo");
               return true;
             }
             cubs.integrantes.forEach(cubuser => {
               if (
-                cubsuser.ced == this.cub.integrantes.user1.ced &&
+                cubuser.ced == this.cub.integrantes.user1.ced &&
                 cubs.status == false
               ) {
-                this.cubuser.ced = "";
+                this.cub.integrantes.user1.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
@@ -700,7 +709,7 @@ export default {
               cubs.user.ced == this.cub.integrantes.user2.ced &&
               cubs.status == false
             ) {
-              this.cub.user.ced = "";
+              this.cub.integrantes.user2.ced = "";
               alert("El usuario ya esta en otro cubiculo");
               return true;
             }
@@ -709,7 +718,7 @@ export default {
                 cubsuser.ced == this.cub.integrantes.user2.ced &&
                 cubs.status == false
               ) {
-                this.cubuser.ced = "";
+                this.cub.integrantes.user2.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
@@ -719,7 +728,7 @@ export default {
               cubs.user.ced == this.cub.integrantes.user3.ced &&
               cubs.status == false
             ) {
-              this.cub.user.ced = "";
+              this.cub.integrantes.user3.ced = "";
               alert("El usuario ya esta en otro cubiculo");
               return true;
             }
@@ -728,7 +737,7 @@ export default {
                 cubsuser.ced == this.cub.integrantes.user3.ced &&
                 cubs.status == false
               ) {
-                this.cubuser.ced = "";
+                this.cub.integrantes.user3.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
@@ -738,7 +747,7 @@ export default {
               cubs.user.ced == this.cub.integrantes.user4.ced &&
               cubs.status == false
             ) {
-              this.cub.user.ced = "";
+              this.cub.integrantes.user4.ced = "";
               alert("El usuario ya esta en otro cubiculo");
               return true;
             }
@@ -747,7 +756,7 @@ export default {
                 cubsuser.ced == this.cub.integrantes.user4.ced &&
                 cubs.status == false
               ) {
-                this.cubuser.ced = "";
+                this.cub.integrantes.user4.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
@@ -757,7 +766,7 @@ export default {
               cubs.user.ced == this.cub.integrantes.user5.ced &&
               cubs.status == false
             ) {
-              this.cub.user.ced = "";
+              this.cub.integrantes.user5.ced = "";
               alert("El usuario ya esta en otro cubiculo");
               return true;
             }
@@ -766,7 +775,7 @@ export default {
                 cubsuser.ced == this.cub.integrantes.user5.ced &&
                 cubs.status == false
               ) {
-                this.cubuser.ced = "";
+                this.cub.integrantes.user5.ced = "";
                 alert("El usuario ya esta en otro cubiculo");
                 return true;
               }
