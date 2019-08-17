@@ -2,7 +2,7 @@
   <div class="login">
     <form class="form-signin" v-on:submit.prevent="addUser" id="UserReg">
       <div class="text-center mb-4">
-        <img class="mb-4" src="../assets/uipa.png" alt width="76" height="72" />
+        <img class="mb-4" src="@/assets/uipa.png" alt width="76" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">Iniciar secion administracion </h1>
         <p>Para facilitar  la comodidad  de los servicios de UIP CRAI debe iniciar secion </p>
       </div>
@@ -49,7 +49,7 @@
         :disabled="validation"
         @click="addUser"
       >Registrarse</button>*/
-import { userRef } from "../services/firebase";
+import { userRef } from "@/services/firebase";
 export default {
   name: "Administrador",
   data() {

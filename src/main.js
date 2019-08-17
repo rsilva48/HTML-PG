@@ -9,7 +9,7 @@ import "hchs-vue-charts"
 Vue.use(window.VueCharts)
 
 Vue.config.productionTip = false
-Vue.component('grafica-component', require('./components/graficos.vue').default);
+Vue.component('grafica-component', require('./components/Admin/graficos.vue').default);
 new Vue({
     router,
     render: h => h(App)

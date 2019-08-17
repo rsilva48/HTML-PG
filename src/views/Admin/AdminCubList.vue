@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import vistaUsuario from "./CubListUser";
-import { cubRef } from "../services/firebase";
+import vistaUsuario from "@/components/Cub/CubListUser";
+import { cubRef } from "@/services/firebase";
 export default {
   name: "AdminCubList",
   created() {

@@ -155,7 +155,7 @@
 
 <script>
 import moment from "moment";
-import { cubRef } from "../services/firebase";
+import { cubRef } from "@/services/firebase";
 import { setInterval } from "timers";
 export default {
   name: "CubList",

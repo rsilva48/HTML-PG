@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import vistaUsuario from "./CubListUser";
+import vistaUsuario from "@/components/Cub/CubListUser";
 export default {
   name: "CubList",
   components: {
