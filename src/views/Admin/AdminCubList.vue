@@ -2,8 +2,7 @@
   <div class="Cub">
     <div class="jumbotron jumbotron-fluid font">
       <div class="container">
-        <h1 class="display-4" v-if="$route.params.id == 'all'">Lista de Cubiculos</h1>
-        <h3 class="display-4" v-else>Cubiculo #{{ $route.params.id }}</h3>
+        <h1 class="display-4">Lista de Cubiculos</h1>
         <div class="row-flex">
           <div class="custom-control custom-switch">
             <input

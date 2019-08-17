@@ -83,7 +83,7 @@
                       <p class="lead">En esta seccion permite crear un registro para utilizar un Cubiculo.</p>
                       <hr class="my-4" />
                       <p>Se tendra que realizar un formulario, Donde se pedira imformacion del grupo de estudiantes y se explica las normas de uso. </p>
-                       <router-link to="/admin/admin_cub_sul" class="btn btn-primary btn-lg" role="button">Realizar Formulario</router-link>
+                       <router-link to="/admin/cub/sol" class="btn btn-primary btn-lg" role="button">Realizar Formulario</router-link>
                     </div>
                   </div>
                   <div class="col-6">
@@ -92,7 +92,7 @@
                       <p class="lead">En esta seccion permite vizualizar los Cubiculos utilizados.</p>
                       <hr class="my-4" />
                       <p>Para una mayor comodidad se mostrara el tiempos restante y las disponibilidad de los Cubiculos.</p>
-                      <router-link to="/admin/admin_cub_list/all" class="btn btn-primary btn-lg"  role="button">Ver Cubiculos</router-link>
+                      <router-link to="/admin/cub/list/" class="btn btn-primary btn-lg"  role="button">Ver Cubiculos</router-link>
                     </div>
                   </div>
                 </div>

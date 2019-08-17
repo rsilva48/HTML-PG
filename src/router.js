@@ -68,7 +68,7 @@ export default new Router({
             component: CubSolReal
         },
         {
-            path: '/cub/:id',
+            path: '/cub/list',
             name: 'Lista de Cubiculos',
             component: Cub
         },
@@ -94,17 +94,17 @@ export default new Router({
             component: AdminComp
         },
         {
-            path: '/admin/admin_cub_sul',
+            path: '/admin/cub/sol',
             name: 'AdminCubsol',
             component: AdminCubsol
         },
         {
-            path: '/admin/admin_cub_list/:id',
+            path: '/admin/cub/list/',
             name: 'AdminCubList',
             component: AdminCubList
         },
         {
-            path: '/admin/admin_pc_sul',
+            path: '/admin/pc/sol',
             name: 'AdminPCsol',
             component: AdminPCsol
         },
