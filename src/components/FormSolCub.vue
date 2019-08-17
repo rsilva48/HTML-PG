@@ -715,7 +715,7 @@ export default {
             }
             cubs.integrantes.forEach(cubuser => {
               if (
-                cubsuser.ced == this.cub.integrantes.user2.ced &&
+                cubuser.ced == this.cub.integrantes.user2.ced &&
                 cubs.status == false
               ) {
                 this.cub.integrantes.user2.ced = "";
@@ -734,7 +734,7 @@ export default {
             }
             cubs.integrantes.forEach(cubuser => {
               if (
-                cubsuser.ced == this.cub.integrantes.user3.ced &&
+                cubuser.ced == this.cub.integrantes.user3.ced &&
                 cubs.status == false
               ) {
                 this.cub.integrantes.user3.ced = "";
@@ -753,7 +753,7 @@ export default {
             }
             cubs.integrantes.forEach(cubuser => {
               if (
-                cubsuser.ced == this.cub.integrantes.user4.ced &&
+                cubuser.ced == this.cub.integrantes.user4.ced &&
                 cubs.status == false
               ) {
                 this.cub.integrantes.user4.ced = "";
@@ -772,7 +772,7 @@ export default {
             }
             cubs.integrantes.forEach(cubuser => {
               if (
-                cubsuser.ced == this.cub.integrantes.user5.ced &&
+                cubuser.ced == this.cub.integrantes.user5.ced &&
                 cubs.status == false
               ) {
                 this.cub.integrantes.user5.ced = "";
