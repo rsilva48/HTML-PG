@@ -459,7 +459,8 @@ export default {
         status: true
       },
       listado: [],
-      usuarios: []
+      usuarios: [],
+      cubuser: []
     };
   },
   created() {
@@ -679,128 +680,131 @@ export default {
     ExistingUser(ID) {
       let res = false;
       if (this.listado.length > 0) {
-        // eslint-disable-next-line
-        console.log("Evaluando Usuario: " + ID);
         this.listado.forEach(cubs => {
-          for (let cubuser in cubs.integrantes) {
-            if (ID == 1) {
-              if (cubs.user.ced == this.cub.user.ced && cubs.status == false) {
-                this.cub.user.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              } else if (
-                cubuser.ced == this.cub.user.ced &&
-                cubs.status == false
-              ) {
-                this.cub.user.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
-            } else if (ID == 2) {
-              if (
-                cubs.user.ced == this.cub.integrantes.user1.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user1.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              } else if (
-                cubuser.ced == this.cub.integrantes.user1.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user1.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
-            } else if (ID == 3) {
-              if (
-                cubs.user.ced == this.cub.integrantes.user2.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user2.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
+          for (let usersids in cubs.integrantes) {
+            let users = cubs.integrantes[usersids];
+            for (let ced in users) {
+              if (ID == 1) {
+                if (
+                  cubs.user.ced == this.cub.user.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.user.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                } else if (
+                  users[ced] == this.cub.user.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.user.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else if (ID == 2) {
+                if (
+                  cubs.user.ced == this.cub.integrantes.user1.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user1.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                } else if (
+                  users[ced] == this.cub.integrantes.user1.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user1.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else if (ID == 3) {
+                if (
+                  cubs.user.ced == this.cub.integrantes.user2.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user2.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
 
-              if (
-                cubuser.ced == this.cub.integrantes.user2.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user2.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
-            } else if (ID == 4) {
-              if (
-                cubs.user.ced == this.cub.integrantes.user3.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user3.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
+                if (
+                  users[ced] == this.cub.integrantes.user2.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user2.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else if (ID == 4) {
+                if (
+                  cubs.user.ced == this.cub.integrantes.user3.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user3.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
 
-              if (
-                cubuser.ced == this.cub.integrantes.user3.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user3.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
-            } else if (ID == 5) {
-              if (
-                cubs.user.ced == this.cub.integrantes.user4.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user4.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
+                if (
+                  users[ced] == this.cub.integrantes.user3.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user3.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else if (ID == 5) {
+                if (
+                  cubs.user.ced == this.cub.integrantes.user4.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user4.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
 
-              if (
-                cubuser.ced == this.cub.integrantes.user4.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user4.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
-            } else if (ID == 6) {
-              if (
-                cubs.user.ced == this.cub.integrantes.user5.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user5.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
-              }
+                if (
+                  users[ced] == this.cub.integrantes.user4.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user4.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else if (ID == 6) {
+                if (
+                  cubs.user.ced == this.cub.integrantes.user5.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user5.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
 
-              if (
-                cubuser.ced == this.cub.integrantes.user5.ced &&
-                cubs.status == false
-              ) {
-                this.cub.integrantes.user5.ced = "";
-                alert("El usuario ya esta en otro cubiculo");
-                res = true;
-                return res;
+                if (
+                  users[ced] == this.cub.integrantes.user5.ced &&
+                  cubs.status == false
+                ) {
+                  this.cub.integrantes.user5.ced = "";
+                  alert("El usuario ya esta en otro cubiculo");
+                  res = true;
+                  return res;
+                }
+              } else {
+                // eslint-disable-next-line
+                console.log("Usuario NO encontrado en otro cubiculo");
+                res = false;
               }
-            } else {
-              // eslint-disable-next-line
-              console.log("Usuario NO encontrado en otro cubiculo");
-              res = false;
-              return res;
             }
           }
         });
