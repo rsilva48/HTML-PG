@@ -34,7 +34,8 @@
               </li>
               <div class="nav-item dropdown-divider"></div>
             </ul>
-            <router-link to="/registro" role="button" class="btn btn-outline-light" href data-toggle="collapse" data-target=".navbar-collapse.show">Registrarse</router-link>
+            <router-link to="/registro" role="button" class="btn btn-outline-light mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Registrarse</router-link>
+            <router-link to="/admin" role="button" class="btn btn-outline-light ml-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Administrador</router-link>
           </div>
         </div>
       </nav>
@@ -43,6 +44,6 @@
 
 <script>
 export default {
-  name: 'NavBar'
+    name: 'NavBar'
 }
 </script>
