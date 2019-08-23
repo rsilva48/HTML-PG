@@ -83,7 +83,7 @@
                       <p class="lead">En esta seccion permite crear un registro para utilizar una Computadoras.</p>
                       <hr class="my-4" />
                       <p>Se tendra que realizar un formulario, Se pedira informacion del estudiante o Iniciar sesion. </p>
-                      <router-link to= "/admin/admin_pc_sul" class="btn btn-primary btn-lg"  role="button">Realizar Formulario</router-link>
+                      <router-link to= "/admin/pc/sol" class="btn btn-primary btn-lg"  role="button">Realizar Formulario</router-link>
                     </div>
                   </div>
                   <div class="col-6">
