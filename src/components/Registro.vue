@@ -66,6 +66,21 @@
         <label for="fac">Sexo</label>
       </div>
 
+      <div class="form-label-group">
+        <select
+          v-model="user.etd"
+          type="text"
+          id="edt"
+          class="custom-select"
+          required
+        >
+          <option selected disabled value="">Elija su Estado</option>
+          <option value="Es">Estudiane</option>
+          <option value="Adm">Administrativo</option>
+        </select>
+        <label for="fac">Elija su Estado</label>
+      </div>
+
       <button
         class="btn btn-lg btn-primary btn-block"
         type="submit"
@@ -85,14 +100,15 @@ export default {
         name: '',
         ced: '',
         fac: '',
-        sex: ''
+        sex: '',
+        etd: '',
       },
       usuarios: []
     }
   },
   computed: {
     validation () {
-      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '') {
+      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '' || this.user.etd == '') {
         return true
       } else {
         return false
