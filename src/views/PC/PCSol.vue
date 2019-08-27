@@ -1,21 +1,21 @@
 <template>
-    <div class="CubSol">
+    <div class="PCSol">
         <div class="jumbotron jumbotron-fluid font">
         <div class="container">
             <h1 class="display-4">Solicitud de PC</h1>
-            <p class="lead">Llene la siguiente información para reservar un PC.</p>
+            <p class="lead">Llene la siguiente información para reservar una PC.</p>
         </div>
     </div>
-    <FormSolCub @send2view="send2app"/>
+    <FormSolPC @send2view="send2app"/>
     </div>
 </template>
 
 <script>
-import FormSolCub from '@/components/PC/FormSolCub.vue'
+import FormSolPC from '@/components/PC/FormSolPC.vue'
 export default {
-  name: 'CubSol',
+  name: 'PCSol',
   components: {
-    FormSolCub
+    FormSolPC
   },
   methods: {
     send2app (childform) {

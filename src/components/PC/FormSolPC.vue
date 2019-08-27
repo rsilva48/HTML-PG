@@ -173,7 +173,7 @@ export default {
     };
   },
   created() {
-    this.getpc();
+    this.getPCs();
     this.getUsers();
   },
   methods: {
@@ -264,6 +264,7 @@ export default {
               this.pc.user.name = user.name;
               this.pc.user.fac = user.fac;
               this.pc.user.sex = user.sex;
+              this.pc.user.ocup = user.ocup;
               this.pc.user.found = true;
             }
           }
@@ -278,6 +279,7 @@ export default {
         this.pc.user.name = "";
         this.pc.user.fac = "";
         this.pc.user.sex = "";
+        this.pc.user.ocup = "";
         this.pc.user.found = false;
       } else {
         // eslint-disable-next-line
@@ -288,33 +290,20 @@ export default {
       let res = false;
       if (this.listado.length > 0) {
         this.listado.forEach(pcs => {
-          for (let usersids in pcs.integrantes) {
-            let users = pcs.integrantes[usersids];
-            for (let ced in users) {
               if (ID == 1) {
                 if (
                   pcs.user.ced == this.pc.user.ced &&
                   pcs.status == false
                 ) {
                   this.pc.user.ced = "";
-                  alert("El usuario ya esta en otro pciculo");
-                  res = true;
-                  return res;
-                } else if (
-                  users[ced] == this.pc.user.ced &&
-                  pcs.status == false
-                ) {
-                  this.pc.user.ced = "";
-                  alert("El usuario ya esta en otro pciculo");
+                  alert("El usuario ya esta en otra computadora");
                   res = true;
                   return res;
                 }
               } else {
                 res = false;
               }
-            }
-          }
-        });
+            });
       }
       return res;
     }

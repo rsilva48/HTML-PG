@@ -34,14 +34,26 @@
       </div>
 
       <div class="form-label-group">
-        <select
-          v-model="user.fac"
-          type="text"
-          id="fac"
-          class="custom-select"
-          required
-        >
-          <option selected disabled value="">Eliga su facultad</option>
+        <select v-model="user.sex" type="text" id="sex" class="custom-select" required>
+          <option selected disabled value>Eliga su Sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+        <label for="fac">Sexo</label>
+      </div>
+
+      <div class="form-label-group">
+        <select v-model="user.ocup" type="text" id="ocup" class="custom-select" required>
+          <option selected disabled value>Elija su Ocupación</option>
+          <option value="Est">Estudiante</option>
+          <option value="Adm">Administrativo</option>
+        </select>
+        <label for="ocup">Ocupación</label>
+      </div>
+
+      <div class="form-label-group" v-if="user.ocup=='Est'">
+        <select v-model="user.fac" type="text" id="fac" class="custom-select" required>
+          <option selected disabled value>Eliga su facultad</option>
           <option value="CS">Ciencias de la Salud</option>
           <option value="HGT">Hotelería, Gastronomía y Turismo</option>
           <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -51,34 +63,16 @@
         <label for="fac">Facultad</label>
       </div>
 
-      <div class="form-label-group">
-        <select
-          v-model="user.sex"
-          type="text"
-          id="sex"
-          class="custom-select"
+      <div class="form-label-group" v-if="user.ocup=='Adm'">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Ingrese Contraseña"
           required
-        >
-          <option selected disabled value="">Eliga su Sexo</option>
-          <option value="M">Masculino</option>
-          <option value="F">Femenino</option>
-        </select>
-        <label for="fac">Sexo</label>
-      </div>
-
-      <div class="form-label-group">
-        <select
-          v-model="user.ocup"
-          type="text"
-          id="ocup"
-          class="custom-select"
-          required
-        >
-          <option selected disabled value="">Elija su Ocupación</option>
-          <option value="Est">Estudiante</option>
-          <option value="Adm">Administrativo</option>
-        </select>
-        <label for="ocup">Ocupación</label>
+          v-model="user.password"
+        />
+        <label for="password">Contraseña</label>
       </div>
 
       <button
@@ -91,63 +85,83 @@
   </div>
 </template>
 <script>
-import { userRef } from '../services/firebase'
+import { userRef } from "../services/firebase";
 export default {
-  name: 'Registro',
-  data () {
+  name: "Registro",
+  data() {
     return {
       user: {
-        name: '',
-        ced: '',
-        fac: '',
-        sex: '',
-        ocup: '',
+        name: "",
+        ced: "",
+        fac: "",
+        sex: "",
+        ocup: "",
+        password: ""
       },
       usuarios: []
-    }
+    };
   },
   computed: {
-    validation () {
-      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '' || this.user.ocup == '') {
-        return true
+    validation() {
+      if (this.user.ocup == "Est") {
+        if (
+          this.user.name == "" ||
+          this.user.ced == "" ||
+          this.user.fac == "" ||
+          this.user.sex == ""
+        ) {
+          this.user.password = ""
+          return true;
+        }
+      } else if (this.user.ocup == "Adm") {
+        if (
+          this.user.name == "" ||
+          this.user.ced == "" ||
+          this.user.password == "" ||
+          this.user.sex == ""
+        ) {
+          this.user.fac = ""
+          return true;
+        }
+      } else if (this.user.ocup == "") {
+        return true;
       } else {
-        return false
+        return false;
       }
     }
-
   },
-  created () {
-    this.getUsers()
+  created() {
+    this.getUsers();
   },
   methods: {
-    exist () {
+    exist() {
       this.usuarios.forEach(usuario => {
         if (this.user.ced == usuario.ced) {
-          alert('El usuario ya existe.')
-          this.user.ced = ''
+          alert("El usuario ya existe.");
+          this.user.ced = "";
         }
-      })
+      });
     },
-    addUser () {
-      let form = Object.assign({}, this.user)
-      userRef.child(this.user.ced).set(form)
-      alert('Se ha registrado correctamente.')
-      this.$router.push('/')
+    addUser() {
+      let form = Object.assign({}, this.user);
+      userRef.child(this.user.ced).set(form);
+      alert("Se ha registrado correctamente.");
+      this.$router.push("/");
     },
-    getUsers () {
+    getUsers() {
       userRef
-        .once('value')
+        .once("value")
         .then(res => {
-          let data = res.val()
-          this.usuarios = Object.values(data)
+          let data = res.val();
+          this.usuarios = Object.values(data);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
     }
   }
-}
+};
 </script>
 
 <style>

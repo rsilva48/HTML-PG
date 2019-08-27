@@ -26,7 +26,7 @@
             <ul class="navbar-nav mr-auto">
               <div class="nav-item dropdown-divider"></div>
               <li class="nav-item">
-                <router-link to="/cub" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Cubiculos</router-link>
+                <router-link to="/cub" role="button" class="btn btn-primary mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Cubículos</router-link>
               </li>
               <div class="nav-item dropdown-divider"></div>
               <li class="nav-item">
@@ -35,7 +35,7 @@
               <div class="nav-item dropdown-divider"></div>
             </ul>
             <router-link to="/registro" role="button" class="btn btn-outline-light mx-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Registrarse</router-link>
-            <router-link to="/admin" role="button" class="btn btn-outline-light ml-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Administrador</router-link>
+            <router-link to="/login" role="button" class="btn btn-outline-light ml-2" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar Sesión</router-link>
           </div>
         </div>
       </nav>

@@ -3,8 +3,8 @@
     <form class="form-signin">
         <div class="text-center mb-4">
             <img class="mb-4" src="../assets/uipa.png" alt="" width="76" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
-            <p>Para usar los servicios de UIP CRAI debe iniciar sesión primero</p>
+            <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
+            <p>Para usar los servicios administrativos de UIP CRAI debe iniciar sesión primero</p>
         </div>
 
         <div class="form-label-group">

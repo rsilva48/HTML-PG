@@ -10,7 +10,7 @@
         <p
           class="lead"
         >Haga clic en uno de los siguientes enlaces para utilizar nuestos servicios.</p>
-        <router-link to="/cub" role="button" class="btn btn-primary btn-lg mr-1" href>Cubiculos</router-link>
+        <router-link to="/cub" role="button" class="btn btn-primary btn-lg mr-1" href>Cubículos</router-link>
         <router-link to="/pc" role="button" class="btn btn-primary btn-lg ml-1" href>Computadoras</router-link>
       </div>
     </div>

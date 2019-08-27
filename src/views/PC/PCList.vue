@@ -2,22 +2,20 @@
   <div class="PC">
     <div class="jumbotron jumbotron-fluid font">
       <div class="container">
-        <h1 v-if="$route.params.id == 'all'">Lista de Computadoras</h1>
+        <h1 class="display-4">Lista de Computadoras</h1>
       </div>
-       <!--Disponibilidad -->
-    
+      <!--Disponibilidad -->
+    </div>
     <vistaUsuario></vistaUsuario>
-    </div>
-    </div>
+  </div>
 </template>
 
 <script>
-
-import vistaUsuario from '@/components/PC/PCtUser'
+import vistaUsuario from "@/components/PC/PCListUser";
 export default {
-  name: 'PCList',
+  name: "PCList",
   components: {
     vistaUsuario
   }
-}
+};
 </script>

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import vistaUsuario from '@/components/PC/PCtUser'
+import vistaUsuario from '@/components/PC/PCListUser'
 import { cubRef } from '@/services/firebase'
 export default {
   name: 'AdminPCs',

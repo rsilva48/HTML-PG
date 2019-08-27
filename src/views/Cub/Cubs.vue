@@ -2,10 +2,10 @@
   <div class="Cubs">
     <div class="jumbotron jumbotron-fluid font">
       <div class="container">
-        <h1 class="display-4">Cubiculos</h1>
+        <h1 class="display-4">Cubículos</h1>
         <p
           class="lead"
-        >Reserve o vea información de los cubiculos que tenemos disponible en el CRAI para grupo de estudiantes que necesiten reunirse para realizar proyectos o trabajos de la universidad.</p>
+        >Reserve o vea información de los cubículos que tenemos disponible en el CRAI para grupo de estudiantes que necesiten reunirse para realizar proyectos o trabajos de la universidad.</p>
         <hr class="my-4" />
         <router-link
           to="/cub/solicitud/"

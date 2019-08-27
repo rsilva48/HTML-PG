@@ -4,7 +4,7 @@
       <div class="text-center mb-4">
         <img class="mb-4" src="@/assets/uipa.png" alt width="76" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">Iniciar secion administracion </h1>
-        <p>Para facilitar  la comodidad  de los servicios de UIP CRAI debe iniciar secion </p>
+        <p>Para facilitar  la comodidad  de los servicios de UIP CRAI debe iniciar sesión </p>
       </div>
 
       <div class="form-label-group">
@@ -33,7 +33,7 @@
         <label for="name">Nombre o usuario</label>
       </div>
 
-      <router-link to="/admin/view" role="button" class="btn btn-lg btn-primary btn-block" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar sesion</router-link>
+      <router-link to="/admin/view" role="button" class="btn btn-lg btn-primary btn-block" href data-toggle="collapse" data-target=".navbar-collapse.show">Iniciar Sesión</router-link>
     </form>
 
   </div>

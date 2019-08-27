@@ -499,7 +499,7 @@ export default {
                 if (idcub < 10) {
                   idcub++
                 } else {
-                  alert('No hay cubiculos disponibles.')
+                  alert('No hay cubículos disponibles.')
                   this.$router.push('/cub/')
                 }
               }
@@ -689,7 +689,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 } else if (
@@ -697,7 +697,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -707,7 +707,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 } else if (
@@ -715,7 +715,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -725,7 +725,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -735,7 +735,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -745,7 +745,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -755,7 +755,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -765,7 +765,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -775,7 +775,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -785,7 +785,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
@@ -795,7 +795,7 @@ export default {
                   cubs.status == false
                 ) {
                   this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
+                  alert('El usuario ya esta en otro cubículo')
                   res = true
                   return res
                 }
