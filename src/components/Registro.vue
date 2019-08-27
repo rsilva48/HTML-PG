@@ -68,17 +68,17 @@
 
       <div class="form-label-group">
         <select
-          v-model="user.etd"
+          v-model="user.ocup"
           type="text"
-          id="edt"
+          id="ocup"
           class="custom-select"
           required
         >
-          <option selected disabled value="">Elija su Estado</option>
-          <option value="Es">Estudiane</option>
+          <option selected disabled value="">Elija su Ocupación</option>
+          <option value="Est">Estudiante</option>
           <option value="Adm">Administrativo</option>
         </select>
-        <label for="fac">Elija su Estado</label>
+        <label for="ocup">Ocupación</label>
       </div>
 
       <button
@@ -101,14 +101,14 @@ export default {
         ced: '',
         fac: '',
         sex: '',
-        etd: '',
+        ocup: '',
       },
       usuarios: []
     }
   },
   computed: {
     validation () {
-      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '' || this.user.etd == '') {
+      if (this.user.name == '' || this.user.ced == '' || this.user.fac == '' || this.user.sex == '' || this.user.ocup == '') {
         return true
       } else {
         return false

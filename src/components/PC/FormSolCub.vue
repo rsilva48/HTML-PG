@@ -1,11 +1,11 @@
 <template>
-  <div class="FormCub">
-    <form v-on:submit.prevent="addForm" id="FormCub">
+  <div class="FormSolPC">
+    <form v-on:submit.prevent="addForm" id="FormSolPC">
       <div class="container">
         <step-navigation :steps="steps" :currentstep="currentstep"></step-navigation>
 
         <div v-show="currentstep == 1">
-          <h3>Encargado/Representante</h3>
+          <h3>Información del Arrendador</h3>
           <div class="form-group">
             <label for="id">Cédula</label>
             <input
@@ -13,9 +13,9 @@
               name="cedula"
               class="form-control"
               placeholder="Ingrese su numero de cédula con guiones"
-              v-model="cub.user.ced"
+              v-model="pc.user.ced"
               @blur="getUserData(1)"
-              :disabled="cub.user.found"
+              :disabled="pc.user.found"
             />
           </div>
 
@@ -27,8 +27,8 @@
               class="form-control"
               aria-describedby="nameHelp"
               placeholder="Ingrese su nombre completo"
-              v-model="cub.user.name"
-              :disabled="cub.user.found"
+              v-model="pc.user.name"
+              :disabled="pc.user.found"
             />
           </div>
 
@@ -37,8 +37,8 @@
             <select
               class="custom-select"
               type="text"
-              v-model="cub.user.fac"
-              :disabled="cub.user.found"
+              v-model="pc.user.fac"
+              :disabled="pc.user.found"
             >
               <option selected disabled value>Eliga su facultad</option>
               <option value="CS">Ciencias de la Salud</option>
@@ -52,17 +52,26 @@
           <div class="form-group">
             <label class="label">Sexo</label>
             <select
-              v-model="cub.user.sex"
+              v-model="pc.user.sex"
               type="text"
               id="sex"
               class="custom-select"
               placeholder="Elegir Sexo"
-              :disabled="cub.user.found"
+              :disabled="pc.user.found"
               required
             >
               <option selected disabled value>Eliga su Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ocup">Ocupación</label>
+            <select v-model="pc.user.ocup" type="text" id="ocup" class="custom-select" :disabled="pc.user.found" required>
+              <option selected disabled value>Elija su Ocupación</option>
+              <option value="Est">Estudiante</option>
+              <option value="Adm">Administrativo</option>
             </select>
           </div>
 
@@ -99,20 +108,18 @@
               </div>
             </div>
             <br />
-            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <input type="checkbox" name="terminos" class="center" v-model.number="pc.check" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
           </div>
         </div>
 
-        <div v-show="currentstep == 3">
-          
-        </div>
+        <div v-show="currentstep == 3"></div>
         <step
           v-for="step in steps"
           :currentstep="currentstep"
           :key="step.id"
           :step="step"
           :stepcount="2"
-          :form="cub"
+          :form="pc"
           @step-change="stepChanged"
         ></step>
       </div>
@@ -121,444 +128,204 @@
 </template>
 
 <script>
-import moment from 'moment'
-import { PCsRef, cublogRef, userRef } from '@/services/firebase'
+import moment from "moment";
+import { PCsRef, PClogRef, userRef } from "@/services/firebase";
 
-import stepNavigationStepVue from './FormCub/step-navigation-step.vue'
-import stepNavigationVue from './FormCub/step-navigation.vue'
-import stepVue from './FormCub/step.vue'
+import stepNavigationStepVue from "./FormPC/step-navigation-step.vue";
+import stepNavigationVue from "./FormPC/step-navigation.vue";
+import stepVue from "./FormPC/step.vue";
 export default {
-  name: 'FormSolCub',
-  data () {
+  name: "FormSolPC",
+  data() {
     return {
       currentstep: 1,
       steps: [
         {
           id: 1,
-          title: 'Representante',
-          icon_class: 'fa fa-user-circle-o'
+          title: "Arrendador",
+          icon_class: "fa fa-user-circle-o"
         },
         {
           id: 2,
-          title: 'Condiciones',
-          icon_class: 'fa fa-check-square-o'
-        },
-        {
-          id: 3,
-          title: 'Participantes',
-          icon_class: 'fa fa-users'
+          title: "Condiciones",
+          icon_class: "fa fa-check-square-o"
         }
       ],
-      cub: {
+      pc: {
         id: 1,
         user: {
-          name: '',
-          ced: '',
-          fac: '',
-          sex: '',
+          name: "",
+          ced: "",
+          fac: "",
+          sex: "",
+          ocup: "",
           found: false
         },
-        integrantes: {
-          user1: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
-            found: false
-          },
-          user2: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
-            found: false
-          },
-          user3: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
-            found: false
-          },
-          user4: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
-            found: false
-          },
-          user5: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
-            found: false
-          }
-        },
         check: false,
-        date_start: '',
-        date_end: '',
+        date_start: "",
+        date_end: "",
         status: true
       },
       listado: [],
       usuarios: [],
       log: [],
       logid: 1
-    }
+    };
   },
-  created () {
-    this.getCub()
-    this.getUsers()
+  created() {
+    this.getpc();
+    this.getUsers();
   },
   methods: {
-    moment () {
-      return moment()
+    moment() {
+      return moment();
     },
-    stepChanged (step) {
-      this.currentstep = step
+    stepChanged(step) {
+      this.currentstep = step;
     },
-    addForm () {
-      this.cub.date_start = moment().format('dddd D/M/YY HH:mm:ss')
-      this.cub.date_end = moment()
-        .add(2, 'm')
-        .format('dddd D/M/YY HH:mm:ss')
-      this.cub.status = false
-      let form = Object.assign({}, this.cub)
-      PCsRef.child(form.id).set(form)
-      cublogRef.child(this.logid).set(form)
-      let ID = String(this.cub.id)
-      this.$router.push({ path: `/PC/` })
+    addForm() {
+      this.pc.date_start = moment().format("dddd D/M/YY HH:mm:ss");
+      this.pc.date_end = moment()
+        .add(2, "m")
+        .format("dddd D/M/YY HH:mm:ss");
+      this.pc.status = false;
+      let form = Object.assign({}, this.pc);
+      PCsRef.child(form.id).set(form);
+      PClogRef.child(this.logid).set(form);
+      let ID = String(this.pc.id);
+      this.$router.push({ path: `/pc/solicitud/realizado/${ID}` });
     },
-    getCub () {
-      PCsRef
-        .once('value')
+    getPCs() {
+      PCsRef.once("value")
         .then(res => {
-          let data = res.val()
-          this.listado = Object.values(data)
-          let idcub = 1
+          let data = res.val();
+          this.listado = Object.values(data);
+          let idpc = 1;
           if (this.listado.length > 0) {
-            this.listado.forEach(cubs => {
-              if (cubs.id == idcub && cubs.status == false) {
-                if (idcub < 30) {
-                  idcub++
+            this.listado.forEach(pc => {
+              if (pc.id == idpc && pc.status == false) {
+                if (idpc < 30) {
+                  idpc++;
                 } else {
-                  alert('No hay cubiculos disponibles.')
-                  this.$router.push('/cub/')
+                  alert("No hay computadoras disponibles.");
+                  this.$router.push("/pc/");
                 }
               }
-            })
+            });
           }
-          this.cub.id = idcub
+          this.pc.id = idpc;
           // eslint-disable-next-line
-          console.log("ID: ", this.cub.id);
+          console.log("ID: ", this.pc.id);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
-      cublogRef
-        .once('value')
+        });
+      PClogRef
+        .once("value")
         .then(logdb => {
-          let logdata = logdb.val()
-          this.log = Object.values(logdata)
+          let logdata = logdb.val();
+          this.log = Object.values(logdata);
           if (this.log.length > 0) {
             // eslint-disable-next-line
-            this.log.forEach(cublog => {
-              this.logid++
-            })
+            this.log.forEach(pclog => {
+              this.logid++;
+            });
           }
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
     },
-    getUsers () {
+    getUsers() {
       userRef
-        .once('value')
+        .once("value")
         .then(res => {
-          let data = res.val()
-          this.usuarios = Object.values(data)
+          let data = res.val();
+          this.usuarios = Object.values(data);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
     },
-    getUserData (ID) {
+    getUserData(ID) {
       if (this.usuarios.length > 0) {
-        let exist
+        let exist;
         this.usuarios.forEach(user => {
           if (
-            this.cub.user.ced == user.ced &&
-            this.cub.user.found == false &&
+            this.pc.user.ced == user.ced &&
+            this.pc.user.found == false &&
             ID == 1
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.user.name = user.name
-              this.cub.user.fac = user.fac
-              this.cub.user.sex = user.sex
-              this.cub.user.found = true
-            }
-          } else if (
-            this.cub.integrantes.user1.ced == user.ced &&
-            this.cub.integrantes.user1.found == false &&
-            ID == 2
-          ) {
-            exist = this.ExistingUser(ID)
-            if (!exist) {
-              this.cub.integrantes.user1.name = user.name
-              this.cub.integrantes.user1.fac = user.fac
-              this.cub.integrantes.user1.sex = user.sex
-              this.cub.integrantes.user1.found = true
-            }
-          } else if (
-            this.cub.integrantes.user2.ced == user.ced &&
-            this.cub.integrantes.user2.found == false &&
-            ID == 3
-          ) {
-            exist = this.ExistingUser(ID)
-            if (!exist) {
-              this.cub.integrantes.user2.name = user.name
-              this.cub.integrantes.user2.fac = user.fac
-              this.cub.integrantes.user2.sex = user.sex
-              this.cub.integrantes.user2.found = true
-            }
-          } else if (
-            this.cub.integrantes.user3.ced == user.ced &&
-            this.cub.integrantes.user3.found == false &&
-            ID == 4
-          ) {
-            exist = this.ExistingUser(ID)
-            if (!exist) {
-              this.cub.integrantes.user3.name = user.name
-              this.cub.integrantes.user3.fac = user.fac
-              this.cub.integrantes.user3.sex = user.sex
-              this.cub.integrantes.user3.found = true
-            }
-          } else if (
-            this.cub.integrantes.user4.ced == user.ced &&
-            this.cub.integrantes.user4.found == false &&
-            ID == 5
-          ) {
-            exist = this.ExistingUser(ID)
-            if (!exist) {
-              this.cub.integrantes.user4.name = user.name
-              this.cub.integrantes.user4.fac = user.fac
-              this.cub.integrantes.user4.sex = user.sex
-              this.cub.integrantes.user4.found = true
-            }
-          } else if (
-            this.cub.integrantes.user5.ced == user.ced &&
-            this.cub.integrantes.user5.found == false &&
-            ID == 6
-          ) {
-            exist = this.ExistingUser(ID)
-            if (!exist) {
-              this.cub.integrantes.user5.name = user.name
-              this.cub.integrantes.user5.fac = user.fac
-              this.cub.integrantes.user5.sex = user.sex
-              this.cub.integrantes.user5.found = true
+              this.pc.user.name = user.name;
+              this.pc.user.fac = user.fac;
+              this.pc.user.sex = user.sex;
+              this.pc.user.found = true;
             }
           }
-        })
+        });
       }
     },
-    delUserData (ID) {
+    delUserData(ID) {
       if (ID == 1) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.user.ced = ''
-        this.cub.user.name = ''
-        this.cub.user.fac = ''
-        this.cub.user.sex = ''
-        this.cub.user.found = false
-      } else if (ID == 2) {
-        // eslint-disable-next-line
-        console.log("Usuario encontrado");
-        this.cub.integrantes.user1.ced = ''
-        this.cub.integrantes.user1.name = ''
-        this.cub.integrantes.user1.fac = ''
-        this.cub.integrantes.user1.sex = ''
-        this.cub.integrantes.user1.found = false
-      } else if (ID == 3) {
-        // eslint-disable-next-line
-        console.log("Usuario encontrado");
-        this.cub.integrantes.user2.ced = ''
-        this.cub.integrantes.user2.name = ''
-        this.cub.integrantes.user2.fac = ''
-        this.cub.integrantes.user2.sex = ''
-        this.cub.integrantes.user2.found = false
-      } else if (ID == 4) {
-        // eslint-disable-next-line
-        console.log("Usuario encontrado");
-        this.cub.integrantes.user3.ced = ''
-        this.cub.integrantes.user3.name = ''
-        this.cub.integrantes.user3.fac = ''
-        this.cub.integrantes.user3.sex = ''
-        this.cub.integrantes.user3.found = false
-      } else if (ID == 5) {
-        // eslint-disable-next-line
-        console.log("Usuario encontrado");
-        this.cub.integrantes.user4.ced = ''
-        this.cub.integrantes.user4.name = ''
-        this.cub.integrantes.user4.fac = ''
-        this.cub.integrantes.user4.sex = ''
-        this.cub.integrantes.user4.found = false
-      } else if (ID == 6) {
-        // eslint-disable-next-line
-        console.log("Usuario encontrado");
-        this.cub.integrantes.user5.ced = ''
-        this.cub.integrantes.user5.name = ''
-        this.cub.integrantes.user5.fac = ''
-        this.cub.integrantes.user5.sex = ''
-        this.cub.integrantes.user5.found = false
+        this.pc.user.ced = "";
+        this.pc.user.name = "";
+        this.pc.user.fac = "";
+        this.pc.user.sex = "";
+        this.pc.user.found = false;
       } else {
         // eslint-disable-next-line
         console.log("Usuario NO encontrado");
       }
     },
-    ExistingUser (ID) {
-      let res = false
+    ExistingUser(ID) {
+      let res = false;
       if (this.listado.length > 0) {
-        this.listado.forEach(cubs => {
-          for (let usersids in cubs.integrantes) {
-            let users = cubs.integrantes[usersids]
+        this.listado.forEach(pcs => {
+          for (let usersids in pcs.integrantes) {
+            let users = pcs.integrantes[usersids];
             for (let ced in users) {
               if (ID == 1) {
                 if (
-                  cubs.user.ced == this.cub.user.ced &&
-                  cubs.status == false
+                  pcs.user.ced == this.pc.user.ced &&
+                  pcs.status == false
                 ) {
-                  this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
+                  this.pc.user.ced = "";
+                  alert("El usuario ya esta en otro pciculo");
+                  res = true;
+                  return res;
                 } else if (
-                  users[ced] == this.cub.user.ced &&
-                  cubs.status == false
+                  users[ced] == this.pc.user.ced &&
+                  pcs.status == false
                 ) {
-                  this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-              } else if (ID == 2) {
-                if (
-                  cubs.user.ced == this.cub.integrantes.user1.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                } else if (
-                  users[ced] == this.cub.integrantes.user1.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-              } else if (ID == 3) {
-                if (
-                  cubs.user.ced == this.cub.integrantes.user2.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-
-                if (
-                  users[ced] == this.cub.integrantes.user2.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-              } else if (ID == 4) {
-                if (
-                  cubs.user.ced == this.cub.integrantes.user3.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-
-                if (
-                  users[ced] == this.cub.integrantes.user3.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-              } else if (ID == 5) {
-                if (
-                  cubs.user.ced == this.cub.integrantes.user4.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-
-                if (
-                  users[ced] == this.cub.integrantes.user4.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-              } else if (ID == 6) {
-                if (
-                  cubs.user.ced == this.cub.integrantes.user5.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
-                }
-
-                if (
-                  users[ced] == this.cub.integrantes.user5.ced &&
-                  cubs.status == false
-                ) {
-                  this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubiculo')
-                  res = true
-                  return res
+                  this.pc.user.ced = "";
+                  alert("El usuario ya esta en otro pciculo");
+                  res = true;
+                  return res;
                 }
               } else {
-                res = false
+                res = false;
               }
             }
           }
-        })
+        });
       }
-      return res
+      return res;
     }
   },
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,
-    'step-navigation': stepNavigationVue,
+    "step-navigation": stepNavigationVue,
     step: stepVue
   }
-}
+};
 </script>
 <style lang="scss">
 $wizard-color-neutral: #ccc !default;

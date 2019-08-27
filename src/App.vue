@@ -8,13 +8,14 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import moment from 'moment'
-import { cubRef } from './services/firebase'
+import { cubRef, PCsRef } from './services/firebase'
 import { setInterval } from 'timers'
 export default {
   name: 'app',
   data () {
     return {
-      listado: []
+      listado: [],
+      listadopc: []
     }
   },
   created () {
@@ -26,6 +27,7 @@ export default {
   methods: {
     rutina () {
       this.getCub()
+      this.getPCs()
     },
     moment () {
       return moment()
@@ -49,7 +51,27 @@ export default {
           }
         })
       })
-    }
+    },
+    setPCStatus (id) {
+      this.listadopc[id - 1].status = true
+      let form = Object.assign({}, this.listadopc[id - 1])
+      PCsRef.child(form.id).set(form)
+    },
+    getPCs () {
+      PCsRef.once('value').then(res => {
+        let data = res.val()
+        this.listadopc = Object.values(data)
+        this.listadopc.forEach(pc => {
+          let end = moment(pc.date_end, 'dddd D/M/YY HH:mm:ss')
+          let now = moment()
+          let dif = end.diff(now, 'seconds')
+          if (dif <= 0 && pc.status == false) {
+            this.setPCStatus(pc.id)
+            return true
+          }
+        })
+      })
+    },
   },
   components: {
     NavBar

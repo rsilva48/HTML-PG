@@ -49,7 +49,8 @@ export default {
         this.form.user.name == '' ||
         this.form.user.ced == '' ||
         this.form.user.fac == '' ||
-        this.form.user.sex == '' &&
+        this.form.user.sex == '' ||
+        this.form.user.ocup == '' &&
         this.currentstep == 1
       ) {
         return true

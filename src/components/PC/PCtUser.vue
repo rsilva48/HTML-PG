@@ -169,6 +169,9 @@
                   v-if="!listado[11].status"
                 >{{ horas[11] }}</li>
               </div>
+            </div>
+            <br />
+            <div class="row">
               <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[12].status">Pc. 13</li>
                 <li
@@ -217,9 +220,7 @@
                   v-if="!listado[15].status"
                 >{{ horas[15] }}</li>
               </div>
-            </div>
-            <br />
-            <div class="row">
+
               <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[16].status">Pc. 17</li>
                 <li
@@ -244,6 +245,9 @@
                   v-if="!listado[17].status"
                 >{{ horas[17] }}</li>
               </div>
+            </div>
+            <br />
+            <div class="row">
               <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[18].status">Pc. 19</li>
                 <li
@@ -267,7 +271,8 @@
                   class="list-group-item list-group-item-general"
                   v-if="!listado[19].status"
                 >{{ horas[19] }}</li>
-              </div><div class="col-md-2">
+              </div>
+              <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[20].status">Pc. 21</li>
                 <li
                   class="list-group-item list-group-item-general"
@@ -315,6 +320,9 @@
                   v-if="!listado[23].status"
                 >{{ horas[23] }}</li>
               </div>
+            </div>
+            <br />
+            <div class="row">
               <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[24].status">Pc. 25</li>
                 <li
@@ -339,9 +347,6 @@
                   v-if="!listado[25].status"
                 >{{ horas[25] }}</li>
               </div>
-            </div>
-            <br />
-            <div class="row">
               <div class="col-md-2">
                 <li class="list-group-item list-group-item-success" v-if="listado[26].status">Pc. 27</li>
                 <li
@@ -425,8 +430,7 @@ export default {
       return moment();
     },
     getCub() {
-        PCsRef
-        .once("value")
+      PCsRef.once("value")
         .then(res => {
           let data = res.val();
           this.listado = Object.values(data);

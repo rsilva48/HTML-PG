@@ -14,7 +14,7 @@
           role="button"
         >Solicitar</router-link>
         <router-link
-          to="/pc/all"
+          to="/pc/list"
           class="btn btn-primary btn-lg ml-1"
           href
           role="button"
