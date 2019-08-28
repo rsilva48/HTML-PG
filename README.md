@@ -1,4 +1,4 @@
-# Proyecto UIP CRAI - Programación Gráfica
+# Proyecto UIP CRAI
 
 ## Project setup (para instalar dependencias y plugins)
 ```
