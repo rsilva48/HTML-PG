@@ -33,23 +33,6 @@
           </div>
 
           <div class="form-group">
-            <label class="label">Facultad</label>
-            <select
-              class="custom-select"
-              type="text"
-              v-model="pc.user.fac"
-              :disabled="pc.user.found"
-            >
-              <option selected disabled value>Eliga su facultad</option>
-              <option value="CS">Ciencias de la Salud</option>
-              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
-              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
-              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
-              <option value="DCP">Derecho y Ciencias Políticas</option>
-            </select>
-          </div>
-
-          <div class="form-group">
             <label class="label">Sexo</label>
             <select
               v-model="pc.user.sex"
@@ -60,7 +43,7 @@
               :disabled="pc.user.found"
               required
             >
-              <option selected disabled value>Eliga su Sexo</option>
+              <option selected disabled value>Elija su Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
             </select>
@@ -74,6 +57,24 @@
               <option value="Adm">Administrativo</option>
             </select>
           </div>
+
+          <div class="form-group" v-if="pc.user.ocup=='Est'">
+            <label class="label">Facultad</label>
+            <select
+              class="custom-select"
+              type="text"
+              v-model="pc.user.fac"
+              :disabled="pc.user.found"
+            >
+              <option selected disabled value>Elija su facultad</option>
+              <option value="CS">Ciencias de la Salud</option>
+              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+              <option value="DCP">Derecho y Ciencias Políticas</option>
+            </select>
+          </div>
+
 
           <div class="form-group">
             <button

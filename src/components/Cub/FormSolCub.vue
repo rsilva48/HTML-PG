@@ -5,7 +5,7 @@
         <step-navigation :steps="steps" :currentstep="currentstep"></step-navigation>
 
         <div v-show="currentstep == 1">
-          <h3>Encargado/Representante</h3>
+          <h3>Información del Encargado</h3>
           <div class="form-group">
             <label for="id">Cédula</label>
             <input
@@ -33,23 +33,6 @@
           </div>
 
           <div class="form-group">
-            <label class="label">Facultad</label>
-            <select
-              class="custom-select"
-              type="text"
-              v-model="cub.user.fac"
-              :disabled="cub.user.found"
-            >
-              <option selected disabled value>Eliga su facultad</option>
-              <option value="CS">Ciencias de la Salud</option>
-              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
-              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
-              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
-              <option value="DCP">Derecho y Ciencias Políticas</option>
-            </select>
-          </div>
-
-          <div class="form-group">
             <label class="label">Sexo</label>
             <select
               v-model="cub.user.sex"
@@ -60,9 +43,42 @@
               :disabled="cub.user.found"
               required
             >
-              <option selected disabled value>Eliga su Sexo</option>
+              <option selected disabled value>Elija su Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ocup">Ocupación</label>
+            <select
+              v-model="cub.user.ocup"
+              type="text"
+              id="ocup"
+              class="custom-select"
+              :disabled="cub.user.found"
+              required
+            >
+              <option selected disabled value>Elija su Ocupación</option>
+              <option value="Est">Estudiante</option>
+              <option value="Adm">Administrativo</option>
+            </select>
+          </div>
+
+          <div class="form-group" v-if="cub.user.ocup=='Est'">
+            <label class="label">Facultad</label>
+            <select
+              class="custom-select"
+              type="text"
+              v-model="cub.user.fac"
+              :disabled="cub.user.found"
+            >
+              <option selected disabled value>Elija su facultad</option>
+              <option value="CS">Ciencias de la Salud</option>
+              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
+              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
+              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
+              <option value="DCP">Derecho y Ciencias Políticas</option>
             </select>
           </div>
 
@@ -121,7 +137,7 @@
                 />
               </div>
 
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <label>Nombre</label>
                 <input
                   class="form-control"
@@ -138,20 +154,37 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user1.found"
                 >
-                  <option selected disabled value>Eliga su Sexo</option>
+                  <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+
+              <div class="form-group col-2">
+                <label for="ocup">Ocupación</label>
+                <select
+                  v-model="cub.integrantes.user1.ocup"
+                  type="text"
+                  id="ocup"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user1.found"
+                  required
+                >
+                  <option selected disabled value>Elija su Ocupación</option>
+                  <option value="Est">Estudiante</option>
+                  <option value="Adm">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-3">
                 <label class="label">Facultad</label>
                 <select
                   class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user1.fac"
-                  :disabled="cub.integrantes.user1.found"
+                  :disabled="cub.integrantes.user1.found || cub.integrantes.user1.ocup=='Adm'"
                 >
-                  <option selected disabled value>Eliga su facultad</option>
+                  <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -174,7 +207,7 @@
                   :disabled="cub.integrantes.user2.found"
                 />
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user2.name"
@@ -189,19 +222,35 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user2.found"
                 >
-                  <option selected disabled value>Eliga su Sexo</option>
+                  <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+
+              <div class="form-group col-2">
+                <select
+                  v-model="cub.integrantes.user2.ocup"
+                  type="text"
+                  id="ocup"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user2.found"
+                  required
+                >
+                  <option selected disabled value>Elija su Ocupación</option>
+                  <option value="Est">Estudiante</option>
+                  <option value="Adm">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-3">
                 <select
                   class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user2.fac"
-                  :disabled="cub.integrantes.user2.found"
+                  :disabled="cub.integrantes.user2.found || cub.integrantes.user2.ocup=='Adm'"
                 >
-                  <option selected disabled value>Eliga su facultad</option>
+                  <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -223,7 +272,7 @@
                   :disabled="cub.integrantes.user3.found"
                 />
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user3.name"
@@ -238,19 +287,35 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user3.found"
                 >
-                  <option selected disabled value>Eliga su Sexo</option>
+                  <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+
+              <div class="form-group col-2">
+                <select
+                  v-model="cub.integrantes.user3.ocup"
+                  type="text"
+                  id="ocup"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user3.found"
+                  required
+                >
+                  <option selected disabled value>Elija su Ocupación</option>
+                  <option value="Est">Estudiante</option>
+                  <option value="Adm">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-3">
                 <select
                   class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user3.fac"
-                  :disabled="cub.integrantes.user3.found"
+                  :disabled="cub.integrantes.user3.found || cub.integrantes.user3.ocup=='Adm'"
                 >
-                  <option selected disabled value>Eliga su facultad</option>
+                  <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -273,7 +338,7 @@
                   :disabled="cub.integrantes.user4.found"
                 />
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user4.name"
@@ -288,19 +353,34 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user4.found"
                 >
-                  <option selected disabled value>Eliga su Sexo</option>
+                  <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+
+              <div class="form-group col-2">
+                <select
+                  v-model="cub.integrantes.user4.ocup"
+                  type="text"
+                  id="ocup"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user4.found"
+                >
+                  <option selected disabled value>Elija su Ocupación</option>
+                  <option value="Est">Estudiante</option>
+                  <option value="Adm">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-3">
                 <select
                   class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user4.fac"
-                  :disabled="cub.integrantes.user4.found"
+                  :disabled="cub.integrantes.user4.found || cub.integrantes.user4.ocup=='Adm'"
                 >
-                  <option selected disabled value>Eliga su facultad</option>
+                  <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -322,7 +402,7 @@
                   :disabled="cub.integrantes.user5.found"
                 />
               </div>
-              <div class="form-group col-4">
+              <div class="form-group col-3">
                 <input
                   class="form-control"
                   v-model="cub.integrantes.user5.name"
@@ -337,19 +417,34 @@
                   class="custom-select"
                   :disabled="cub.integrantes.user5.found"
                 >
-                  <option selected disabled value>Eliga su Sexo</option>
+                  <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
                 </select>
               </div>
-              <div class="form-group col-4">
+
+              <div class="form-group col-2">
+                <select
+                  v-model="cub.integrantes.user5.ocup"
+                  type="text"
+                  id="ocup"
+                  class="custom-select"
+                  :disabled="cub.integrantes.user5.found"
+                >
+                  <option selected disabled value>Elija su Ocupación</option>
+                  <option value="Est">Estudiante</option>
+                  <option value="Adm">Administrativo</option>
+                </select>
+              </div>
+
+              <div class="form-group col-3">
                 <select
                   class="custom-select"
                   type="text"
                   v-model="cub.integrantes.user5.fac"
-                  :disabled="cub.integrantes.user5.found"
+                  :disabled="cub.integrantes.user5.found || cub.integrantes.user5.ocup=='Adm'"
                 >
-                  <option selected disabled value>Eliga su facultad</option>
+                  <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
                   <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
@@ -378,444 +473,462 @@
 </template>
 
 <script>
-import moment from 'moment'
-import { cubRef, cublogRef, userRef } from '@/services/firebase'
+import moment from "moment";
+import { cubRef, cublogRef, userRef } from "@/services/firebase";
 
-import stepNavigationStepVue from './FormCub/step-navigation-step.vue'
-import stepNavigationVue from './FormCub/step-navigation.vue'
-import stepVue from './FormCub/step.vue'
+import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
+import stepNavigationVue from "./FormCub/step-navigation.vue";
+import stepVue from "./FormCub/step.vue";
 export default {
-  name: 'FormSolCub',
-  data () {
+  name: "FormSolCub",
+  data() {
     return {
       currentstep: 1,
       steps: [
         {
           id: 1,
-          title: 'Representante',
-          icon_class: 'fa fa-user-circle-o'
+          title: "Encargado",
+          icon_class: "fa fa-user-circle-o"
         },
         {
           id: 2,
-          title: 'Condiciones',
-          icon_class: 'fa fa-check-square-o'
+          title: "Condiciones",
+          icon_class: "fa fa-check-square-o"
         },
         {
           id: 3,
-          title: 'Participantes',
-          icon_class: 'fa fa-users'
+          title: "Participantes",
+          icon_class: "fa fa-users"
         }
       ],
       cub: {
         id: 1,
         user: {
-          name: '',
-          ced: '',
-          fac: '',
-          sex: '',
+          name: "",
+          ced: "",
+          fac: "",
+          sex: "",
+          ocup: "",
           found: false
         },
         integrantes: {
           user1: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
+            name: "",
+            ced: "",
+            fac: "",
+            sex: "",
+            ocup: "",
             found: false
           },
           user2: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
+            name: "",
+            ced: "",
+            fac: "",
+            sex: "",
+            ocup: "",
             found: false
           },
           user3: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
+            name: "",
+            ced: "",
+            fac: "",
+            sex: "",
+            ocup: "",
             found: false
           },
           user4: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
+            name: "",
+            ced: "",
+            fac: "",
+            sex: "",
+            ocup: "",
             found: false
           },
           user5: {
-            name: '',
-            ced: '',
-            fac: '',
-            sex: '',
+            name: "",
+            ced: "",
+            fac: "",
+            sex: "",
+            ocup: "",
             found: false
           }
         },
         check: false,
-        date_start: '',
-        date_end: '',
+        date_start: "",
+        date_end: "",
         status: true
       },
       listado: [],
       usuarios: [],
       log: [],
       logid: 1
-    }
+    };
   },
-  created () {
-    this.getCub()
-    this.getUsers()
+  created() {
+    this.getCub();
+    this.getUsers();
   },
   methods: {
-    moment () {
-      return moment()
+    moment() {
+      return moment();
     },
-    stepChanged (step) {
-      this.currentstep = step
+    stepChanged(step) {
+      this.currentstep = step;
     },
-    addForm () {
-      this.cub.date_start = moment().format('dddd D/M/YY HH:mm:ss')
+    addForm() {
+      this.cub.date_start = moment().format("dddd D/M/YY HH:mm:ss");
       this.cub.date_end = moment()
-        .add(2, 'm')
-        .format('dddd D/M/YY HH:mm:ss')
-      this.cub.status = false
-      let form = Object.assign({}, this.cub)
-      cubRef.child(form.id).set(form)
-      cublogRef.child(this.logid).set(form)
-      let ID = String(this.cub.id)
-      this.$router.push({ path: `/cub/solicitud/realizado/${ID}` })
+        .add(2, "m")
+        .format("dddd D/M/YY HH:mm:ss");
+      this.cub.status = false;
+      let form = Object.assign({}, this.cub);
+      cubRef.child(form.id).set(form);
+      cublogRef.child(this.logid).set(form);
+      let ID = String(this.cub.id);
+      this.$router.push({ path: `/cub/solicitud/realizado/${ID}` });
     },
-    getCub () {
+    getCub() {
       cubRef
-        .once('value')
+        .once("value")
         .then(res => {
-          let data = res.val()
-          this.listado = Object.values(data)
-          let idcub = 1
+          let data = res.val();
+          this.listado = Object.values(data);
+          let idcub = 1;
           if (this.listado.length > 0) {
             this.listado.forEach(cubs => {
               if (cubs.id == idcub && cubs.status == false) {
                 if (idcub < 10) {
-                  idcub++
+                  idcub++;
                 } else {
-                  alert('No hay cubículos disponibles.')
-                  this.$router.push('/cub/')
+                  alert("No hay cubículos disponibles.");
+                  this.$router.push("/cub/");
                 }
               }
-            })
+            });
           }
-          this.cub.id = idcub
+          this.cub.id = idcub;
           // eslint-disable-next-line
           console.log("ID: ", this.cub.id);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
       cublogRef
-        .once('value')
+        .once("value")
         .then(logdb => {
-          let logdata = logdb.val()
-          this.log = Object.values(logdata)
+          let logdata = logdb.val();
+          this.log = Object.values(logdata);
           if (this.log.length > 0) {
             // eslint-disable-next-line
             this.log.forEach(cublog => {
-              this.logid++
-            })
+              this.logid++;
+            });
           }
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
     },
-    getUsers () {
+    getUsers() {
       userRef
-        .once('value')
+        .once("value")
         .then(res => {
-          let data = res.val()
-          this.usuarios = Object.values(data)
+          let data = res.val();
+          this.usuarios = Object.values(data);
         })
         .catch(error => {
           // eslint-disable-next-line
           console.log("Error: ", error);
-        })
+        });
     },
-    getUserData (ID) {
+    getUserData(ID) {
       if (this.usuarios.length > 0) {
-        let exist
+        let exist;
         this.usuarios.forEach(user => {
           if (
             this.cub.user.ced == user.ced &&
             this.cub.user.found == false &&
             ID == 1
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.user.name = user.name
-              this.cub.user.fac = user.fac
-              this.cub.user.sex = user.sex
-              this.cub.user.found = true
+              this.cub.user.name = user.name;
+              this.cub.user.fac = user.fac;
+              this.cub.user.sex = user.sex;
+              this.cub.user.ocup = user.ocup;
+              this.cub.user.found = true;
             }
           } else if (
             this.cub.integrantes.user1.ced == user.ced &&
             this.cub.integrantes.user1.found == false &&
             ID == 2
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.integrantes.user1.name = user.name
-              this.cub.integrantes.user1.fac = user.fac
-              this.cub.integrantes.user1.sex = user.sex
-              this.cub.integrantes.user1.found = true
+              this.cub.integrantes.user1.name = user.name;
+              this.cub.integrantes.user1.fac = user.fac;
+              this.cub.integrantes.user1.sex = user.sex;
+              this.cub.integrantes.user1.ocup = user.ocup;
+              this.cub.integrantes.user1.found = true;
             }
           } else if (
             this.cub.integrantes.user2.ced == user.ced &&
             this.cub.integrantes.user2.found == false &&
             ID == 3
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.integrantes.user2.name = user.name
-              this.cub.integrantes.user2.fac = user.fac
-              this.cub.integrantes.user2.sex = user.sex
-              this.cub.integrantes.user2.found = true
+              this.cub.integrantes.user2.name = user.name;
+              this.cub.integrantes.user2.fac = user.fac;
+              this.cub.integrantes.user2.sex = user.sex;
+              this.cub.integrantes.user2.ocup = user.ocup;
+              this.cub.integrantes.user2.found = true;
             }
           } else if (
             this.cub.integrantes.user3.ced == user.ced &&
             this.cub.integrantes.user3.found == false &&
             ID == 4
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.integrantes.user3.name = user.name
-              this.cub.integrantes.user3.fac = user.fac
-              this.cub.integrantes.user3.sex = user.sex
-              this.cub.integrantes.user3.found = true
+              this.cub.integrantes.user3.name = user.name;
+              this.cub.integrantes.user3.fac = user.fac;
+              this.cub.integrantes.user3.sex = user.sex;
+              this.cub.integrantes.user3.ocup = user.ocup;
+              this.cub.integrantes.user3.found = true;
             }
           } else if (
             this.cub.integrantes.user4.ced == user.ced &&
             this.cub.integrantes.user4.found == false &&
             ID == 5
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.integrantes.user4.name = user.name
-              this.cub.integrantes.user4.fac = user.fac
-              this.cub.integrantes.user4.sex = user.sex
-              this.cub.integrantes.user4.found = true
+              this.cub.integrantes.user4.name = user.name;
+              this.cub.integrantes.user4.fac = user.fac;
+              this.cub.integrantes.user4.sex = user.sex;
+              this.cub.integrantes.user4.ocup = user.ocup;
+              this.cub.integrantes.user4.found = true;
             }
           } else if (
             this.cub.integrantes.user5.ced == user.ced &&
             this.cub.integrantes.user5.found == false &&
             ID == 6
           ) {
-            exist = this.ExistingUser(ID)
+            exist = this.ExistingUser(ID);
             if (!exist) {
-              this.cub.integrantes.user5.name = user.name
-              this.cub.integrantes.user5.fac = user.fac
-              this.cub.integrantes.user5.sex = user.sex
-              this.cub.integrantes.user5.found = true
+              this.cub.integrantes.user5.name = user.name;
+              this.cub.integrantes.user5.fac = user.fac;
+              this.cub.integrantes.user5.sex = user.sex;
+              this.cub.integrantes.user5.ocup = user.ocup;
+              this.cub.integrantes.user5.found = true;
             }
           }
-        })
+        });
       }
     },
-    delUserData (ID) {
+    delUserData(ID) {
       if (ID == 1) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.user.ced = ''
-        this.cub.user.name = ''
-        this.cub.user.fac = ''
-        this.cub.user.sex = ''
-        this.cub.user.found = false
+        this.cub.user.ced = "";
+        this.cub.user.name = "";
+        this.cub.user.fac = "";
+        this.cub.user.sex = "";
+        this.cub.user.ocup = "";
+        this.cub.user.found = false;
       } else if (ID == 2) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.integrantes.user1.ced = ''
-        this.cub.integrantes.user1.name = ''
-        this.cub.integrantes.user1.fac = ''
-        this.cub.integrantes.user1.sex = ''
-        this.cub.integrantes.user1.found = false
+        this.cub.integrantes.user1.ced = "";
+        this.cub.integrantes.user1.name = "";
+        this.cub.integrantes.user1.fac = "";
+        this.cub.integrantes.user1.sex = "";
+        this.cub.integrantes.user1.ocup = "";
+        this.cub.integrantes.user1.found = false;
       } else if (ID == 3) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.integrantes.user2.ced = ''
-        this.cub.integrantes.user2.name = ''
-        this.cub.integrantes.user2.fac = ''
-        this.cub.integrantes.user2.sex = ''
-        this.cub.integrantes.user2.found = false
+        this.cub.integrantes.user2.ced = "";
+        this.cub.integrantes.user2.name = "";
+        this.cub.integrantes.user2.fac = "";
+        this.cub.integrantes.user2.sex = "";
+        this.cub.integrantes.user2.ocup = "";
+        this.cub.integrantes.user2.found = false;
       } else if (ID == 4) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.integrantes.user3.ced = ''
-        this.cub.integrantes.user3.name = ''
-        this.cub.integrantes.user3.fac = ''
-        this.cub.integrantes.user3.sex = ''
-        this.cub.integrantes.user3.found = false
+        this.cub.integrantes.user3.ced = "";
+        this.cub.integrantes.user3.name = "";
+        this.cub.integrantes.user3.fac = "";
+        this.cub.integrantes.user3.sex = "";
+        this.cub.integrantes.user3.ocup = "";
+        this.cub.integrantes.user3.found = false;
       } else if (ID == 5) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.integrantes.user4.ced = ''
-        this.cub.integrantes.user4.name = ''
-        this.cub.integrantes.user4.fac = ''
-        this.cub.integrantes.user4.sex = ''
-        this.cub.integrantes.user4.found = false
+        this.cub.integrantes.user4.ced = "";
+        this.cub.integrantes.user4.name = "";
+        this.cub.integrantes.user4.fac = "";
+        this.cub.integrantes.user4.sex = "";
+        this.cub.integrantes.user4.ocup = "";
+        this.cub.integrantes.user4.found = false;
       } else if (ID == 6) {
         // eslint-disable-next-line
         console.log("Usuario encontrado");
-        this.cub.integrantes.user5.ced = ''
-        this.cub.integrantes.user5.name = ''
-        this.cub.integrantes.user5.fac = ''
-        this.cub.integrantes.user5.sex = ''
-        this.cub.integrantes.user5.found = false
+        this.cub.integrantes.user5.ced = "";
+        this.cub.integrantes.user5.name = "";
+        this.cub.integrantes.user5.fac = "";
+        this.cub.integrantes.user5.sex = "";
+        this.cub.integrantes.user5.ocup = "";
+        this.cub.integrantes.user5.found = false;
       } else {
         // eslint-disable-next-line
         console.log("Usuario NO encontrado");
       }
     },
-    ExistingUser (ID) {
-      let res = false
+    ExistingUser(ID) {
+      let res = false;
       if (this.listado.length > 0) {
         this.listado.forEach(cubs => {
           for (let usersids in cubs.integrantes) {
-            let users = cubs.integrantes[usersids]
+            let users = cubs.integrantes[usersids];
             for (let ced in users) {
               if (ID == 1) {
                 if (
                   cubs.user.ced == this.cub.user.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.user.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 } else if (
                   users[ced] == this.cub.user.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.user.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.user.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else if (ID == 2) {
                 if (
                   cubs.user.ced == this.cub.integrantes.user1.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user1.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 } else if (
                   users[ced] == this.cub.integrantes.user1.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user1.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user1.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else if (ID == 3) {
                 if (
                   cubs.user.ced == this.cub.integrantes.user2.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user2.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
 
                 if (
                   users[ced] == this.cub.integrantes.user2.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user2.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user2.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else if (ID == 4) {
                 if (
                   cubs.user.ced == this.cub.integrantes.user3.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user3.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
 
                 if (
                   users[ced] == this.cub.integrantes.user3.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user3.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user3.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else if (ID == 5) {
                 if (
                   cubs.user.ced == this.cub.integrantes.user4.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user4.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
 
                 if (
                   users[ced] == this.cub.integrantes.user4.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user4.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user4.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else if (ID == 6) {
                 if (
                   cubs.user.ced == this.cub.integrantes.user5.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user5.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
 
                 if (
                   users[ced] == this.cub.integrantes.user5.ced &&
                   cubs.status == false
                 ) {
-                  this.cub.integrantes.user5.ced = ''
-                  alert('El usuario ya esta en otro cubículo')
-                  res = true
-                  return res
+                  this.cub.integrantes.user5.ced = "";
+                  alert("El usuario ya esta en otro cubículo");
+                  res = true;
+                  return res;
                 }
               } else {
-                res = false
+                res = false;
               }
             }
           }
-        })
+        });
       }
-      return res
+      return res;
     }
   },
   components: {
     // eslint-disable-next-line
     "step-navigation-step": stepNavigationStepVue,
-    'step-navigation': stepNavigationVue,
+    "step-navigation": stepNavigationVue,
     step: stepVue
   }
-}
+};
 </script>
 <style lang="scss">
 $wizard-color-neutral: #ccc !default;
