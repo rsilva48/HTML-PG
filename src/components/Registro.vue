@@ -103,26 +103,22 @@ export default {
   },
   computed: {
     validation() {
-      if (this.user.ocup == "Est") {
-        if (
-          this.user.name == "" ||
+      if (
+        this.user.ocup == "Est" &&
+        (this.user.name == "" ||
           this.user.ced == "" ||
           this.user.fac == "" ||
-          this.user.sex == ""
-        ) {
-          this.user.password = ""
-          return true;
-        }
-      } else if (this.user.ocup == "Adm") {
-        if (
-          this.user.name == "" ||
+          this.user.sex == "")
+      ) {
+        return true;
+      } else if (
+        this.user.ocup == "Adm" &&
+        (this.user.name == "" ||
           this.user.ced == "" ||
           this.user.password == "" ||
-          this.user.sex == ""
-        ) {
-          this.user.fac = ""
-          return true;
-        }
+          this.user.sex == "")
+      ) {
+        return true;
       } else if (this.user.ocup == "") {
         return true;
       } else {
@@ -143,6 +139,11 @@ export default {
       });
     },
     addUser() {
+      if (this.user.ocup == "Adm") {
+        this.user.fac = "";
+      } else if (this.user.ocup == "Est") {
+        this.user.password = "";
+      }
       let form = Object.assign({}, this.user);
       userRef.child(this.user.ced).set(form);
       alert("Se ha registrado correctamente.");
