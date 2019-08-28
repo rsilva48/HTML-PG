@@ -85,7 +85,7 @@ export default {
             user.ocup == 'Adm'
           ) {
             alert("Ha iniciado sesión correctamente.");
-            this.$router.push({ path: `/admin/view` });
+            this.$router.push({ path: `/admin` });
             count = 0;
             return;
           } else {

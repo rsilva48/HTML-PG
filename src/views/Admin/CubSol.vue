@@ -4,7 +4,8 @@
         <div class="container">
             <h1 class="display-4">Solicitud de Cubiculo</h1>
             <p class="lead">Llene la siguiente información para reservar un cubiculo.</p>
-            <router-link to="/admin/cub" class="btn btn-primary btn-lg ml-2" role="button">Volver</router-link>
+            <hr/>
+            <router-link to="/admin/cub" class="btn btn-primary btn-lg mr-2" role="button">Volver</router-link>
             <router-link to="/admin/cub/list/" class="btn btn-primary btn-lg ml-2" role="button">Ver Cubiculos</router-link>
         </div>
     </div>

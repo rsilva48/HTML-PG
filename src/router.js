@@ -11,15 +11,14 @@ import Cubs from './views/Cub/Cubs.vue'
 import CubList from './views/Cub/CubList.vue'
 import CubSol from './views/Cub/CubSol.vue'
 import CubSolReal from './views/Cub/CubSolReal.vue'
-import Administrador from './views/Admin/Administrador.vue'
-import Adminview from './views/Admin/Adminview.vue'
-import AdminCub from './views/Admin/AdminCub.vue'
-import AdminComp from './views/Admin/AdminComp.vue'
-import AdminCubsol from './views/Admin/AdminCubsol.vue'
-import AdminCubList from './views/Admin/AdminCubList.vue'
-import AdminPCsol from './views/Admin/AdminPCsol.vue'
-import AdminPCs from './views/Admin/AdminPCs.vue'
-import AdminReporte from './views/Admin/AdminReporte.vue'
+import AdminUsers from './views/Admin/Users.vue'
+import AdminCub from './views/Admin/Cub.vue'
+import AdminPC from './views/Admin/PC.vue'
+import AdminCubSol from './views/Admin/CubSol.vue'
+import AdminCubList from './views/Admin/CubList.vue'
+import AdminPCSol from './views/Admin/PCSol.vue'
+import AdminPCList from './views/Admin/PCList.vue'
+import AdminReporte from './views/Admin/Reporte.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -36,7 +35,7 @@ export default new Router({
             component: Login
         },
         {
-            path: '/registro',
+            path: '/admin/registro',
             name: 'Registro',
             component: Registro
         },
@@ -80,15 +79,11 @@ export default new Router({
             name: 'Lista de Cubiculos',
             component: CubList
         },
+
         {
             path: '/admin',
-            name: 'Administrador',
-            component: Administrador
-        },
-        {
-            path: '/admin/view',
-            name: 'Adminview',
-            component: Adminview
+            name: 'AdminUsers',
+            component: AdminUsers
         },
 
         {
@@ -97,32 +92,32 @@ export default new Router({
             component: AdminCub
         },
         {
-            path: '/admin/comp',
-            name: 'AdminComp',
-            component: AdminComp
+            path: '/admin/pc',
+            name: 'AdminPC',
+            component: AdminPC
         },
         {
-            path: '/admin/cub/sol',
-            name: 'AdminCubsol',
-            component: AdminCubsol
+            path: '/admin/cub/solicitud',
+            name: 'AdminCubSol',
+            component: AdminCubSol
         },
         {
-            path: '/admin/cub/list/',
+            path: '/admin/cub/list',
             name: 'AdminCubList',
             component: AdminCubList
         },
         {
-            path: '/admin/pc/sol',
+            path: '/admin/pc/solicitud',
             name: 'AdminPCsol',
-            component: AdminPCsol
+            component: AdminPCSol
         },
         {
-            path: '/admin/admin_pcs',
-            name: 'AdminPCs',
-            component: AdminPCs
+            path: '/admin/pc/list',
+            name: 'AdminPCList',
+            component: AdminPCList
         },
         {
-            path: '/admin/report',
+            path: '/admin/reporte',
             name: 'AdminReporte',
             component: AdminReporte
         }

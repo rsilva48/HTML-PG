@@ -3,8 +3,9 @@
     <div class="jumbotron jumbotron-fluid font">
       <div class="container">
         <h1 class="display-4">Lista de Cubiculos</h1>
-        <router-link to="/admin/cub" class="btn btn-primary btn-lg ml-2" role="button">Volver</router-link>
-        <router-link to="/admin/cub/sol" class="btn btn-primary btn-lg ml-2" role="button">Formulario</router-link>
+        <hr/>
+        <router-link to="/admin/cub" class="btn btn-primary btn-lg mr-2" role="button">Volver</router-link>
+        <router-link to="/admin/cub/solicitud" class="btn btn-primary btn-lg ml-2" role="button">Formulario</router-link>
         <div class="row-flex">
           <div class="custom-control custom-switch">
             <input
