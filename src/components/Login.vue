@@ -31,13 +31,7 @@
         />
         <label for="inputPassword">Contraseña</label>
       </div>
-
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Mantener la sesión iniciada
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">Iniciar Sesión</button>
     </form>
   </div>
 </template>
@@ -57,6 +51,17 @@ export default {
   created() {
     this.getUsers();
   },
+  computed:{
+    enablelogin() {
+      if (this.user.ced == '' || this.user.password == '')
+      {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+  },
   methods: {
     getUsers() {
       userRef
@@ -71,27 +76,29 @@ export default {
         });
     },
     login() {
+      let count = 1;
       if (this.usuarios.length > 0) {
-        let count = 0;
         this.usuarios.forEach(user => {
           if (
             this.user.ced == user.ced &&
-            this.user.password == user.password
+            this.user.password == user.password && 
+            user.ocup == 'Adm'
           ) {
-            alert("Ha iniciado sesión correctamente.")
+            alert("Ha iniciado sesión correctamente.");
             this.$router.push({ path: `/admin/view` });
-            count = 0
+            count = 0;
             return;
-          }
-          else {
-            count++
+          } else {
+            if (count > 0) {
+              count++;
+            }
           }
         });
       }
-      if (count > 0){
-        alert("Verifique sus datos e ingrese nuevamente.")
-        this.user.ced = ""
-        this.user.password = ""
+      if (count > 0) {
+        alert("Verifique sus datos e ingrese nuevamente.");
+        this.user.ced = "";
+        this.user.password = "";
       }
     }
   }

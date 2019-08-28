@@ -14,94 +14,104 @@
       @click="nextStep"
       :disabled="validation"
     >Siguiente</button>
-    <button type="submit" class="btn btn-primary ml-1" v-if="laststep" :disabled="validation2">Enviar</button>
+    <button
+      type="submit"
+      class="btn btn-primary ml-1"
+      v-if="laststep"
+      :disabled="validation2"
+    >Enviar</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'step',
-  props: ['step', 'stepcount', 'currentstep', 'form'],
+  name: "step",
+  props: ["step", "stepcount", "currentstep", "form"],
 
   computed: {
-    active () {
-      return this.step.id == this.currentstep
+    active() {
+      return this.step.id == this.currentstep;
     },
 
-    firststep () {
-      return this.currentstep == 1
+    firststep() {
+      return this.currentstep == 1;
     },
 
-    enableback () {
-      return this.currentstep != 1
+    enableback() {
+      return this.currentstep != 1;
     },
 
-    laststep () {
-      return this.currentstep == this.stepcount
+    laststep() {
+      return this.currentstep == this.stepcount;
     },
 
-    disbalenext () {
-      return this.currentstep != 2
+    disbalenext() {
+      return this.currentstep != 2;
     },
 
-    validation () {
-      if (this.form.user.ocup == 'Est'){
-        if (
-        this.form.user.name == '' ||
-        this.form.user.ced == '' ||
-        this.form.user.fac == '' ||
-        this.form.user.sex == '' ||
-        this.form.user.ocup == '' &&
-        this.currentstep == 1
+    validation() {
+      let val;
+      if (
+        this.currentstep == 1 &&
+        (this.form.user.name == "" ||
+          this.form.user.ced == "" ||
+          this.form.user.sex == "" ||
+          this.form.user.ocup == "")
       ) {
-        return true
-      }}
-      else if(this.form.user.ocup == 'Adm'){
-        if (
-        this.form.user.name == '' ||
-        this.form.user.ced == '' ||
-        this.form.user.sex == '' ||
-        this.form.user.ocup == '' &&
-        this.currentstep == 1
+        val = true;
+      } else if (
+        this.form.user.ocup == "Est" &&
+        this.currentstep == 1 &&
+        (this.form.user.name == "" ||
+          this.form.user.ced == "" ||
+          this.form.user.fac == "" ||
+          this.form.user.sex == "")
       ) {
-        return true
-      } 
+        val = true;
+      } else if (
+        this.form.user.ocup == "Adm" &&
+        this.currentstep == 1 &&
+        (this.form.user.name == "" ||
+          this.form.user.ced == "" ||
+          this.form.user.sex == "")
+      ) {
+        val = true;
       } else if (this.form.check == false && this.currentstep == 2) {
-        return true
+        val = true;
       } else if (this.currentstep == this.stepcount) {
-        return true
+        val = true;
       } else {
-        return false
+        val = false;
       }
+      return val;
     },
-    validation2 () {
-     if (this.form.check == false) {
-        return true
-      } 
-     else {
-        return false
+    validation2() {
+      if (this.form.check == false) {
+        return true;
+      } else {
+        return false;
       }
     },
 
-    valsubmit () {
-      return true
+    valsubmit() {
+      return true;
     },
 
-    stepWrapperClass () {
+    stepWrapperClass() {
       return {
         active: this.active
-      }
+      };
     }
   },
 
   methods: {
-    nextStep () {
-      this.$emit('step-change', this.currentstep + 1)
+    nextStep() {
+      this.$emit("step-change", this.currentstep + 1);
     },
 
-    lastStep () {
-      this.$emit('step-change', this.currentstep - 1)
+    lastStep() {
+      this.$emit("step-change", this.currentstep - 1);
     }
   }
-}
+};
 </script>
