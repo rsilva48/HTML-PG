@@ -73,9 +73,12 @@ export default {
         this.form.integrantes.user3.name == '' ||
         this.form.integrantes.user3.ced == '' ||
         this.form.integrantes.user3.sex == '' ||
-        this.form.integrantes.user1.fac == '' ||
-        this.form.integrantes.user2.fac == '' ||
-        this.form.integrantes.user3.fac == ''
+        this.form.integrantes.user1.ocup == '' ||
+        this.form.integrantes.user2.ocup == '' ||
+        this.form.integrantes.user3.ocup == '' || 
+        (this.form.integrantes.user1.fac == '' && this.form.integrantes.user1.ocup == 'Est') ||
+        (this.form.integrantes.user2.fac == '' && this.form.integrantes.user2.ocup == 'Est') ||
+        (this.form.integrantes.user3.fac == '' && this.form.integrantes.user3.ocup == 'Est')
       )
     },
 

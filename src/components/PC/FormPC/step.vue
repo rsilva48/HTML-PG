@@ -45,7 +45,8 @@ export default {
     },
 
     validation () {
-      if (
+      if (this.form.user.ocup == 'Est'){
+        if (
         this.form.user.name == '' ||
         this.form.user.ced == '' ||
         this.form.user.fac == '' ||
@@ -54,6 +55,17 @@ export default {
         this.currentstep == 1
       ) {
         return true
+      }}
+      else if(this.form.user.ocup == 'Adm'){
+        if (
+        this.form.user.name == '' ||
+        this.form.user.ced == '' ||
+        this.form.user.sex == '' ||
+        this.form.user.ocup == '' &&
+        this.currentstep == 1
+      ) {
+        return true
+      } 
       } else if (this.form.check == false && this.currentstep == 2) {
         return true
       } else if (this.currentstep == this.stepcount) {
