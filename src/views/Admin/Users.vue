@@ -4,43 +4,31 @@
     <section id="main">
       <div class="container">
         <div class="row">
-          <AdminMenu class="col-md-3"/>
-          <div class="col-md-9">
+          <AdminMenu class="col-md-3" />
+          <div class="text-center col-md-9" v-if="loading">
+            <div class="spinner-border text-primary m-5" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="col-md-9" v-if="!loading">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Usuarios mas recientes</h3>
+                <h3 class="panel-title">Usuarios</h3>
+                <button type="button" class="btn btn-default btn-sm" @click="getUsers">
+                  <i class="fa fa-refresh"></i> Actualizar
+                </button>
               </div>
               <div class="panel-body">
                 <table class="table table-striped table-hover">
                   <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Joined</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Ocupación</th>
                   </tr>
-                  <tr>
-                    <td>Jill Smith</td>
-                    <td>jillsmith@gmail.com</td>
-                    <td>Dec 12, 2016</td>
-                  </tr>
-                  <tr>
-                    <td>Eve Jackson</td>
-                    <td>ejackson@yahoo.com</td>
-                    <td>Dec 13, 2016</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>jdoe@gmail.com</td>
-                    <td>Dec 13, 2016</td>
-                  </tr>
-                  <tr>
-                    <td>Stephanie Landon</td>
-                    <td>landon@yahoo.com</td>
-                    <td>Dec 14, 2016</td>
-                  </tr>
-                  <tr>
-                    <td>Mike Johnson</td>
-                    <td>mjohnson@gmail.com</td>
-                    <td>Dec 15, 2016</td>
+                  <tr v-for="(usuario, index) in usuarios" :key="index">
+                    <td>{{ usuario.ced }}</td>
+                    <td>{{ usuario.name }}</td>
+                    <td>{{ usuario.ocup }}</td>
                   </tr>
                 </table>
               </div>
@@ -55,11 +43,37 @@
 <script>
 import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
+import { userRef } from "@/services/firebase";
 export default {
   name: "Adminview",
   components: {
     AdminMenu,
     AdminTitulo
+  },
+  created() {
+    this.getUsers();
+  },
+  data() {
+    return {
+      loading: true,
+      usuarios: []
+    };
+  },
+  methods: {
+    getUsers() {
+      this.loading = true
+      userRef
+        .once("value")
+        .then(res => {
+          let data = res.val();
+          this.usuarios = Object.values(data);
+          this.loading = false;
+        })
+        .catch(error => {
+          // eslint-disable-next-line
+          console.log("Error: ", error);
+        });
+    }
   }
 };
 </script>

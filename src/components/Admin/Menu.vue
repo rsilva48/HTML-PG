@@ -19,7 +19,7 @@
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Reportes
         </router-link>
         <router-link to="/admin/registro" class="list-group-item">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Registrar Usuario
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Registro de Usuario
         </router-link>
       </div>
     </div>
