@@ -96,7 +96,7 @@ export default {
         });
       }
       if (count > 0) {
-        alert("Verifique sus datos e ingrese nuevamente.");
+        alert("Verifique sus datos e ingreselos nuevamente.");
         this.user.ced = "";
         this.user.password = "";
       }

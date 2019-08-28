@@ -50,7 +50,6 @@ export default {
     },
 
     validation() {
-      let val;
       if (
         this.currentstep == 1 &&
         (this.form.user.name == "" ||
@@ -58,7 +57,7 @@ export default {
           this.form.user.sex == "" ||
           this.form.user.ocup == "")
       ) {
-        val = true;
+        return true;
       } else if (
         this.form.user.ocup == "Est" &&
         this.currentstep == 1 &&
@@ -67,7 +66,7 @@ export default {
           this.form.user.fac == "" ||
           this.form.user.sex == "")
       ) {
-        val = true;
+        return true;
       } else if (
         this.form.user.ocup == "Adm" &&
         this.currentstep == 1 &&
@@ -75,15 +74,14 @@ export default {
           this.form.user.ced == "" ||
           this.form.user.sex == "")
       ) {
-        val = true;
+        return true;
       } else if (this.form.check == false && this.currentstep == 2) {
-        val = true;
+        return true;
       } else if (this.currentstep == this.stepcount) {
-        val = true;
+        return true;
       } else {
-        val = false;
+        return false;
       }
-      return val;
     },
     validation2() {
       if (this.form.check == false) {
