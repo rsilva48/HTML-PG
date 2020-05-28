@@ -56,8 +56,8 @@
                 </select>
                 <label for="ocup">Ocupación</label>
               </div>
-
-              <div class="form-label-group" v-if="user.ocup=='Est'">
+              <!--  v-if="user.ocup=='Est'" -->
+              <div class="form-label-group">
                 <select v-model="user.fac" type="text" id="fac" class="custom-select" required>
                   <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
@@ -68,8 +68,8 @@
                 </select>
                 <label for="fac">Facultad</label>
               </div>
-
-              <div class="form-label-group" v-if="user.ocup=='Adm'">
+              <!--  v-if="user.ocup=='Adm'" -->
+              <div class="form-label-group">
                 <input
                   type="password"
                   id="password"

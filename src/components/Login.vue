@@ -31,7 +31,11 @@
         />
         <label for="inputPassword">Contraseña</label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">Iniciar Sesión</button>
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+        :disabled="enablelogin"
+      >Iniciar Sesión</button>
     </form>
   </div>
 </template>
@@ -51,14 +55,12 @@ export default {
   created() {
     this.getUsers();
   },
-  computed:{
+  computed: {
     enablelogin() {
-      if (this.user.ced == '' || this.user.password == '')
-      {
-        return true
-      }
-      else {
-        return false
+      if (this.user.ced == "" || this.user.password == "") {
+        return true;
+      } else {
+        return false;
       }
     }
   },
@@ -80,24 +82,46 @@ export default {
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {
           if (
+            //Credenciales correctas - COUNT 0
             this.user.ced == user.ced &&
-            this.user.password == user.password && 
-            user.ocup == 'Adm'
+            this.user.password == user.password &&
+            user.ocup == "Adm"
           ) {
             alert("Ha iniciado sesión correctamente.");
             this.$router.push({ path: `/admin` });
             count = 0;
             return;
-          } else {
-            if (count > 0) {
-              count++;
-            }
+          } else if (
+            //Contraseña incorrecta - COUNT 3
+            this.user.ced == user.ced &&
+            this.user.password != user.password
+          ) {
+            count = 3;
+            return;
+          } else if (
+            //Sin privilegios suficientes - COUNT 2
+            this.user.ced == user.ced &&
+            this.user.password == user.password &&
+            user.ocup != "Adm"
+          ) {
+            count = 2;
+            return;
+          } else if (count > 0) {
+            //Credenciales Incorrectas - COUNT 0
+            count = 1;
           }
         });
       }
-      if (count > 0) {
+      if (count == 1) {
         alert("Verifique sus datos e ingreselos nuevamente.");
         this.user.ced = "";
+        this.user.password = "";
+      } else if (count == 2) {
+        alert("Usted no tiene los privilegios suficientes para acceder.");
+        this.user.ced = "";
+        this.user.password = "";
+      } else if (count == 3) {
+        alert("Ingrese su contraseña correctamente.");
         this.user.password = "";
       }
     }
