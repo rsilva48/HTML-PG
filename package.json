@@ -12,7 +12,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
-    "firebase": "^7.14.0",
+    "firebase": "^9.14.0",
     "font-awesome": "^4.7.0",
     "hchs-vue-charts": "^1.2.8",
     "jquery": "^3.5.0",
@@ -26,9 +26,9 @@
     "vuefire": "^2.2.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.3.1",
-    "@vue/cli-plugin-eslint": "^4.3.1",
-    "@vue/cli-service": "^4.3.1",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
