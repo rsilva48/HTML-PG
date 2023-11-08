@@ -1,4 +1,4 @@
-# Proyecto Universitario: UIP CRAI
+# Proyecto Universitario: CRAI
 Proyecto para digitalizar el proceso de prestamos de computadoras y cubiculos en la biblioteca de la UIP
 
 ## Project setup (para instalar dependencias y plugins)
