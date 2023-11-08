@@ -24,126 +24,66 @@
             <div class="row">
               <div class="col-md-2" v-if="listado[0]">
                 <li class="list-group-item list-group-item-success" v-if="listado[0].status">Cubículo 01</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[0].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[0].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[0].status">Cubículo 01</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[0].status"
-                >{{ horas[0] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[0].status">{{ horas[0] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[1]">
+              <div class="col-md-2" v-if="listado[1]">
                 <li class="list-group-item list-group-item-success" v-if="listado[1].status">Cubículo 02</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[1].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[1].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[1].status">Cubículo 02</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[1].status"
-                >{{ horas[1] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[1].status">{{ horas[1] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[2]">
+              <div class="col-md-2" v-if="listado[2]">
                 <li class="list-group-item list-group-item-success" v-if="listado[2].status">Cubículo 03</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[2].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[2].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[2].status">Cubículo 03</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[2].status"
-                >{{ horas[2] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[2].status">{{ horas[2] }}</li>
               </div>
               <div class="col-md-2" v-if="listado[3]">
                 <li class="list-group-item list-group-item-success" v-if="listado[3].status">Cubículo 04</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[3].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[3].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[3].status">Cubículo 04</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[3].status"
-                >{{ horas[3] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[3].status">{{ horas[3] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[4]">
+              <div class="col-md-2" v-if="listado[4]">
                 <li class="list-group-item list-group-item-success" v-if="listado[4].status">Cubículo 05</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[4].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[4].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[4].status">Cubículo 05</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[4].status"
-                >{{ horas[4] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[4].status">{{ horas[4] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[5]">
+              <div class="col-md-2" v-if="listado[5]">
                 <li class="list-group-item list-group-item-success" v-if="listado[5].status">Cubículo 06</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[5].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[5].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[5].status">Cubículo 06</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[5].status"
-                >{{ horas[5] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[5].status">{{ horas[5] }}</li>
               </div>
             </div>
             <br />
             <div class="row">
-              <div class="col-md-2"  v-if="listado[6]">
+              <div class="col-md-2" v-if="listado[6]">
                 <li class="list-group-item list-group-item-success" v-if="listado[6].status">Cubículo 07</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[6].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[6].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[6].status">Cubículo 07</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[6].status"
-                >{{ horas[6] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[6].status">{{ horas[6] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[7]">
+              <div class="col-md-2" v-if="listado[7]">
                 <li class="list-group-item list-group-item-success" v-if="listado[7].status">Cubículo 08</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[7].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[7].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[7].status">Cubículo 08</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[7].status"
-                >{{ horas[7] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[7].status">{{ horas[7] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[8]">
+              <div class="col-md-2" v-if="listado[8]">
                 <li class="list-group-item list-group-item-success" v-if="listado[8].status">Cubículo 09</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[8].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[8].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[8].status">Cubículo 09</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[8].status"
-                >{{ horas[8] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[8].status">{{ horas[8] }}</li>
               </div>
-              <div class="col-md-2"  v-if="listado[9]">
+              <div class="col-md-2" v-if="listado[9]">
                 <li class="list-group-item list-group-item-success" v-if="listado[9].status">Cubículo 10</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="listado[9].status"
-                >Disponible</li>
+                <li class="list-group-item list-group-item-general" v-if="listado[9].status">Disponible</li>
                 <li class="list-group-item list-group-item-danger" v-if="!listado[9].status">Cubículo 10</li>
-                <li
-                  class="list-group-item list-group-item-general"
-                  v-if="!listado[9].status"
-                >{{ horas[9] }}</li>
+                <li class="list-group-item list-group-item-general" v-if="!listado[9].status">{{ horas[9] }}</li>
               </div>
             </div>
           </div>
@@ -155,9 +95,9 @@
 
 <script>
 import moment from "moment";
-import { cubRef } from "@/services/firebase";
+import { cubRef } from "../../services/firebase";
 import { setInterval } from 'timers-browserify';
-import { onValue } from "firebase/database";
+import { onValue, query } from "firebase/database";
 export default {
   name: "CubListUser",
   data() {
@@ -181,29 +121,13 @@ export default {
       return moment();
     },
     getCub() {
-      onValue(cubRef,res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          this.date2hour();
-        }, {
-  onlyOnce: true
-}).catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-      /*  
-      cubRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          this.date2hour();
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-        */
+      onValue(query(cubRef), res => {
+        let data = res.val();
+        this.listado = Object.values(data);
+        this.date2hour();
+      }, {
+        onlyOnce: true
+      })
     },
     date2hour() {
       this.listado.forEach(cubs => {

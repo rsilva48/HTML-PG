@@ -8,41 +8,20 @@
           <h3>Información del Arrendador</h3>
           <div class="form-group">
             <label for="id">Cédula</label>
-            <input
-              type="id"
-              name="cedula"
-              class="form-control"
-              placeholder="Ingrese su numero de cédula con guiones"
-              v-model="pc.user.ced"
-              @blur="getUserData(1)"
-              :disabled="pc.user.found"
-            />
+            <input type="id" name="cedula" class="form-control" placeholder="Ingrese su numero de cédula con guiones"
+              v-model="pc.user.ced" @blur="getUserData(1)" :disabled="pc.user.found" />
           </div>
 
           <div class="form-group">
             <label for="name">Nombre Completo</label>
-            <input
-              type="name"
-              name="name"
-              class="form-control"
-              aria-describedby="nameHelp"
-              placeholder="Ingrese su nombre completo"
-              v-model="pc.user.name"
-              :disabled="pc.user.found"
-            />
+            <input type="name" name="name" class="form-control" aria-describedby="nameHelp"
+              placeholder="Ingrese su nombre completo" v-model="pc.user.name" :disabled="pc.user.found" />
           </div>
 
           <div class="form-group">
             <label class="label">Sexo</label>
-            <select
-              v-model="pc.user.sex"
-              type="text"
-              id="sex"
-              class="custom-select"
-              placeholder="Elegir Sexo"
-              :disabled="pc.user.found"
-              required
-            >
+            <select v-model="pc.user.sex" type="text" id="sex" class="custom-select" placeholder="Elegir Sexo"
+              :disabled="pc.user.found" required>
               <option selected disabled value>Elija su Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
@@ -58,14 +37,9 @@
             </select>
           </div>
 
-          <div class="form-group" v-if="pc.user.ocup=='Est'">
+          <div class="form-group" v-if="pc.user.ocup == 'Est'">
             <label class="label">Facultad</label>
-            <select
-              class="custom-select"
-              type="text"
-              v-model="pc.user.fac"
-              :disabled="pc.user.found"
-            >
+            <select class="custom-select" type="text" v-model="pc.user.fac" :disabled="pc.user.found">
               <option selected disabled value>Elija su facultad</option>
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -77,11 +51,7 @@
 
 
           <div class="form-group">
-            <button
-              type="button"
-              class="btn btn-outline-danger mx-1"
-              @click="delUserData(1)"
-            >Limpiar</button>
+            <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">Limpiar</button>
           </div>
         </div>
 
@@ -109,20 +79,14 @@
               </div>
             </div>
             <br />
-            <input type="checkbox" name="terminos" class="center" v-model.number="pc.check" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <input type="checkbox" name="terminos" class="center" v-model.number="pc.check" /> Acepto y estoy de acuerdo
+            con todas las condiciones de uso y seguridad
           </div>
         </div>
 
         <div v-show="currentstep == 3"></div>
-        <step
-          v-for="step in steps"
-          :currentstep="currentstep"
-          :key="step.id"
-          :step="step"
-          :stepcount="2"
-          :form="pc"
-          @step-change="stepChanged"
-        ></step>
+        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="2" :form="pc"
+          @step-change="stepChanged"></step>
       </div>
     </form>
   </div>
@@ -130,7 +94,8 @@
 
 <script>
 import moment from "moment";
-import { PCsRef, PClogRef, userRef } from "@/services/firebase";
+import { PCsRef, PClogRef, userRef, db } from "@/services/firebase";
+import { onValue, query, set, ref } from "firebase/database";
 import stepNavigationStepVue from "./FormPC/step-navigation-step.vue";
 import stepNavigationVue from "./FormPC/step-navigation.vue";
 import stepVue from "./FormPC/step.vue";
@@ -190,40 +155,37 @@ export default {
         .format("dddd D/M/YY HH:mm:ss");
       this.pc.status = false;
       let form = Object.assign({}, this.pc);
-      PCsRef.child(form.id).set(form);
-      PClogRef.child(this.logid).set(form);
+      let NewPCRef = ref(db, 'pcs/' + form.id)
+      let NewPCLogRef = ref(db, 'pcs/' + this.logid)
+      set(NewPCRef, form)
+      set(NewPCLogRef, form)
       let ID = String(this.pc.id);
       this.$router.push({ path: `/pc/solicitud/realizado/${ID}` });
     },
     getPCs() {
-      PCsRef.once("value")
-        .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          let idpc = 1;
-          if (this.listado.length > 0) {
-            this.listado.forEach(pc => {
-              if (pc.id == idpc && pc.status == false) {
-                if (idpc < 30) {
-                  idpc++;
-                } else {
-                  alert("No hay computadoras disponibles.");
-                  this.$router.push("/pc/");
-                }
+      onValue(query(PCsRef), res => {
+        let data = res.val();
+        this.listado = Object.values(data);
+        let idpc = 1;
+        if (this.listado.length > 0) {
+          this.listado.forEach(pc => {
+            if (pc.id == idpc && pc.status == false) {
+              if (idpc < 30) {
+                idpc++;
+              } else {
+                alert("No hay computadoras disponibles.");
+                this.$router.push("/pc/");
               }
-            });
-          }
-          this.pc.id = idpc;
-          // eslint-disable-next-line
-          console.log("ID: ", this.pc.id);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-      PClogRef
-        .once("value")
-        .then(logdb => {
+            }
+          });
+        }
+        this.pc.id = idpc;
+        // eslint-disable-next-line
+        console.log("ID: ", this.pc.id);
+      }, {
+        onlyOnce: true
+      }),
+        onValue(query(PClogRef), logdb => {
           let logdata = logdb.val();
           this.log = Object.values(logdata);
           if (this.log.length > 0) {
@@ -232,23 +194,17 @@ export default {
               this.logid++;
             });
           }
+        }, {
+          onlyOnce: true
         })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
     },
     getUsers() {
-      userRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
+      onValue(query(userRef), res => {
+        let data = res.val();
+        this.usuarios = Object.values(data);
+      }, {
+        onlyOnce: true
+      })
     },
     getUserData(ID) {
       if (this.usuarios.length > 0) {
@@ -290,20 +246,20 @@ export default {
       let res = false;
       if (this.listado.length > 0) {
         this.listado.forEach(pcs => {
-              if (ID == 1) {
-                if (
-                  pcs.user.ced == this.pc.user.ced &&
-                  pcs.status == false
-                ) {
-                  this.pc.user.ced = "";
-                  alert("El usuario ya esta en otra computadora");
-                  res = true;
-                  return res;
-                }
-              } else {
-                res = false;
-              }
-            });
+          if (ID == 1) {
+            if (
+              pcs.user.ced == this.pc.user.ced &&
+              pcs.status == false
+            ) {
+              this.pc.user.ced = "";
+              alert("El usuario ya esta en otra computadora");
+              res = true;
+              return res;
+            }
+          } else {
+            res = false;
+          }
+        });
       }
       return res;
     }
@@ -335,6 +291,7 @@ body {
 .CList {
   align-content: center;
 }
+
 .step-wrapper {
   padding: 20px 0;
   display: none;

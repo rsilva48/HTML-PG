@@ -8,37 +8,39 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import moment from 'moment'
-import { cubRef, PCsRef } from './services/firebase'
+import { cubRef, PCsRef, db } from './services/firebase'
 import { setInterval } from 'timers-browserify'
+import { onValue, query, set, ref } from "firebase/database";
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       listado: [],
       listadopc: []
     }
   },
-  created () {
+  created() {
     moment.locale('es')
     setInterval(() => {
       this.rutina()
     }, 10000)
   },
   methods: {
-    rutina () {
+    rutina() {
       this.getCub()
       this.getPCs()
     },
-    moment () {
+    moment() {
       return moment()
     },
-    setForm (id) {
+    setForm(id) {
       this.listado[id - 1].status = true
       let form = Object.assign({}, this.listado[id - 1])
-      cubRef.child(form.id).set(form)
+      let NewFormRef = ref(db, 'cubiculos/' + form.id)
+      set(NewFormRef, form)
     },
-    getCub () {
-      cubRef.once('value').then(res => {
+    getCub() {
+      onValue(query(cubRef), res => {
         let data = res.val()
         this.listado = Object.values(data)
         this.listado.forEach(cub => {
@@ -50,15 +52,18 @@ export default {
             return true
           }
         })
+      }, {
+        onlyOnce: true
       })
     },
-    setPCStatus (id) {
+    setPCStatus(id) {
       this.listadopc[id - 1].status = true
       let form = Object.assign({}, this.listadopc[id - 1])
-      PCsRef.child(form.id).set(form)
+      let NewPCRef = ref(db, 'pcs/' + formid)
+      set (NewPCRef, form)
     },
-    getPCs () {
-      PCsRef.once('value').then(res => {
+    getPCs() {
+      onValue(query(PCsRef), res => {
         let data = res.val()
         this.listadopc = Object.values(data)
         this.listadopc.forEach(pc => {
@@ -70,6 +75,8 @@ export default {
             return true
           }
         })
+      }, {
+        onlyOnce: true
       })
     },
   },
@@ -89,6 +96,7 @@ export default {
   -ms-flex-align: center;
   align-items: center;
 }
+
 .centertext {
   text-align: center;
 }

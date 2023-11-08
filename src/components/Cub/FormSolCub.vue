@@ -8,41 +8,20 @@
           <h3>Información del Encargado</h3>
           <div class="form-group">
             <label for="id">Cédula</label>
-            <input
-              type="id"
-              name="cedula"
-              class="form-control"
-              placeholder="Ingrese su numero de cédula con guiones"
-              v-model="cub.user.ced"
-              @blur="getUserData(1)"
-              :disabled="cub.user.found"
-            />
+            <input type="id" name="cedula" class="form-control" placeholder="Ingrese su numero de cédula con guiones"
+              v-model="cub.user.ced" @blur="getUserData(1)" :disabled="cub.user.found" />
           </div>
 
           <div class="form-group">
             <label for="name">Nombre Completo</label>
-            <input
-              type="name"
-              name="name"
-              class="form-control"
-              aria-describedby="nameHelp"
-              placeholder="Ingrese su nombre completo"
-              v-model="cub.user.name"
-              :disabled="cub.user.found"
-            />
+            <input type="name" name="name" class="form-control" aria-describedby="nameHelp"
+              placeholder="Ingrese su nombre completo" v-model="cub.user.name" :disabled="cub.user.found" />
           </div>
 
           <div class="form-group">
             <label class="label">Sexo</label>
-            <select
-              v-model="cub.user.sex"
-              type="text"
-              id="sex"
-              class="custom-select"
-              placeholder="Elegir Sexo"
-              :disabled="cub.user.found"
-              required
-            >
+            <select v-model="cub.user.sex" type="text" id="sex" class="custom-select" placeholder="Elegir Sexo"
+              :disabled="cub.user.found" required>
               <option selected disabled value>Elija su Sexo</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
@@ -51,28 +30,17 @@
 
           <div class="form-group">
             <label for="ocup">Ocupación</label>
-            <select
-              v-model="cub.user.ocup"
-              type="text"
-              id="ocup"
-              class="custom-select"
-              :disabled="cub.user.found"
-              required
-            >
+            <select v-model="cub.user.ocup" type="text" id="ocup" class="custom-select" :disabled="cub.user.found"
+              required>
               <option selected disabled value>Elija su Ocupación</option>
               <option value="Est">Estudiante</option>
               <option value="Adm">Administrativo</option>
             </select>
           </div>
 
-          <div class="form-group" v-if="cub.user.ocup=='Est'">
+          <div class="form-group" v-if="cub.user.ocup == 'Est'">
             <label class="label">Facultad</label>
-            <select
-              class="custom-select"
-              type="text"
-              v-model="cub.user.fac"
-              :disabled="cub.user.found"
-            >
+            <select class="custom-select" type="text" v-model="cub.user.fac" :disabled="cub.user.found">
               <option selected disabled value>Elija su facultad</option>
               <option value="CS">Ciencias de la Salud</option>
               <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -83,11 +51,7 @@
           </div>
 
           <div class="form-group">
-            <button
-              type="button"
-              class="btn btn-outline-danger mx-1"
-              @click="delUserData(1)"
-            >Limpiar</button>
+            <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">Limpiar</button>
           </div>
         </div>
 
@@ -115,7 +79,8 @@
               </div>
             </div>
             <br />
-            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check" /> Acepto y estoy de acuerdo con todas las condiciones de uso y seguridad
+            <input type="checkbox" name="terminos" class="center" v-model.number="cub.check" /> Acepto y estoy de acuerdo
+            con todas las condiciones de uso y seguridad
           </div>
         </div>
 
@@ -128,32 +93,19 @@
             <div class="form-row">
               <div class="form-group col-2">
                 <label>Cédula</label>
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user1.ced"
-                  placeholder="Estudiante 2"
-                  @blur="getUserData(2)"
-                  :disabled="cub.integrantes.user1.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user1.ced" placeholder="Estudiante 2"
+                  @blur="getUserData(2)" :disabled="cub.integrantes.user1.found" />
               </div>
 
               <div class="form-group col-3">
                 <label>Nombre</label>
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user1.name"
-                  :disabled="cub.integrantes.user1.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user1.name"
+                  :disabled="cub.integrantes.user1.found" />
               </div>
               <div class="form-group col-1">
                 <label class="label">Sexo</label>
-                <select
-                  v-model="cub.integrantes.user1.sex"
-                  type="text"
-                  id="sex"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user1.found"
-                >
+                <select v-model="cub.integrantes.user1.sex" type="text" id="sex" class="custom-select"
+                  :disabled="cub.integrantes.user1.found">
                   <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
@@ -162,14 +114,8 @@
 
               <div class="form-group col-2">
                 <label for="ocup">Ocupación</label>
-                <select
-                  v-model="cub.integrantes.user1.ocup"
-                  type="text"
-                  id="ocup"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user1.found"
-                  required
-                >
+                <select v-model="cub.integrantes.user1.ocup" type="text" id="ocup" class="custom-select"
+                  :disabled="cub.integrantes.user1.found" required>
                   <option selected disabled value>Elija su Ocupación</option>
                   <option value="Est">Estudiante</option>
                   <option value="Adm">Administrativo</option>
@@ -178,12 +124,8 @@
 
               <div class="form-group col-3">
                 <label class="label">Facultad</label>
-                <select
-                  class="custom-select"
-                  type="text"
-                  v-model="cub.integrantes.user1.fac"
-                  :disabled="cub.integrantes.user1.found || cub.integrantes.user1.ocup=='Adm'"
-                >
+                <select class="custom-select" type="text" v-model="cub.integrantes.user1.fac"
+                  :disabled="cub.integrantes.user1.found || cub.integrantes.user1.ocup == 'Adm'">
                   <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -199,29 +141,16 @@
             </div>
             <div class="form-row">
               <div class="form-group col-2">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user2.ced"
-                  placeholder="Estudiante 3"
-                  @blur="getUserData(3)"
-                  :disabled="cub.integrantes.user2.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user2.ced" placeholder="Estudiante 3"
+                  @blur="getUserData(3)" :disabled="cub.integrantes.user2.found" />
               </div>
               <div class="form-group col-3">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user2.name"
-                  :disabled="cub.integrantes.user2.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user2.name"
+                  :disabled="cub.integrantes.user2.found" />
               </div>
               <div class="form-group col-1">
-                <select
-                  v-model="cub.integrantes.user2.sex"
-                  type="text"
-                  id="sex"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user2.found"
-                >
+                <select v-model="cub.integrantes.user2.sex" type="text" id="sex" class="custom-select"
+                  :disabled="cub.integrantes.user2.found">
                   <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
@@ -229,14 +158,8 @@
               </div>
 
               <div class="form-group col-2">
-                <select
-                  v-model="cub.integrantes.user2.ocup"
-                  type="text"
-                  id="ocup"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user2.found"
-                  required
-                >
+                <select v-model="cub.integrantes.user2.ocup" type="text" id="ocup" class="custom-select"
+                  :disabled="cub.integrantes.user2.found" required>
                   <option selected disabled value>Elija su Ocupación</option>
                   <option value="Est">Estudiante</option>
                   <option value="Adm">Administrativo</option>
@@ -244,12 +167,8 @@
               </div>
 
               <div class="form-group col-3">
-                <select
-                  class="custom-select"
-                  type="text"
-                  v-model="cub.integrantes.user2.fac"
-                  :disabled="cub.integrantes.user2.found || cub.integrantes.user2.ocup=='Adm'"
-                >
+                <select class="custom-select" type="text" v-model="cub.integrantes.user2.fac"
+                  :disabled="cub.integrantes.user2.found || cub.integrantes.user2.ocup == 'Adm'">
                   <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -264,29 +183,16 @@
             </div>
             <div class="form-row">
               <div class="form-group col-2">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user3.ced"
-                  placeholder="Estudiante 4"
-                  @blur="getUserData(4)"
-                  :disabled="cub.integrantes.user3.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user3.ced" placeholder="Estudiante 4"
+                  @blur="getUserData(4)" :disabled="cub.integrantes.user3.found" />
               </div>
               <div class="form-group col-3">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user3.name"
-                  :disabled="cub.integrantes.user3.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user3.name"
+                  :disabled="cub.integrantes.user3.found" />
               </div>
               <div class="form-group col-1">
-                <select
-                  v-model="cub.integrantes.user3.sex"
-                  type="text"
-                  id="sex"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user3.found"
-                >
+                <select v-model="cub.integrantes.user3.sex" type="text" id="sex" class="custom-select"
+                  :disabled="cub.integrantes.user3.found">
                   <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
@@ -294,14 +200,8 @@
               </div>
 
               <div class="form-group col-2">
-                <select
-                  v-model="cub.integrantes.user3.ocup"
-                  type="text"
-                  id="ocup"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user3.found"
-                  required
-                >
+                <select v-model="cub.integrantes.user3.ocup" type="text" id="ocup" class="custom-select"
+                  :disabled="cub.integrantes.user3.found" required>
                   <option selected disabled value>Elija su Ocupación</option>
                   <option value="Est">Estudiante</option>
                   <option value="Adm">Administrativo</option>
@@ -309,12 +209,8 @@
               </div>
 
               <div class="form-group col-3">
-                <select
-                  class="custom-select"
-                  type="text"
-                  v-model="cub.integrantes.user3.fac"
-                  :disabled="cub.integrantes.user3.found || cub.integrantes.user3.ocup=='Adm'"
-                >
+                <select class="custom-select" type="text" v-model="cub.integrantes.user3.fac"
+                  :disabled="cub.integrantes.user3.found || cub.integrantes.user3.ocup == 'Adm'">
                   <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -330,29 +226,16 @@
 
             <div class="form-row">
               <div class="form-group col-2">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user4.ced"
-                  placeholder="Estudiante 5"
-                  @blur="getUserData(5)"
-                  :disabled="cub.integrantes.user4.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user4.ced" placeholder="Estudiante 5"
+                  @blur="getUserData(5)" :disabled="cub.integrantes.user4.found" />
               </div>
               <div class="form-group col-3">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user4.name"
-                  :disabled="cub.integrantes.user4.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user4.name"
+                  :disabled="cub.integrantes.user4.found" />
               </div>
               <div class="form-group col-1">
-                <select
-                  v-model="cub.integrantes.user4.sex"
-                  type="text"
-                  id="sex"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user4.found"
-                >
+                <select v-model="cub.integrantes.user4.sex" type="text" id="sex" class="custom-select"
+                  :disabled="cub.integrantes.user4.found">
                   <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
@@ -360,13 +243,8 @@
               </div>
 
               <div class="form-group col-2">
-                <select
-                  v-model="cub.integrantes.user4.ocup"
-                  type="text"
-                  id="ocup"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user4.found"
-                >
+                <select v-model="cub.integrantes.user4.ocup" type="text" id="ocup" class="custom-select"
+                  :disabled="cub.integrantes.user4.found">
                   <option selected disabled value>Elija su Ocupación</option>
                   <option value="Est">Estudiante</option>
                   <option value="Adm">Administrativo</option>
@@ -374,12 +252,8 @@
               </div>
 
               <div class="form-group col-3">
-                <select
-                  class="custom-select"
-                  type="text"
-                  v-model="cub.integrantes.user4.fac"
-                  :disabled="cub.integrantes.user4.found || cub.integrantes.user4.ocup=='Adm'"
-                >
+                <select class="custom-select" type="text" v-model="cub.integrantes.user4.fac"
+                  :disabled="cub.integrantes.user4.found || cub.integrantes.user4.ocup == 'Adm'">
                   <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -394,29 +268,16 @@
             </div>
             <div class="form-row">
               <div class="form-group col-2">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user5.ced"
-                  placeholder="Estudiante 6"
-                  @blur="getUserData(6)"
-                  :disabled="cub.integrantes.user5.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user5.ced" placeholder="Estudiante 6"
+                  @blur="getUserData(6)" :disabled="cub.integrantes.user5.found" />
               </div>
               <div class="form-group col-3">
-                <input
-                  class="form-control"
-                  v-model="cub.integrantes.user5.name"
-                  :disabled="cub.integrantes.user5.found"
-                />
+                <input class="form-control" v-model="cub.integrantes.user5.name"
+                  :disabled="cub.integrantes.user5.found" />
               </div>
               <div class="form-group col-1">
-                <select
-                  v-model="cub.integrantes.user5.sex"
-                  type="text"
-                  id="sex"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user5.found"
-                >
+                <select v-model="cub.integrantes.user5.sex" type="text" id="sex" class="custom-select"
+                  :disabled="cub.integrantes.user5.found">
                   <option selected disabled value>Elija su Sexo</option>
                   <option value="M">M</option>
                   <option value="F">F</option>
@@ -424,13 +285,8 @@
               </div>
 
               <div class="form-group col-2">
-                <select
-                  v-model="cub.integrantes.user5.ocup"
-                  type="text"
-                  id="ocup"
-                  class="custom-select"
-                  :disabled="cub.integrantes.user5.found"
-                >
+                <select v-model="cub.integrantes.user5.ocup" type="text" id="ocup" class="custom-select"
+                  :disabled="cub.integrantes.user5.found">
                   <option selected disabled value>Elija su Ocupación</option>
                   <option value="Est">Estudiante</option>
                   <option value="Adm">Administrativo</option>
@@ -438,12 +294,8 @@
               </div>
 
               <div class="form-group col-3">
-                <select
-                  class="custom-select"
-                  type="text"
-                  v-model="cub.integrantes.user5.fac"
-                  :disabled="cub.integrantes.user5.found || cub.integrantes.user5.ocup=='Adm'"
-                >
+                <select class="custom-select" type="text" v-model="cub.integrantes.user5.fac"
+                  :disabled="cub.integrantes.user5.found || cub.integrantes.user5.ocup == 'Adm'">
                   <option selected disabled value>Elija su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -458,15 +310,8 @@
             </div>
           </div>
         </div>
-        <step
-          v-for="step in steps"
-          :currentstep="currentstep"
-          :key="step.id"
-          :step="step"
-          :stepcount="steps.length"
-          :form="cub"
-          @step-change="stepChanged"
-        ></step>
+        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="steps.length"
+          :form="cub" @step-change="stepChanged"></step>
       </div>
     </form>
   </div>
@@ -474,8 +319,8 @@
 
 <script>
 import moment from "moment";
-import { cubRef, cublogRef, userRef } from "@/services/firebase";
-
+import { cubRef, cublogRef, userRef, db } from "@/services/firebase";
+import { onValue, query, set, ref } from "firebase/database";
 import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
 import stepNavigationVue from "./FormCub/step-navigation.vue";
 import stepVue from "./FormCub/step.vue";
@@ -578,45 +423,42 @@ export default {
     addForm() {
       this.cub.date_start = moment().format("dddd D/M/YY HH:mm:ss");
       this.cub.date_end = moment()
-        .add(2, "m")
+        .add(30, "m") //30 minutos de prestamo
         .format("dddd D/M/YY HH:mm:ss");
       this.cub.status = false;
       let form = Object.assign({}, this.cub);
-      cubRef.child(form.id).set(form);
-      cublogRef.child(this.logid).set(form);
+      //Actualización de base de datos
+      let NewCubRef = ref(db, 'cubiculos/' + form.id)
+      let NewCubLogRef = ref(db, 'cublog/' + this.logid)
+      set(NewCubRef ,  form );
+      set(NewCubLogRef, form );
       let ID = String(this.cub.id);
       this.$router.push({ path: `/cub/solicitud/realizado/${ID}` });
     },
     getCub() {
-      cubRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.listado = Object.values(data);
-          let idcub = 1;
-          if (this.listado.length > 0) {
-            this.listado.forEach(cubs => {
-              if (cubs.id == idcub && cubs.status == false) {
-                if (idcub < 10) {
-                  idcub++;
-                } else {
-                  alert("No hay cubículos disponibles.");
-                  this.$router.push("/cub/");
-                }
+      onValue(query(cubRef), res => {
+        let data = res.val();
+        this.listado = Object.values(data);
+        let idcub = 1;
+        if (this.listado.length > 0) {
+          this.listado.forEach(cubs => {
+            if (cubs.id == idcub && cubs.status == false) {
+              if (idcub < 10) {
+                idcub++;
+              } else {
+                alert("No hay cubículos disponibles.");
+                this.$router.push("/cub/");
               }
-            });
-          }
-          this.cub.id = idcub;
-          // eslint-disable-next-line
-          console.log("ID: ", this.cub.id);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
-      cublogRef
-        .once("value")
-        .then(logdb => {
+            }
+          });
+        }
+        this.cub.id = idcub;
+        // eslint-disable-next-line
+        console.log("ID: ", this.cub.id);
+      }, {
+        onlyOnce: true
+      }),
+        onValue(query(cublogRef), logdb => {
           let logdata = logdb.val();
           this.log = Object.values(logdata);
           if (this.log.length > 0) {
@@ -625,23 +467,17 @@ export default {
               this.logid++;
             });
           }
+        }, {
+          onlyOnce: true
         })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
     },
     getUsers() {
-      userRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
+      onValue(query(userRef), res => {
+        let data = res.val();
+        this.usuarios = Object.values(data);
+      }, {
+        onlyOnce: true
+      })
     },
     getUserData(ID) {
       if (this.usuarios.length > 0) {
@@ -949,6 +785,7 @@ body {
 .CList {
   align-content: center;
 }
+
 .step-wrapper {
   padding: 20px 0;
   display: none;
