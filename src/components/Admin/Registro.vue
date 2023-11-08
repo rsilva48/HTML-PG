@@ -44,7 +44,7 @@
               </div>
               <!--  v-if="user.ocup=='Est'" -->
               <div class="form-label-group">
-                <select v-model="user.fac" v-if="user.ocup=='Est'" type="text" id="fac" class="custom-select" >
+                <select v-model="user.fac" v-if="user.ocup == 'Est'" type="text" id="fac" class="custom-select" required>
                   <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
