@@ -133,7 +133,7 @@ export default {
     },
     addUser() {
       if (this.user.ocup == "Adm") {
-        //this.user.fac = "";
+        this.user.fac = "";
       } else if (this.user.ocup == "Est") {
         this.user.password = "";
       }
