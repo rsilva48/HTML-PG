@@ -9,7 +9,7 @@
 import NavBar from './components/NavBar.vue'
 import moment from 'moment'
 import { cubRef, PCsRef } from './services/firebase'
-import { setInterval } from 'timers'
+import { setInterval } from 'timers-browserify'
 export default {
   name: 'app',
   data () {

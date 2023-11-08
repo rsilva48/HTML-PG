@@ -42,7 +42,7 @@
 <script>
 import { userRef } from "@/services/firebase";
 export default {
-  name: "Login",
+  name: "CRAILogin",
   data() {
     return {
       user: {

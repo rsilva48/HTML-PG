@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'PCs',
+  name: 'CRAIPCs',
   methods: {},
   components: {}
 }

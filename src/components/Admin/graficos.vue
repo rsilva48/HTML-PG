@@ -10,6 +10,7 @@
 import LineChart from './LineChart.js'
 
 export default {
+  name: "CRAIGraficos",
   components: {
     LineChart
   },

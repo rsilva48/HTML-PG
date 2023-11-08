@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "step",
+  name: "CubStep",
   props: ["step", "stepcount", "currentstep", "form"],
 
   computed: {

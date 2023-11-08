@@ -99,7 +99,7 @@ import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
 import { userRef } from "@/services/firebase";
 export default {
-  name: "Registro",
+  name: "CRAIRegistro",
   components: {
     AdminMenu,
     AdminTitulo

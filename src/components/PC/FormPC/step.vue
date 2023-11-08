@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "step",
+  name: "PCStep",
   props: ["step", "stepcount", "currentstep", "form"],
 
   computed: {

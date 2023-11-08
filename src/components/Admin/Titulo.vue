@@ -19,3 +19,8 @@
     </header>
   </div>
 </template>
+<script>
+export default {
+  name: "CRAITitulo"
+}
+</script>

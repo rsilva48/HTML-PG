@@ -406,7 +406,7 @@
 <script>
 import moment from "moment";
 import { PCsRef } from "@/services/firebase";
-import { setInterval } from "timers";
+import { setInterval } from 'timers-browserify';
 export default {
   name: "PCListUser",
   data() {

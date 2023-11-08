@@ -156,7 +156,8 @@
 <script>
 import moment from "moment";
 import { cubRef } from "@/services/firebase";
-import { setInterval } from "timers";
+import { setInterval } from 'timers-browserify';
+import { onValue } from "firebase/database";
 export default {
   name: "CubListUser",
   data() {
@@ -180,6 +181,17 @@ export default {
       return moment();
     },
     getCub() {
+      onValue(cubRef,res => {
+          let data = res.val();
+          this.listado = Object.values(data);
+          this.date2hour();
+        }, {
+  onlyOnce: true
+}).catch(error => {
+          // eslint-disable-next-line
+          console.log("Error: ", error);
+        });
+      /*  
       cubRef
         .once("value")
         .then(res => {
@@ -191,6 +203,7 @@ export default {
           // eslint-disable-next-line
           console.log("Error: ", error);
         });
+        */
     },
     date2hour() {
       this.listado.forEach(cubs => {
