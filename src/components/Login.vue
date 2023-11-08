@@ -8,39 +8,23 @@
       </div>
 
       <div class="form-label-group">
-        <input
-          type="cedula"
-          id="inputEmail"
-          class="form-control"
-          placeholder="Cédula"
-          v-model="user.ced"
-          required
-          autofocus
-        />
+        <input type="cedula" id="inputEmail" class="form-control" placeholder="Cédula" v-model="user.ced" required
+          autofocus />
         <label for="inputEmail">Numero de Cédula</label>
       </div>
 
       <div class="form-label-group">
-        <input
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          placeholder="Contraseña"
-          v-model="user.password"
-          required
-        />
+        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" v-model="user.password"
+          required />
         <label for="inputPassword">Contraseña</label>
       </div>
-      <button
-        class="btn btn-lg btn-primary btn-block"
-        type="submit"
-        :disabled="enablelogin"
-      >Iniciar Sesión</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">Iniciar Sesión</button>
     </form>
   </div>
 </template>
 <script>
 import { userRef } from "@/services/firebase";
+import { onValue, query } from "firebase/database";
 export default {
   name: "CRAILogin",
   data() {
@@ -66,16 +50,12 @@ export default {
   },
   methods: {
     getUsers() {
-      userRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
+      onValue(query(userRef), res => {
+        let data = res.val();
+        this.usuarios = Object.values(data);
+      }, {
+        onlyOnce: true
+      })
     },
     login() {
       let count = 1;
@@ -148,13 +128,13 @@ export default {
   margin-bottom: 1rem;
 }
 
-.form-label-group > input,
-.form-label-group > label {
+.form-label-group>input,
+.form-label-group>label {
   height: 3.125rem;
   padding: 0.75rem;
 }
 
-.form-label-group > label {
+.form-label-group>label {
   position: absolute;
   top: 0;
   left: 0;
@@ -197,7 +177,7 @@ export default {
   padding-bottom: 0.25rem;
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label {
+.form-label-group input:not(:placeholder-shown)~label {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 12px;

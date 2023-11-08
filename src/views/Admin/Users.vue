@@ -44,6 +44,7 @@
 import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
 import { userRef } from "@/services/firebase";
+import { onValue, query } from "firebase/database";
 export default {
   name: "AdminView",
   components: {
@@ -62,21 +63,17 @@ export default {
   methods: {
     getUsers() {
       this.loading = true
-      userRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
-          this.loading = false;
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
+      onValue(query(userRef), res => {
+        let data = res.val();
+        this.usuarios = Object.values(data);
+        this.loading = false;
+      }, {
+        onlyOnce: true
+      })
+
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

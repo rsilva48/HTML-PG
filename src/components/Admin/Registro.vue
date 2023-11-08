@@ -14,28 +14,14 @@
               </div>
 
               <div class="form-label-group">
-                <input
-                  type="text"
-                  id="id"
-                  class="form-control"
-                  placeholder="Numero de Cédula"
-                  required
-                  autofocus
-                  v-model="user.ced"
-                  @blur="exist"
-                />
+                <input type="text" id="id" class="form-control" placeholder="Numero de Cédula" required autofocus
+                  v-model="user.ced" @blur="exist" />
                 <label for="id">Numero de Cédula</label>
               </div>
 
               <div class="form-label-group">
-                <input
-                  type="text"
-                  id="name"
-                  class="form-control"
-                  placeholder="Nombre Completo"
-                  required
-                  v-model="user.name"
-                />
+                <input type="text" id="name" class="form-control" placeholder="Nombre Completo" required
+                  v-model="user.name" />
                 <label for="name">Nombre Completo</label>
               </div>
 
@@ -58,7 +44,7 @@
               </div>
               <!--  v-if="user.ocup=='Est'" -->
               <div class="form-label-group">
-                <select v-model="user.fac" type="text" id="fac" class="custom-select" required>
+                <select v-model="user.fac" v-if="user.ocup=='Est'" type="text" id="fac" class="custom-select" >
                   <option selected disabled value>Eliga su facultad</option>
                   <option value="CS">Ciencias de la Salud</option>
                   <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -70,23 +56,13 @@
               </div>
               <!--  v-if="user.ocup=='Adm'" -->
               <div class="form-label-group">
-                <input
-                  type="password"
-                  id="password"
-                  class="form-control"
-                  placeholder="Ingrese Contraseña"
-                  required
-                  v-model="user.password"
-                />
+                <input type="password" id="password" class="form-control" placeholder="Ingrese Contraseña" required
+                  v-model="user.password" />
                 <label for="password">Contraseña</label>
               </div>
 
-              <button
-                class="btn btn-lg btn-primary btn-block"
-                type="submit"
-                :disabled="validation"
-                @click="addUser"
-              >Registrarse</button>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="validation"
+                @click="addUser">Registrarse</button>
             </form>
           </div>
         </div>
@@ -97,7 +73,8 @@
 <script>
 import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
-import { userRef } from "@/services/firebase";
+import { userRef, db } from "@/services/firebase";
+import { onValue, query, set, ref } from "firebase/database";
 export default {
   name: "CRAIRegistro",
   components: {
@@ -156,26 +133,23 @@ export default {
     },
     addUser() {
       if (this.user.ocup == "Adm") {
-        this.user.fac = "";
+        //this.user.fac = "";
       } else if (this.user.ocup == "Est") {
         this.user.password = "";
       }
       let form = Object.assign({}, this.user);
-      userRef.child(this.user.ced).set(form);
+      let NewUserRef = ref(db, 'users/' + this.user.ced)
+      set(NewUserRef, form)
       alert("Se ha registrado correctamente.");
-      this.$router.push("/");
+      this.$router.push("/admin");
     },
     getUsers() {
-      userRef
-        .once("value")
-        .then(res => {
-          let data = res.val();
-          this.usuarios = Object.values(data);
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        });
+      onValue(query(userRef), res => {
+        let data = res.val();
+        this.usuarios = Object.values(data);
+      }, {
+        onlyOnce: true
+      })
     }
   }
 };
@@ -200,14 +174,14 @@ export default {
   margin-bottom: 1rem;
 }
 
-.form-label-group > input,
-.form-label-group > select,
-.form-label-group > label {
+.form-label-group>input,
+.form-label-group>select,
+.form-label-group>label {
   height: 3.125rem;
   padding: 0.75rem;
 }
 
-.form-label-group > label {
+.form-label-group>label {
   position: absolute;
   top: 0;
   left: 0;
@@ -250,7 +224,7 @@ export default {
   padding-bottom: 0.25rem;
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label {
+.form-label-group input:not(:placeholder-shown)~label {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 12px;
@@ -282,7 +256,7 @@ export default {
   padding-bottom: 0.25rem;
 }
 
-.form-label-group select:not(:placeholder-shown) ~ label {
+.form-label-group select:not(:placeholder-shown)~label {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 12px;

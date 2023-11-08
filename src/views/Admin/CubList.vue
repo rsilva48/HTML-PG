@@ -3,18 +3,12 @@
     <div class="jumbotron jumbotron-fluid font">
       <div class="container">
         <h1 class="display-4">Lista de Cubiculos</h1>
-        <hr/>
+        <hr />
         <router-link to="/admin/cub" class="btn btn-primary btn-lg mr-2" role="button">Volver</router-link>
         <router-link to="/admin/cub/solicitud" class="btn btn-primary btn-lg ml-2" role="button">Formulario</router-link>
         <div class="row-flex">
           <div class="custom-control custom-switch">
-            <input
-              type="checkbox"
-              @change="!admin"
-              v-model="admin"
-              class="custom-control-input"
-              id="customSwitch1"
-            />
+            <input type="checkbox" @change="!admin" v-model="admin" class="custom-control-input" id="customSwitch1" />
             <label class="custom-control-label" for="customSwitch1">Vista Usuario/Vista Admin</label>
           </div>
         </div>
@@ -60,15 +54,16 @@
 <script>
 import vistaUsuario from '@/components/Cub/CubListUser'
 import { cubRef } from '@/services/firebase'
+import { onValue, query } from "firebase/database";
 export default {
   name: 'AdminCubList',
-  created () {
+  created() {
     this.loading = true
     setInterval(() => {
       this.getCub()
     }, 1000)
   },
-  data () {
+  data() {
     return {
       listado: [],
       loading: Boolean,
@@ -79,18 +74,14 @@ export default {
     vistaUsuario
   },
   methods: {
-    getCub () {
-      cubRef
-        .once('value')
-        .then(res => {
-          let data = res.val()
-          this.listado = Object.values(data)
-          this.loading = false
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log("Error: ", error);
-        })
+    getCub() {
+      onValue(query(cubRef), res => {
+        let data = res.val()
+        this.listado = Object.values(data)
+        this.loading = false
+      }, {
+        onlyOnce: true
+      })
     }
   }
 }

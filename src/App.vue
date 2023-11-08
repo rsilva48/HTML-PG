@@ -59,7 +59,7 @@ export default {
     setPCStatus(id) {
       this.listadopc[id - 1].status = true
       let form = Object.assign({}, this.listadopc[id - 1])
-      let NewPCRef = ref(db, 'pcs/' + formid)
+      let NewPCRef = ref(db, 'pcs/' + form.id)
       set (NewPCRef, form)
     },
     getPCs() {
