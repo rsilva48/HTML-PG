@@ -2,7 +2,7 @@
   <div class="login">
     <form v-on:submit.prevent="login" class="form-signin">
       <div class="text-center mb-4">
-        <img class="mb-4" src="../assets/uipa.png" alt width="76" height="72" />
+        <img class="mb-4" src="../assets/logocolor.png" alt width="76" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
         <p>Para usar los servicios administrativos de CRAI debe iniciar sesión primero</p>
       </div>

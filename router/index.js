@@ -21,7 +21,7 @@ import AdminReporte from '../src/views/Admin/Reporte.vue'
 
 const routes = [{
     path: '/',
-    name: 'UIP CRAI',
+    name: 'CRAI',
     component: CRAIHome
 },
 {

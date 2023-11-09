@@ -1,6 +1,6 @@
 {
-  "name": "uipcrai",
-  "version": "0.2.0",
+  "name": "crai",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite --port 8080",

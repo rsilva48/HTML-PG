@@ -15,11 +15,11 @@
           </button>
           <router-link to="/" class="navbar-brand" href>
             <img
-              src="@/assets/uip.png"
+              src="@/assets/logo.png"
               width="59"
               height="32"
               class="d-inline-block align-center"
-              alt="UIP"
+              alt="logo"
             /> CRAI
           </router-link>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
