@@ -12,7 +12,10 @@ import { cubRef, PCsRef, db } from './services/firebase'
 import { setInterval } from 'timers-browserify'
 import { onValue, query, set, ref } from "firebase/database";
 export default {
-  name: 'app',
+  name: 'App',
+  components: {
+    NavBar
+  },
   data() {
     return {
       listado: [],
@@ -79,9 +82,6 @@ export default {
         onlyOnce: true
       })
     },
-  },
-  components: {
-    NavBar
   }
 }
 </script>

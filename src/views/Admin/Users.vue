@@ -5,17 +5,32 @@
       <div class="container">
         <div class="row">
           <AdminMenu class="col-md-3" />
-          <div class="text-center col-md-9" v-if="loading">
-            <div class="spinner-border text-primary m-5" role="status">
+          <div
+            v-if="loading"
+            class="text-center col-md-9"
+          >
+            <div
+              class="spinner-border text-primary m-5"
+              role="status"
+            >
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-          <div class="col-md-9" v-if="!loading">
+          <div
+            v-if="!loading"
+            class="col-md-9"
+          >
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Usuarios</h3>
-                <button type="button" class="btn btn-default btn-sm" @click="getUsers">
-                  <i class="fa fa-refresh"></i> Actualizar
+                <h3 class="panel-title">
+                  Usuarios
+                </h3>
+                <button
+                  type="button"
+                  class="btn btn-default btn-sm"
+                  @click="getUsers"
+                >
+                  <i class="fa fa-refresh" /> Actualizar
                 </button>
               </div>
               <div class="panel-body">
@@ -25,7 +40,10 @@
                     <th>Nombre</th>
                     <th>Ocupación</th>
                   </tr>
-                  <tr v-for="(usuario, index) in usuarios" :key="index">
+                  <tr
+                    v-for="(usuario, index) in usuarios"
+                    :key="index"
+                  >
                     <td>{{ usuario.ced }}</td>
                     <td>{{ usuario.name }}</td>
                     <td>{{ usuario.ocup }}</td>
@@ -51,14 +69,14 @@ export default {
     AdminMenu,
     AdminTitulo
   },
-  created() {
-    this.getUsers();
-  },
   data() {
     return {
       loading: true,
       usuarios: []
     };
+  },
+  created() {
+    this.getUsers();
   },
   methods: {
     getUsers() {

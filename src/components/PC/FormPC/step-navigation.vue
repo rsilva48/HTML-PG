@@ -1,22 +1,31 @@
 <template>
   <ol class="step-indicator">
-    <li
+    <component
+      :is="step-navigation-step"
       v-for="step in steps"
-      is="step-navigation-step"
       :key="step.id"
       :step="step"
       :currentstep="currentstep"
-    ></li>
+    />
   </ol>
 </template>
 
 <script>
 import stepNavigationStepVue from './step-navigation-step.vue'
 export default {
-  name: 'step-navigation',
-  props: ['steps', 'currentstep'],
+  name: 'StepNavigation',
   components: {
     'step-navigation-step': stepNavigationStepVue
-  }
+  },
+  props: {
+    'steps': {
+      type: Array,
+      required: true
+    },
+    'currentstep': {
+      type: Number,
+      required: true
+    },
+  },
 }
 </script>

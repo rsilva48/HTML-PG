@@ -10,16 +10,26 @@
             <!-- Latest Users -->
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Reportes</h3>
-                <grafica-component></grafica-component>
+                <h3 class="panel-title">
+                  Reportes
+                </h3>
+                <grafica-component />
               </div>
               <div>
-                <chartjs-doughnut v-bind:labels="labels" :datasets="datasets" :option="option"></chartjs-doughnut>
+                <chartjs-doughnut
+                  :labels="labels"
+                  :datasets="datasets"
+                  :option="option"
+                />
               </div>
               <div>
-                <chartjs-bar :datalabel="mylabel" :labels="mylabels" :data="mydata"></chartjs-bar>
+                <chartjs-bar
+                  :datalabel="mylabel"
+                  :labels="mylabels"
+                  :data="mydata"
+                />
               </div>
-              <div class="panel-body"></div>
+              <div class="panel-body" />
             </div>
           </div>
         </div>

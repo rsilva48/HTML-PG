@@ -1,89 +1,335 @@
 <template>
   <div class="Cub">
-    <div class="text-center" v-if="loading">
-      <div class="spinner-border text-primary m-5" role="status">
+    <div
+      v-if="loading"
+      class="text-center"
+    >
+      <div
+        class="spinner-border text-primary m-5"
+        role="status"
+      >
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <div class="container" v-if="!loading">
+    <div
+      v-if="!loading"
+      class="container"
+    >
       <div class="row">
         <div class="col-md-6">
-          <h3 style="color:green">VERDE</h3>Si esta disponible
+          <h3 style="color:green">
+            VERDE
+          </h3>Si esta disponible
         </div>
-        <hr />
+        <hr>
         <div class="col-md-6">
-          <h3 style="color:red">ROJO</h3>Cuando no esta disponible.
+          <h3 style="color:red">
+            ROJO
+          </h3>Cuando no esta disponible.
         </div>
       </div>
-      <br />
+      <br>
     </div>
-    <div class="container" v-if="!loading">
+    <div
+      v-if="!loading"
+      class="container"
+    >
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-2" v-if="listado[0]">
-                <li class="list-group-item list-group-item-success" v-if="listado[0].status">Cubículo 01</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[0].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[0].status">Cubículo 01</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[0].status">{{ horas[0] }}</li>
+              <div
+                v-if="listado[0]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[0].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 01
+                </li>
+                <li
+                  v-if="listado[0].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[0].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 01
+                </li>
+                <li
+                  v-if="!listado[0].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[0] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[1]">
-                <li class="list-group-item list-group-item-success" v-if="listado[1].status">Cubículo 02</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[1].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[1].status">Cubículo 02</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[1].status">{{ horas[1] }}</li>
+              <div
+                v-if="listado[1]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[1].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 02
+                </li>
+                <li
+                  v-if="listado[1].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[1].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 02
+                </li>
+                <li
+                  v-if="!listado[1].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[1] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[2]">
-                <li class="list-group-item list-group-item-success" v-if="listado[2].status">Cubículo 03</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[2].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[2].status">Cubículo 03</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[2].status">{{ horas[2] }}</li>
+              <div
+                v-if="listado[2]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[2].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 03
+                </li>
+                <li
+                  v-if="listado[2].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[2].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 03
+                </li>
+                <li
+                  v-if="!listado[2].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[2] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[3]">
-                <li class="list-group-item list-group-item-success" v-if="listado[3].status">Cubículo 04</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[3].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[3].status">Cubículo 04</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[3].status">{{ horas[3] }}</li>
+              <div
+                v-if="listado[3]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[3].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 04
+                </li>
+                <li
+                  v-if="listado[3].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[3].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 04
+                </li>
+                <li
+                  v-if="!listado[3].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[3] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[4]">
-                <li class="list-group-item list-group-item-success" v-if="listado[4].status">Cubículo 05</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[4].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[4].status">Cubículo 05</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[4].status">{{ horas[4] }}</li>
+              <div
+                v-if="listado[4]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[4].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 05
+                </li>
+                <li
+                  v-if="listado[4].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[4].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 05
+                </li>
+                <li
+                  v-if="!listado[4].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[4] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[5]">
-                <li class="list-group-item list-group-item-success" v-if="listado[5].status">Cubículo 06</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[5].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[5].status">Cubículo 06</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[5].status">{{ horas[5] }}</li>
+              <div
+                v-if="listado[5]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[5].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 06
+                </li>
+                <li
+                  v-if="listado[5].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[5].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 06
+                </li>
+                <li
+                  v-if="!listado[5].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[5] }}
+                </li>
               </div>
             </div>
-            <br />
+            <br>
             <div class="row">
-              <div class="col-md-2" v-if="listado[6]">
-                <li class="list-group-item list-group-item-success" v-if="listado[6].status">Cubículo 07</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[6].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[6].status">Cubículo 07</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[6].status">{{ horas[6] }}</li>
+              <div
+                v-if="listado[6]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[6].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 07
+                </li>
+                <li
+                  v-if="listado[6].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[6].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 07
+                </li>
+                <li
+                  v-if="!listado[6].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[6] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[7]">
-                <li class="list-group-item list-group-item-success" v-if="listado[7].status">Cubículo 08</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[7].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[7].status">Cubículo 08</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[7].status">{{ horas[7] }}</li>
+              <div
+                v-if="listado[7]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[7].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 08
+                </li>
+                <li
+                  v-if="listado[7].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[7].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 08
+                </li>
+                <li
+                  v-if="!listado[7].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[7] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[8]">
-                <li class="list-group-item list-group-item-success" v-if="listado[8].status">Cubículo 09</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[8].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[8].status">Cubículo 09</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[8].status">{{ horas[8] }}</li>
+              <div
+                v-if="listado[8]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[8].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 09
+                </li>
+                <li
+                  v-if="listado[8].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[8].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 09
+                </li>
+                <li
+                  v-if="!listado[8].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[8] }}
+                </li>
               </div>
-              <div class="col-md-2" v-if="listado[9]">
-                <li class="list-group-item list-group-item-success" v-if="listado[9].status">Cubículo 10</li>
-                <li class="list-group-item list-group-item-general" v-if="listado[9].status">Disponible</li>
-                <li class="list-group-item list-group-item-danger" v-if="!listado[9].status">Cubículo 10</li>
-                <li class="list-group-item list-group-item-general" v-if="!listado[9].status">{{ horas[9] }}</li>
+              <div
+                v-if="listado[9]"
+                class="col-md-2"
+              >
+                <li
+                  v-if="listado[9].status"
+                  class="list-group-item list-group-item-success"
+                >
+                  Cubículo 10
+                </li>
+                <li
+                  v-if="listado[9].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  Disponible
+                </li>
+                <li
+                  v-if="!listado[9].status"
+                  class="list-group-item list-group-item-danger"
+                >
+                  Cubículo 10
+                </li>
+                <li
+                  v-if="!listado[9].status"
+                  class="list-group-item list-group-item-general"
+                >
+                  {{ horas[9] }}
+                </li>
               </div>
             </div>
           </div>

@@ -1,15 +1,16 @@
 // vite.config.js
 //HTTPS with self signed certificate
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import postcssNesting from 'postcss-nesting';
-import mkcert from 'vite-plugin-mkcert'
+import mkcert from 'vite-plugin-mkcert';
+import eslint from 'vite-plugin-eslint';
 const path = require("path");
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),mkcert()],
+  plugins: [vue(), mkcert(), eslint()],
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     alias: {
@@ -18,10 +19,10 @@ export default defineConfig({
   },
   css: {
     postcss: {
-        plugins: [
-            postcssNesting
-        ],
+      plugins: [
+        postcssNesting
+      ],
     },
-}
+  }
 })
 

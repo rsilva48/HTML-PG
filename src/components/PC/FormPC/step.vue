@@ -1,32 +1,60 @@
 <template>
-  <div class="step-wrapper" :class="stepWrapperClass">
+  <div
+    class="step-wrapper"
+    :class="stepWrapperClass"
+  >
     <button
+      v-if="enableback"
       type="button"
       class="btn btn-primary mr-1"
-      v-if="enableback"
-      @click="lastStep"
       :disabled="firststep"
-    >Atras</button>
+      @click="lastStep"
+    >
+      Atras
+    </button>
     <button
+      v-if="disbalenext"
       type="button"
       class="btn btn-primary mx-1"
-      v-if="disbalenext"
-      @click="nextStep"
       :disabled="validation"
-    >Siguiente</button>
+      @click="nextStep"
+    >
+      Siguiente
+    </button>
     <button
+      v-if="laststep"
       type="submit"
       class="btn btn-primary ml-1"
-      v-if="laststep"
       :disabled="validation2"
-    >Enviar</button>
+    >
+      Enviar
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   name: "PCStep",
-  props: ["step", "stepcount", "currentstep", "form"],
+  props: {
+    "step": {
+      type: Object,
+      required: true
+    },
+    "stepcount": {
+      type: Number,
+      required: true
+    },
+    "currentstep": {
+      type: Number,
+      required: true
+    },
+    "form": {
+      type: Object,
+      required: true
+    }
+  },
+
+  emits: ['step-change'],
 
   computed: {
     active() {

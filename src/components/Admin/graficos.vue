@@ -1,7 +1,10 @@
 <template>
   <div class="small">
     <h4>¿Qué sexo se registró más?</h4>
-    <line-chart :chart-data="datacollection" :height="100"></line-chart>
+    <line-chart
+      :chart-data="datacollection"
+      :height="100"
+    />
   </div>
 </template>
 

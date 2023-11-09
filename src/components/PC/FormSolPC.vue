@@ -1,57 +1,141 @@
 <template>
   <div class="FormSolPC">
-    <form v-on:submit.prevent="addForm" id="FormSolPC">
+    <form
+      id="FormSolPC"
+      @submit.prevent="addForm"
+    >
       <div class="container">
-        <step-navigation :steps="steps" :currentstep="currentstep"></step-navigation>
+        <step-navigation
+          :steps="steps"
+          :currentstep="currentstep"
+        />
 
         <div v-show="currentstep == 1">
           <h3>Información del Arrendador</h3>
           <div class="form-group">
             <label for="id">Cédula</label>
-            <input type="id" name="cedula" class="form-control" placeholder="Ingrese su numero de cédula con guiones"
-              v-model="pc.user.ced" @blur="getUserData(1)" :disabled="pc.user.found" />
+            <input
+              v-model="pc.user.ced"
+              type="id"
+              name="cedula"
+              class="form-control"
+              placeholder="Ingrese su numero de cédula con guiones"
+              :disabled="pc.user.found"
+              @blur="getUserData(1)"
+            >
           </div>
 
           <div class="form-group">
             <label for="name">Nombre Completo</label>
-            <input type="name" name="name" class="form-control" aria-describedby="nameHelp"
-              placeholder="Ingrese su nombre completo" v-model="pc.user.name" :disabled="pc.user.found" />
+            <input
+              v-model="pc.user.name"
+              type="name"
+              name="name"
+              class="form-control"
+              aria-describedby="nameHelp"
+              placeholder="Ingrese su nombre completo"
+              :disabled="pc.user.found"
+            >
           </div>
 
           <div class="form-group">
             <label class="label">Sexo</label>
-            <select v-model="pc.user.sex" type="text" id="sex" class="custom-select" placeholder="Elegir Sexo"
-              :disabled="pc.user.found" required>
-              <option selected disabled value>Elija su Sexo</option>
-              <option value="M">Masculino</option>
-              <option value="F">Femenino</option>
+            <select
+              id="sex"
+              v-model="pc.user.sex"
+              type="text"
+              class="custom-select"
+              placeholder="Elegir Sexo"
+              :disabled="pc.user.found"
+              required
+            >
+              <option
+                selected
+                disabled
+                value
+              >
+                Elija su Sexo
+              </option>
+              <option value="M">
+                Masculino
+              </option>
+              <option value="F">
+                Femenino
+              </option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="ocup">Ocupación</label>
-            <select v-model="pc.user.ocup" type="text" id="ocup" class="custom-select" :disabled="pc.user.found" required>
-              <option selected disabled value>Elija su Ocupación</option>
-              <option value="Est">Estudiante</option>
-              <option value="Adm">Administrativo</option>
+            <select
+              id="ocup"
+              v-model="pc.user.ocup"
+              type="text"
+              class="custom-select"
+              :disabled="pc.user.found"
+              required
+            >
+              <option
+                selected
+                disabled
+                value
+              >
+                Elija su Ocupación
+              </option>
+              <option value="Est">
+                Estudiante
+              </option>
+              <option value="Adm">
+                Administrativo
+              </option>
             </select>
           </div>
 
-          <div class="form-group" v-if="pc.user.ocup == 'Est'">
+          <div
+            v-if="pc.user.ocup == 'Est'"
+            class="form-group"
+          >
             <label class="label">Facultad</label>
-            <select class="custom-select" type="text" v-model="pc.user.fac" :disabled="pc.user.found">
-              <option selected disabled value>Elija su facultad</option>
-              <option value="CS">Ciencias de la Salud</option>
-              <option value="HGT">Hotelería, Gastronomía y Turismo</option>
-              <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
-              <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
-              <option value="DCP">Derecho y Ciencias Políticas</option>
+            <select
+              v-model="pc.user.fac"
+              class="custom-select"
+              type="text"
+              :disabled="pc.user.found"
+            >
+              <option
+                selected
+                disabled
+                value
+              >
+                Elija su facultad
+              </option>
+              <option value="CS">
+                Ciencias de la Salud
+              </option>
+              <option value="HGT">
+                Hotelería, Gastronomía y Turismo
+              </option>
+              <option value="IAD">
+                Ingeniería, Arquitectura y Diseño
+              </option>
+              <option value="CAMP">
+                Ciencias Administrativas, Marítima y Portuaria
+              </option>
+              <option value="DCP">
+                Derecho y Ciencias Políticas
+              </option>
             </select>
           </div>
 
 
           <div class="form-group">
-            <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">Limpiar</button>
+            <button
+              type="button"
+              class="btn btn-outline-danger mx-1"
+              @click="delUserData(1)"
+            >
+              Limpiar
+            </button>
           </div>
         </div>
 
@@ -78,15 +162,27 @@
                 </ul>
               </div>
             </div>
-            <br />
-            <input type="checkbox" name="terminos" class="center" v-model.number="pc.check" /> Acepto y estoy de acuerdo
+            <br>
+            <input
+              v-model.number="pc.check"
+              type="checkbox"
+              name="terminos"
+              class="center"
+            > Acepto y estoy de acuerdo
             con todas las condiciones de uso y seguridad
           </div>
         </div>
 
-        <div v-show="currentstep == 3"></div>
-        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="2" :form="pc"
-          @step-change="stepChanged"></step>
+        <div v-show="currentstep == 3" />
+        <step
+          v-for="step in steps"
+          :key="step.id"
+          :currentstep="currentstep"
+          :step="step"
+          :stepcount="2"
+          :form="pc"
+          @step-change="stepChanged"
+        />
       </div>
     </form>
   </div>
@@ -101,6 +197,12 @@ import stepNavigationVue from "./FormPC/step-navigation.vue";
 import stepVue from "./FormPC/step.vue";
 export default {
   name: "FormSolPC",
+  components: {
+    // eslint-disable-next-line
+    "step-navigation-step": stepNavigationStepVue,
+    "step-navigation": stepNavigationVue,
+    step: stepVue
+  },
   data() {
     return {
       currentstep: 1,
@@ -263,12 +365,6 @@ export default {
       }
       return res;
     }
-  },
-  components: {
-    // eslint-disable-next-line
-    "step-navigation-step": stepNavigationStepVue,
-    "step-navigation": stepNavigationVue,
-    step: stepVue
   }
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-default">
       <div class="container">
-        <div class="navbar-header"></div>
+        <div class="navbar-header" />
       </div>
     </nav>
 
@@ -11,7 +11,10 @@
         <div class="row">
           <div class="col-md-10">
             <h1>
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Bienvenido
+              <span
+                class="glyphicon glyphicon-cog"
+                aria-hidden="true"
+              /> Bienvenido
             </h1>
           </div>
         </div>

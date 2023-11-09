@@ -1,13 +1,17 @@
 <template>
-    <div class="PCSol">
-        <div class="jumbotron jumbotron-fluid font">
-        <div class="container">
-            <h1 class="display-4">Solicitud de PC</h1>
-            <p class="lead">Llene la siguiente información para reservar una PC.</p>
-        </div>
+  <div class="PCSol">
+    <div class="jumbotron jumbotron-fluid font">
+      <div class="container">
+        <h1 class="display-4">
+          Solicitud de PC
+        </h1>
+        <p class="lead">
+          Llene la siguiente información para reservar una PC.
+        </p>
+      </div>
     </div>
-    <FormSolPC @send2view="send2app"/>
-    </div>
+    <FormSolPC @send2view="send2app" />
+  </div>
 </template>
 
 <script>
@@ -17,6 +21,7 @@ export default {
   components: {
     FormSolPC
   },
+  emits: ['cubform'],
   methods: {
     send2app (childform) {
       this.$emit('cubform', childform)

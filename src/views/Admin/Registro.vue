@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Registro/>
+    <Registro />
   </div>
 </template>
 

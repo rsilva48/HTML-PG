@@ -1,24 +1,54 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="login" class="form-signin">
+    <form
+      class="form-signin"
+      @submit.prevent="login"
+    >
       <div class="text-center mb-4">
-        <img class="mb-4" src="../assets/logocolor.png" alt width="76" height="72" />
-        <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
+        <img
+          class="mb-4"
+          src="../assets/logocolor.png"
+          alt
+          width="76"
+          height="72"
+        >
+        <h1 class="h3 mb-3 font-weight-normal">
+          Inicio de Sesión para Administrador
+        </h1>
         <p>Para usar los servicios administrativos de CRAI debe iniciar sesión primero</p>
       </div>
 
       <div class="form-label-group">
-        <input type="cedula" id="inputEmail" class="form-control" placeholder="Cédula" v-model="user.ced" required
-          autofocus />
+        <input
+          id="inputEmail"
+          v-model="user.ced"
+          type="cedula"
+          class="form-control"
+          placeholder="Cédula"
+          required
+          autofocus
+        >
         <label for="inputEmail">Numero de Cédula</label>
       </div>
 
       <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" v-model="user.password"
-          required />
+        <input
+          id="inputPassword"
+          v-model="user.password"
+          type="password"
+          class="form-control"
+          placeholder="Contraseña"
+          required
+        >
         <label for="inputPassword">Contraseña</label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">Iniciar Sesión</button>
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+        :disabled="enablelogin"
+      >
+        Iniciar Sesión
+      </button>
     </form>
   </div>
 </template>
@@ -36,9 +66,6 @@ export default {
       usuarios: []
     };
   },
-  created() {
-    this.getUsers();
-  },
   computed: {
     enablelogin() {
       if (this.user.ced == "" || this.user.password == "") {
@@ -47,6 +74,9 @@ export default {
         return false;
       }
     }
+  },
+  created() {
+    this.getUsers();
   },
   methods: {
     getUsers() {

@@ -6,63 +6,156 @@
         <div class="row">
           <AdminMenu class="col-md-3" />
           <div class="login col-md-9">
-            <form class="form-signin" v-on:submit.prevent="addUser" id="UserReg">
+            <form
+              id="UserReg"
+              class="form-signin"
+              @submit.prevent="addUser"
+            >
               <div class="text-center mb-4">
-                <img class="mb-4" src="@/assets/logocolor.png" alt width="76" height="72" />
-                <h1 class="h3 mb-3 font-weight-normal">Registro de Usuario</h1>
+                <img
+                  class="mb-4"
+                  src="@/assets/logocolor.png"
+                  alt
+                  width="76"
+                  height="72"
+                >
+                <h1 class="h3 mb-3 font-weight-normal">
+                  Registro de Usuario
+                </h1>
                 <p>Para facilitar los servicios de CRAI debe registrarse primero</p>
               </div>
 
               <div class="form-label-group">
-                <input type="text" id="id" class="form-control" placeholder="Numero de Cédula" required autofocus
-                  v-model="user.ced" @blur="exist" />
+                <input
+                  id="id"
+                  v-model="user.ced"
+                  type="text"
+                  class="form-control"
+                  placeholder="Numero de Cédula"
+                  required
+                  autofocus
+                  @blur="exist"
+                >
                 <label for="id">Numero de Cédula</label>
               </div>
 
               <div class="form-label-group">
-                <input type="text" id="name" class="form-control" placeholder="Nombre Completo" required
-                  v-model="user.name" />
+                <input
+                  id="name"
+                  v-model="user.name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre Completo"
+                  required
+                >
                 <label for="name">Nombre Completo</label>
               </div>
 
               <div class="form-label-group">
-                <select v-model="user.sex" type="text" id="sex" class="custom-select" required>
-                  <option selected disabled value>Eliga su Sexo</option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenino</option>
+                <select
+                  id="sex"
+                  v-model="user.sex"
+                  type="text"
+                  class="custom-select"
+                  required
+                >
+                  <option
+                    selected
+                    disabled
+                    value
+                  >
+                    Eliga su Sexo
+                  </option>
+                  <option value="M">
+                    Masculino
+                  </option>
+                  <option value="F">
+                    Femenino
+                  </option>
                 </select>
                 <label for="fac">Sexo</label>
               </div>
 
               <div class="form-label-group">
-                <select v-model="user.ocup" type="text" id="ocup" class="custom-select" required>
-                  <option selected disabled value>Elija su Ocupación</option>
-                  <option value="Est">Estudiante</option>
-                  <option value="Adm">Administrativo</option>
+                <select
+                  id="ocup"
+                  v-model="user.ocup"
+                  type="text"
+                  class="custom-select"
+                  required
+                >
+                  <option
+                    selected
+                    disabled
+                    value
+                  >
+                    Elija su Ocupación
+                  </option>
+                  <option value="Est">
+                    Estudiante
+                  </option>
+                  <option value="Adm">
+                    Administrativo
+                  </option>
                 </select>
                 <label for="ocup">Ocupación</label>
               </div>
               <!--  v-if="user.ocup=='Est'" -->
               <div class="form-label-group">
-                <select v-model="user.fac" v-if="user.ocup == 'Est'" type="text" id="fac" class="custom-select" required>
-                  <option selected disabled value>Eliga su facultad</option>
-                  <option value="CS">Ciencias de la Salud</option>
-                  <option value="HGT">Hotelería, Gastronomía y Turismo</option>
-                  <option value="IAD">Ingeniería, Arquitectura y Diseño</option>
-                  <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
-                  <option value="DCP">Derecho y Ciencias Políticas</option>
+                <select
+                  v-if="user.ocup == 'Est'"
+                  id="fac"
+                  v-model="user.fac"
+                  type="text"
+                  class="custom-select"
+                  required
+                >
+                  <option
+                    selected
+                    disabled
+                    value
+                  >
+                    Eliga su facultad
+                  </option>
+                  <option value="CS">
+                    Ciencias de la Salud
+                  </option>
+                  <option value="HGT">
+                    Hotelería, Gastronomía y Turismo
+                  </option>
+                  <option value="IAD">
+                    Ingeniería, Arquitectura y Diseño
+                  </option>
+                  <option value="CAMP">
+                    Ciencias Administrativas, Marítima y Portuaria
+                  </option>
+                  <option value="DCP">
+                    Derecho y Ciencias Políticas
+                  </option>
                 </select>
                 <label for="fac">Facultad</label>
               </div>
               <!--  v-if="user.ocup=='Adm'" -->
               <div class="form-label-group">
-                <input type="password" id="password" class="form-control" placeholder="Ingrese Contraseña" required
-                  v-model="user.password" />
+                <input
+                  id="password"
+                  v-model="user.password"
+                  type="password"
+                  class="form-control"
+                  placeholder="Ingrese Contraseña"
+                  required
+                >
                 <label for="password">Contraseña</label>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="validation"
-                @click="addUser">Registrarse</button>
+              <button
+                class="btn btn-lg btn-primary btn-block"
+                type="submit"
+                :disabled="validation"
+                @click="addUser"
+              >
+                Registrarse
+              </button>
             </form>
           </div>
         </div>
