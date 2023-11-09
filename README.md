@@ -1,6 +1,9 @@
 # Proyecto Universitario: CRAI
 Proyecto para digitalizar el proceso de prestamos de computadoras y cubiculos en la biblioteca de la Universidad
 
+
+Demo: https://rsilva.zef.ro/
+
 ## Project setup (para instalar dependencias y plugins)
 ```
 npm install
