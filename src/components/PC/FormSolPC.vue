@@ -326,7 +326,7 @@ body {
       height: 1px;
       position: absolute;
       width: 100%;
-      top: $wizard-step-width-height/2;
+      top: calc($wizard-step-width-height / 2);
     }
 
     &:after {
