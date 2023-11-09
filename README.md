@@ -16,6 +16,11 @@ npm run dev
 npm run build
 ```
 
+### Serves app on network after compiling
+```
+npm run serve
+```
+
 ### Run your tests
 ```
 npm run test
@@ -25,6 +30,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
