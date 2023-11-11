@@ -19,7 +19,7 @@ npm run dev
 npm run build
 ```
 
-### Serves app on network after compiling
+### Serves app after compiling
 ```
 npm run serve
 ```
@@ -29,7 +29,12 @@ npm run serve
 npm run test
 ```
 
-### Lints and fixes files
+### Lints files
 ```
 npm run lint
+```
+
+### Lints and fixes files
+```
+npm run lintfix
 ```

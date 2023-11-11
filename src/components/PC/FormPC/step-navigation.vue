@@ -1,12 +1,13 @@
 <template>
   <ol class="step-indicator">
-    <component
-      :is="step-navigation-step"
-      v-for="step in steps"
-      :key="step.id"
-      :step="step"
-      :currentstep="currentstep"
-    />
+    <component :is="step-navigation-step">
+      <li
+        v-for="step in steps"
+        :key="step.id"
+        :step="step"
+        :currentstep="currentstep"
+      />
+    </component>
   </ol>
 </template>
 
@@ -27,5 +28,9 @@ export default {
       required: true
     },
   },
+  data() {
+    return {
+    }
+  }
 }
 </script>

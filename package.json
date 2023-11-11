@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vite build",
-    "serve": "vite preview --host"
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue src\\**",
+    "lintfix": "eslint --ext .js,.vue src\\** --fix"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

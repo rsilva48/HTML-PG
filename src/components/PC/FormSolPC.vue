@@ -43,7 +43,7 @@
             <select
               id="sex"
               v-model="pc.user.sex"
-              type="text"
+              
               class="custom-select"
               placeholder="Elegir Sexo"
               :disabled="pc.user.found"
@@ -70,7 +70,7 @@
             <select
               id="ocup"
               v-model="pc.user.ocup"
-              type="text"
+              
               class="custom-select"
               :disabled="pc.user.found"
               required
@@ -99,7 +99,7 @@
             <select
               v-model="pc.user.fac"
               class="custom-select"
-              type="text"
+              
               :disabled="pc.user.found"
             >
               <option
