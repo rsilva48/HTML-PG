@@ -6,7 +6,10 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import 'chart.js'
+import Vue3FormWizard from 'vue3-form-wizard'
+import 'vue3-form-wizard/dist/style.css'
 
 const app = createApp(App)
 app.use(router)
+app.use(Vue3FormWizard)
 app.mount('#app')
