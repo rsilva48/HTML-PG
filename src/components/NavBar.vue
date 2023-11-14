@@ -60,6 +60,7 @@
             <div class="nav-item dropdown-divider" />
           </ul>
           <router-link
+            v-if="user.logged==false"
             to="/login"
             role="button"
             class="btn btn-outline-light ml-2"
@@ -69,6 +70,17 @@
           >
             Iniciar Sesión
           </router-link>
+          <button
+            v-if="user.logged==true"
+            role="button"
+            class="btn btn-danger ml-2"
+            href
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            @click="LogOut()"
+          >
+            Cerrar sesión
+          </button>
         </div>
       </div>
     </nav>
@@ -76,7 +88,50 @@
 </template>
 
 <script>
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from '@/services/firebase'
+
 export default {
-    name: 'NavBar'
+  name: 'NavBar',
+emits: ['loginuser'],
+  data() {
+    return {
+      user: {
+        name: "",
+        logged: ""
+      },
+    };
+  },
+  created() {
+    this.getLogin()
+    },
+    methods: {
+    getLogin() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const uid = user.uid;
+          this.user.logged = true
+          return true
+          // ...
+        } else {
+          // User is signed out
+          // ...
+          this.user.logged = false
+          return false
+        }
+      })
+    },
+    LogOut() {
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        alert("Sesión cerrada correctamente.");
+        this.$router.push({ path: `/` });
+      }).catch((error) => {
+        // An error happened.
+      });
+    }
+  }
 }
 </script>

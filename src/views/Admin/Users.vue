@@ -39,6 +39,8 @@
                     <th>Cédula</th>
                     <th>Nombre</th>
                     <th>Ocupación</th>
+                    <th>Correo electronico</th>
+                    <th>Eliminar</th>
                   </tr>
                   <tr
                     v-for="(usuario, index) in usuarios"
@@ -47,6 +49,23 @@
                     <td>{{ usuario.ced }}</td>
                     <td>{{ usuario.name }}</td>
                     <td>{{ usuario.ocup }}</td>
+                    <td>
+                      {{ usuario.email }} <a
+                        v-if="false"
+                        href="#"
+                        class="badge badge-pill badge-secondary"
+                        @click="editEmail(usuario.ced)"
+                      >Editar</a>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        @click="delUser(usuario.ced)"
+                      >
+                        X
+                      </button>
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -61,8 +80,8 @@
 <script>
 import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
-import { userRef } from "@/services/firebase";
-import { onValue, query } from "firebase/database";
+import { userRef, db } from "@/services/firebase";
+import { onValue, query, remove, ref } from "firebase/database";
 export default {
   name: "AdminView",
   components: {
@@ -88,6 +107,16 @@ export default {
       }, {
         onlyOnce: true
       })
+
+    },
+    delUser(iduser) {
+      console.log(iduser)
+      let NewUserRef = ref(db, 'users/' + iduser)
+      remove(NewUserRef)
+      this.getUsers();
+    },
+    editEmail(iduser) {
+      console.log(iduser)
 
     }
   }

@@ -53,7 +53,8 @@
   </div>
 </template>
 <script>
-import { userRef } from "@/services/firebase";
+import { userRef, auth } from "@/services/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { onValue, query } from "firebase/database";
 export default {
   name: "CRAILogin",
@@ -97,7 +98,18 @@ export default {
             this.user.password == user.password &&
             user.ocup == "Adm"
           ) {
-            alert("Ha iniciado sesión correctamente.");
+            alert("Ha iniciado sesión como Admin.");
+            signInWithEmailAndPassword(auth, this.user.email, this.user.password).
+              then((userCredential) => {
+                // Signed up 
+                const loggeduser = userCredential.user;
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+              });
             this.$router.push({ path: `/admin` });
             count = 0;
             return;
@@ -114,6 +126,21 @@ export default {
             this.user.password == user.password &&
             user.ocup != "Adm"
           ) {
+            alert("Ha accedido como estudiante.");
+            console.log(user.email)
+            signInWithEmailAndPassword(auth, user.email, this.user.password).
+              then((userCredential) => {
+                // Signed up 
+                const loggeduser = userCredential.user;
+                this.$router.push({ path: `/` });
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert("Error en las credenciales.");
+                // ..
+              });
             count = 2;
             return;
           } else if (count > 0) {
@@ -127,9 +154,7 @@ export default {
         this.user.ced = "";
         this.user.password = "";
       } else if (count == 2) {
-        alert("Usted no tiene los privilegios suficientes para acceder.");
-        this.user.ced = "";
-        this.user.password = "";
+
       } else if (count == 3) {
         alert("Ingrese su contraseña correctamente.");
         this.user.password = "";

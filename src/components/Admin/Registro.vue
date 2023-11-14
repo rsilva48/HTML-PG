@@ -103,7 +103,6 @@
               <!--  v-if="user.ocup=='Est'" -->
               <div class="form-label-group">
                 <select
-                  v-if="user.ocup == 'Est'"
                   id="fac"
                   v-model="user.fac"
                   type="text"
@@ -138,6 +137,17 @@
               <!--  v-if="user.ocup=='Adm'" -->
               <div class="form-label-group">
                 <input
+                  id="email"
+                  v-model="user.email"
+                  type="email"
+                  class="form-control"
+                  placeholder="Correo electronico"
+                  required
+                >
+                <label for="id">Correo electronico</label>
+              </div>
+              <div class="form-label-group">
+                <input
                   id="password"
                   v-model="user.password"
                   type="password"
@@ -166,8 +176,9 @@
 <script>
 import AdminTitulo from "@/components/Admin/Titulo.vue";
 import AdminMenu from "@/components/Admin/Menu.vue";
-import { userRef, db } from "@/services/firebase";
+import { userRef, db, auth } from "@/services/firebase";
 import { onValue, query, set, ref } from "firebase/database";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 export default {
   name: "CRAIRegistro",
   components: {
@@ -182,6 +193,7 @@ export default {
         fac: "",
         sex: "",
         ocup: "",
+        email: "",
         password: ""
       },
       usuarios: []
@@ -189,23 +201,12 @@ export default {
   },
   computed: {
     validation() {
-      if (
-        this.user.ocup == "Est" &&
-        (this.user.name == "" ||
-          this.user.ced == "" ||
-          this.user.fac == "" ||
-          this.user.sex == "")
-      ) {
-        return true;
-      } else if (
-        this.user.ocup == "Adm" &&
-        (this.user.name == "" ||
-          this.user.ced == "" ||
-          this.user.password == "" ||
-          this.user.sex == "")
-      ) {
-        return true;
-      } else if (this.user.ocup == "") {
+      if (this.user.name == "" ||
+        this.user.ced == "" ||
+        this.user.email == "" ||
+        this.user.fac == "" ||
+        this.user.sex == "" ||
+        this.user.password == "") {
         return true;
       } else {
         return false;
@@ -222,18 +223,35 @@ export default {
           alert("El usuario ya existe.");
           this.user.ced = "";
         }
+        if (this.user.email == usuario.email) {
+          alert("Este correo ya esta registrado.");
+          this.user.email = "";
+        }
       });
     },
     addUser() {
+      /*
       if (this.user.ocup == "Adm") {
         this.user.fac = "";
       } else if (this.user.ocup == "Est") {
         this.user.password = "";
-      }
+      }*/
       let form = Object.assign({}, this.user);
       let NewUserRef = ref(db, 'users/' + this.user.ced)
       set(NewUserRef, form)
+      createUserWithEmailAndPassword(auth, this.user.email, this.user.password).
+        then((userCredential) => {
+          // Signed up 
+          const loggeduser = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
       alert("Se ha registrado correctamente.");
+
       this.$router.push("/admin");
     },
     getUsers() {
