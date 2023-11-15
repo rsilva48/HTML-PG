@@ -12,9 +12,11 @@ const fbconf = {
 //Firebase >=v9 Modular API
 import { initializeApp } from 'firebase/app'
 import { ref, getDatabase } from "firebase/database"
+import { getAuth } from "firebase/auth"
 const app = initializeApp(fbconf)
 //Set Database references to path in Firebase DB
 export const db = getDatabase(app)
+export const auth = getAuth(app)
 export const cubRef = ref(db, '/cubiculos')
 export const PCsRef = ref(db, '/pcs')
 export const cublogRef = ref(db, '/cublog')
