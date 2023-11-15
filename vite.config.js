@@ -4,14 +4,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import postcssNesting from 'postcss-nesting';
-import fs from 'fs';
+import eslint from 'vite-plugin-eslint';
 const path = require("path");
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
   },
-  plugins: [vue()],
+  plugins: [vue(), eslint()],
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     alias: {
