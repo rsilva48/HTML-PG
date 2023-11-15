@@ -6,8 +6,8 @@
     "dev": "vite --port 8080",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "eslint --ext .js,.vue src\\**",
-    "lintfix": "eslint --ext .js,.vue src\\** --fix"
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore src",
+    "lintfix": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -25,7 +25,8 @@
     "vite": "^4.5.0",
     "vue": "^3.3.8",
     "vue-chartjs": "^5.2.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue3-form-wizard": "^0.2.1"
   },
   "devDependencies": {
     "@achrinza/node-ipc": "^10.1.10",
