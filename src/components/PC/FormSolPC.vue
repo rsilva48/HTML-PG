@@ -192,16 +192,10 @@
 import moment from "moment";
 import { PCsRef, PClogRef, userRef, db } from "@/services/firebase";
 import { onValue, query, set, ref } from "firebase/database";
-import stepNavigationStepVue from "./FormPC/step-navigation-step.vue";
-import stepNavigationVue from "./FormPC/step-navigation.vue";
-import stepVue from "./FormPC/step.vue";
 export default {
   name: "FormSolPC",
   components: {
     // eslint-disable-next-line
-    "step-navigation-step": stepNavigationStepVue,
-    "step-navigation": stepNavigationVue,
-    step: stepVue
   },
   data() {
     return {

@@ -737,16 +737,10 @@
 import moment from "moment";
 import { cubRef, cublogRef, userRef, db } from "@/services/firebase";
 import { onValue, query, set, ref } from "firebase/database";
-import stepNavigationStepVue from "./FormCub/step-navigation-step.vue";
-import stepNavigationVue from "./FormCub/step-navigation.vue";
-import stepVue from "./FormCub/step.vue";
 export default {
   name: "FormSolCub",
   components: {
     // eslint-disable-next-line
-    "step-navigation-step": stepNavigationStepVue,
-    "step-navigation": stepNavigationVue,
-    step: stepVue
   },
   data() {
     return {
