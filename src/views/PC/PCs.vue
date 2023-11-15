@@ -12,6 +12,7 @@
         </p>
         <hr class="my-4">
         <router-link
+          v-if="user.logged==true"
           to="/pc/solicitud/"
           class="btn btn-primary btn-lg mr-1"
           href
@@ -33,10 +34,41 @@
 </template>
 
 <script>
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '@/services/firebase'
 export default {
   name: 'CRAIPCs',
   components: {},
-  methods: {}
+  data() {
+    return {
+      user: {
+        name: "",
+        logged: ""
+      },
+    };
+  },
+  created() {
+    this.getLogin()
+    },
+  methods: {
+    getLogin() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const uid = user.uid;
+          this.user.logged = true
+          return true
+          // ...
+        } else {
+          // User is signed out
+          // ...
+          this.user.logged = false
+          return false
+        }
+      })
+    },
+  }
 }
 </script>
 
