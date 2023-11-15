@@ -52,6 +52,7 @@
     </form>
   </div>
 </template>
+
 <script>
 import { userRef, auth } from "@/services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -77,7 +78,6 @@ export default {
     }
   },
   created() {
-    this.getUsers();
   },
   methods: {
     getUsers() {
@@ -89,6 +89,7 @@ export default {
       })
     },
     login() {
+      this.getUsers();
       let count = 1;
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {

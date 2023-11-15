@@ -1,5 +1,6 @@
 // vite.config.js
 //HTTPS with self signed certificate
+//Rename this file to vite.config.js, and overwrite the default config to use https with self signed certificate
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
