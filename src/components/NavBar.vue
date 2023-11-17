@@ -16,6 +16,7 @@
         <router-link
           to="/"
           class="navbar-brand"
+          @click="collapseNavbar"
         >
           <img
             src="@/assets/logo.png"
