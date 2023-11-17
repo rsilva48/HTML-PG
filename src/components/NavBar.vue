@@ -79,6 +79,7 @@
 <script>
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '@/services/firebase'
+import { Collapse } from 'bootstrap';
 
 export default {
   name: 'NavBar',
@@ -122,10 +123,9 @@ emits: ['loginuser'],
       });
     },
     collapseNavbar() {
-      const navbar = document.getElementById('navbarSupportedContent');
-      if (navbar.classList.contains('show')) {
-        navbar.classList.remove('show');
-      }
+      const navbarMenu = document.getElementById('navbarSupportedContent');
+      const bsCollapse = new Collapse(navbarMenu, { toggle: false });
+      bsCollapse.hide();
     },
   }
 }
