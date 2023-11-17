@@ -21,7 +21,6 @@
             VERDE
           </h3>Si esta disponible
         </div>
-        <hr>
         <div class="col-md-6">
           <h3 style="color:red">
             ROJO
@@ -35,7 +34,7 @@
       class="container"
     >
       <div class="container-fluid">
-        <div class="row">
+        <div class="row list-group">
           <div class="col-md-12">
             <div class="row">
               <div

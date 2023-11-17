@@ -5,8 +5,8 @@
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -16,7 +16,6 @@
         <router-link
           to="/"
           class="navbar-brand"
-          href
         >
           <img
             src="@/assets/logo.png"
@@ -30,57 +29,47 @@
           id="navbarSupportedContent"
           class="collapse navbar-collapse"
         >
-          <ul class="navbar-nav mr-auto">
-            <div class="nav-item dropdown-divider" />
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li><hr class="dropdown-divider"></li>
             <li class="nav-item">
               <router-link
                 to="/cub"
-                role="button"
                 class="btn btn-primary mx-2"
-                href
                 data-toggle="collapse"
                 data-target=".navbar-collapse.show"
               >
                 Cubículos
               </router-link>
             </li>
-            <div class="nav-item dropdown-divider" />
+            <li><hr class="dropdown-divider"></li>
             <li class="nav-item">
               <router-link
                 to="/pc"
-                role="button"
                 class="btn btn-primary mx-2"
-                href
                 data-toggle="collapse"
                 data-target=".navbar-collapse.show"
               >
                 Computadoras
               </router-link>
             </li>
-            <div class="nav-item dropdown-divider" />
+            <li><hr class="dropdown-divider"></li>
+            <li class="nav-item">
+              <router-link
+                v-if="user.logged==false"
+                to="/login"
+                class="btn btn-outline-light ml-2"
+              >
+                Iniciar Sesión
+              </router-link>
+              <button
+                v-if="user.logged==true"
+                class="btn btn-danger ml-2"
+                @click="LogOut"
+              >
+                Cerrar sesión
+              </button>
+            </li>
           </ul>
-          <router-link
-            v-if="user.logged==false"
-            to="/login"
-            role="button"
-            class="btn btn-outline-light ml-2"
-            href
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-          >
-            Iniciar Sesión
-          </router-link>
-          <button
-            v-if="user.logged==true"
-            role="button"
-            class="btn btn-danger ml-2"
-            href
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-            @click="LogOut()"
-          >
-            Cerrar sesión
-          </button>
         </div>
       </div>
     </nav>

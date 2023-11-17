@@ -6,18 +6,16 @@
         <div class="row">
           <AdminMenu class="col-md-3" />
           <div class="col-md-9">
-            <!-- Website Overview -->
-            <!-- Latest Users -->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">
                   Computadoras
                 </h3>
               </div>
-              <div class="panel-body">
+              <div class="container">
                 <div class="row">
-                  <div class="col-6">
-                    <div class="jumbotron">
+                  <div class="col p-5 border bg-light">
+                    <div class="container-fluid">
                       <h1 class="display-5">
                         Solicitud de Computadoras
                       </h1>
@@ -37,8 +35,9 @@
                       </router-link>
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="jumbotron">
+                  <div class="col-1" />
+                  <div class="col p-5 border bg-light">
+                    <div class="container-fluid">
                       <h1 class="display-5">
                         Listado y vista de Computadoras
                       </h1>

@@ -1,6 +1,6 @@
 <template>
   <div class="PCSolReal">
-    <div class="jumbotron jumbotron-fluid font">
+    <div class="container-fluid p-5 font">
       <div class="container">
         <h1 class="display-4">
           Computadora #{{ $route.params.id }} solicitada
@@ -11,7 +11,7 @@
         <hr class="my-4">
         <router-link
           to="/pc/list"
-          class="btn btn-primary btn-lg mr-1"
+          class="btn btn-primary btn-lg me-1"
           href
           role="button"
         >

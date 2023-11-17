@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="jumbotron jumbotron-fluid font">
+    <div class="container-fluid p-5 font">
       <div class="container">
         <h1 class="display-4">
           Biblioteca
@@ -18,17 +18,13 @@
         </p>
         <router-link
           to="/cub"
-          role="button"
-          class="btn btn-primary btn-lg mr-1"
-          href
+          class="btn btn-primary btn-lg me-1"
         >
           Cubículos
         </router-link>
         <router-link
           to="/pc"
-          role="button"
-          class="btn btn-primary btn-lg ml-1"
-          href
+          class="btn btn-primary btn-lg ms-1"
         >
           Computadoras
         </router-link>

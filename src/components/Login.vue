@@ -1,7 +1,7 @@
 <template>
   <div class="login vertical-center">
     <form
-      class="form-signin"
+      class="form-signin border"
       @submit.prevent="login"
     >
       <div class="text-center mb-4">
@@ -78,6 +78,7 @@ export default {
     }
   },
   created() {
+    this.getUsers();
   },
   methods: {
     getUsers() {

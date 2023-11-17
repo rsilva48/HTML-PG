@@ -8,7 +8,7 @@
           <div class="login col-md-9">
             <form
               id="UserReg"
-              class="form-signin"
+              class="form-signin border"
               @submit.prevent="addUser"
             >
               <div class="text-center mb-4">
@@ -25,7 +25,7 @@
                 <p>Para facilitar los servicios de CRAI debe registrarse primero</p>
               </div>
 
-              <div class="form-label-group">
+              <div class="mb-3">
                 <input
                   id="id"
                   v-model="user.ced"
@@ -39,7 +39,7 @@
                 <label for="id">Numero de Cédula</label>
               </div>
 
-              <div class="form-label-group">
+              <div class="mb-3">
                 <input
                   id="name"
                   v-model="user.name"
@@ -51,12 +51,12 @@
                 <label for="name">Nombre Completo</label>
               </div>
 
-              <div class="form-label-group">
+              <div class="mb-3">
                 <select
                   id="sex"
                   v-model="user.sex"
                   type="text"
-                  class="custom-select"
+                  class="form-select"
                   required
                 >
                   <option
@@ -76,12 +76,12 @@
                 <label for="fac">Sexo</label>
               </div>
 
-              <div class="form-label-group">
+              <div class="mb-3">
                 <select
                   id="ocup"
                   v-model="user.ocup"
                   type="text"
-                  class="custom-select"
+                  class="form-select"
                   required
                 >
                   <option
@@ -100,13 +100,12 @@
                 </select>
                 <label for="ocup">Ocupación</label>
               </div>
-              <!--  v-if="user.ocup=='Est'" -->
-              <div class="form-label-group">
+              <div class="mb-3">
                 <select
                   id="fac"
                   v-model="user.fac"
                   type="text"
-                  class="custom-select"
+                  class="form-select"
                   required
                 >
                   <option
@@ -135,7 +134,7 @@
                 <label for="fac">Facultad</label>
               </div>
               <!--  v-if="user.ocup=='Adm'" -->
-              <div class="form-label-group">
+              <div class="mb-3">
                 <input
                   id="email"
                   v-model="user.email"
@@ -146,7 +145,7 @@
                 >
                 <label for="id">Correo electronico</label>
               </div>
-              <div class="form-label-group">
+              <div class="mb-3">
                 <input
                   id="password"
                   v-model="user.password"
@@ -280,19 +279,19 @@ export default {
   background-color: #f5f5f5;
 }
 
-.form-label-group {
+.mb-3 {
   position: relative;
   margin-bottom: 1rem;
 }
 
-.form-label-group>input,
-.form-label-group>select,
-.form-label-group>label {
+.mb-3>input,
+.mb-3>select,
+.mb-3>label {
   height: 3.125rem;
   padding: 0.75rem;
 }
 
-.form-label-group>label {
+.mb-3>label {
   position: absolute;
   top: 0;
   left: 0;
@@ -310,64 +309,64 @@ export default {
   transition: all 0.1s ease-in-out;
 }
 
-.form-label-group input::-webkit-input-placeholder {
+.mb-3 input::-webkit-input-placeholder {
   color: transparent;
 }
 
-.form-label-group input:-ms-input-placeholder {
+.mb-3 input:-ms-input-placeholder {
   color: transparent;
 }
 
-.form-label-group input::-ms-input-placeholder {
+.mb-3 input::-ms-input-placeholder {
   color: transparent;
 }
 
-.form-label-group input::-moz-placeholder {
+.mb-3 input::-moz-placeholder {
   color: transparent;
 }
 
-.form-label-group input::placeholder {
+.mb-3 input::placeholder {
   color: transparent;
 }
 
-.form-label-group input:not(:placeholder-shown) {
+.mb-3 input:not(:placeholder-shown) {
   padding-top: 1.25rem;
   padding-bottom: 0.25rem;
 }
 
-.form-label-group input:not(:placeholder-shown)~label {
+.mb-3 input:not(:placeholder-shown)~label {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 12px;
   color: #777;
 }
 
-.form-label-group select::-webkit-input-placeholder {
+.mb-3 select::-webkit-input-placeholder {
   color: transparent;
 }
 
-.form-label-group select:-ms-input-placeholder {
+.mb-3 select:-ms-input-placeholder {
   color: transparent;
 }
 
-.form-label-group select::-ms-input-placeholder {
+.mb-3 select::-ms-input-placeholder {
   color: transparent;
 }
 
-.form-label-group select::-moz-placeholder {
+.mb-3 select::-moz-placeholder {
   color: transparent;
 }
 
-.form-label-group select::placeholder {
+.mb-3 select::placeholder {
   color: transparent;
 }
 
-.form-label-group select:not(:placeholder-shown) {
+.mb-3 select:not(:placeholder-shown) {
   padding-top: 1.25rem;
   padding-bottom: 0.25rem;
 }
 
-.form-label-group select:not(:placeholder-shown)~label {
+.mb-3 select:not(:placeholder-shown)~label {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 12px;
