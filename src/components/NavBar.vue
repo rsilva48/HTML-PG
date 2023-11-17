@@ -35,8 +35,7 @@
               <router-link
                 to="/cub"
                 class="btn btn-primary mx-2"
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
+                @click="collapseNavbar"
               >
                 Cubículos
               </router-link>
@@ -46,8 +45,7 @@
               <router-link
                 to="/pc"
                 class="btn btn-primary mx-2"
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
+                @click="collapseNavbar"
               >
                 Computadoras
               </router-link>
@@ -58,6 +56,7 @@
                 v-if="user.logged==false"
                 to="/login"
                 class="btn btn-outline-light ml-2"
+                @click="collapseNavbar"
               >
                 Iniciar Sesión
               </router-link>
@@ -120,7 +119,13 @@ emits: ['loginuser'],
       }).catch((error) => {
         // An error happened.
       });
-    }
+    },
+    collapseNavbar() {
+      const navbar = document.getElementById('navbarSupportedContent');
+      if (navbar.classList.contains('show')) {
+        navbar.classList.remove('show');
+      }
+    },
   }
 }
 </script>
