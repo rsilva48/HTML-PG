@@ -13,7 +13,7 @@
     </div>
     <div
       v-if="!loading"
-      class="container"
+      class="container px-4"
     >
       <div class="row">
         <div class="col-md-6">
@@ -39,7 +39,7 @@
             <div class="row">
               <div
                 v-if="listado[0]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[0].status"
@@ -68,7 +68,7 @@
               </div>
               <div
                 v-if="listado[1]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[1].status"
@@ -97,7 +97,7 @@
               </div>
               <div
                 v-if="listado[2]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[2].status"
@@ -126,7 +126,7 @@
               </div>
               <div
                 v-if="listado[3]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[3].status"
@@ -155,7 +155,7 @@
               </div>
               <div
                 v-if="listado[4]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[4].status"
@@ -184,7 +184,7 @@
               </div>
               <div
                 v-if="listado[5]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[5].status"
@@ -216,7 +216,7 @@
             <div class="row">
               <div
                 v-if="listado[6]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[6].status"
@@ -245,7 +245,7 @@
               </div>
               <div
                 v-if="listado[7]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[7].status"
@@ -274,7 +274,7 @@
               </div>
               <div
                 v-if="listado[8]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[8].status"
@@ -303,7 +303,7 @@
               </div>
               <div
                 v-if="listado[9]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[9].status"
@@ -332,7 +332,7 @@
               </div>
               <div
                 v-if="listado[10]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[10].status"
@@ -361,7 +361,7 @@
               </div>
               <div
                 v-if="listado[11]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[11].status"
@@ -393,7 +393,7 @@
             <div class="row">
               <div
                 v-if="listado[12]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[12].status"
@@ -422,7 +422,7 @@
               </div>
               <div
                 v-if="listado[13]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[13].status"
@@ -451,7 +451,7 @@
               </div>
               <div
                 v-if="listado[14]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[14].status"
@@ -480,7 +480,7 @@
               </div>
               <div
                 v-if="listado[15]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[15].status"
@@ -510,7 +510,7 @@
 
               <div
                 v-if="listado[16]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[16].status"
@@ -539,7 +539,7 @@
               </div>
               <div
                 v-if="listado[17]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[17].status"
@@ -571,7 +571,7 @@
             <div class="row">
               <div
                 v-if="listado[18]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[18].status"
@@ -600,7 +600,7 @@
               </div>
               <div
                 v-if="listado[19]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[19].status"
@@ -629,7 +629,7 @@
               </div>
               <div
                 v-if="listado[20]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[20].status"
@@ -658,7 +658,7 @@
               </div>
               <div
                 v-if="listado[21]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[21].status"
@@ -687,7 +687,7 @@
               </div>
               <div
                 v-if="listado[22]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[22].status"
@@ -716,7 +716,7 @@
               </div>
               <div
                 v-if="listado[23]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[23].status"
@@ -748,7 +748,7 @@
             <div class="row">
               <div
                 v-if="listado[24]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[24].status"
@@ -777,7 +777,7 @@
               </div>
               <div
                 v-if="listado[25]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[25].status"
@@ -806,7 +806,7 @@
               </div>
               <div
                 v-if="listado[26]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[26].status"
@@ -835,7 +835,7 @@
               </div>
               <div
                 v-if="listado[27]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[27].status"
@@ -864,7 +864,7 @@
               </div>
               <div
                 v-if="listado[28]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[28].status"
@@ -893,7 +893,7 @@
               </div>
               <div
                 v-if="listado[29]"
-                class="col-md-2"
+                class="col-md-2 py-2"
               >
                 <li
                   v-if="listado[29].status"

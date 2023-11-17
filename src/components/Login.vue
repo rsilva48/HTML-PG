@@ -42,13 +42,15 @@
         >
         <label for="inputPassword">Contraseña</label>
       </div>
-      <button
-        class="btn btn-lg btn-primary btn-block"
-        type="submit"
-        :disabled="enablelogin"
-      >
-        Iniciar Sesión
-      </button>
+      <div class="d-grid gap-2 mx-auto">
+        <button
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+          :disabled="enablelogin"
+        >
+          Iniciar Sesión
+        </button>
+      </div>
     </form>
   </div>
 </template>

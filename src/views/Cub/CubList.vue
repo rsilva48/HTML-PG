@@ -1,6 +1,6 @@
 <template>
   <div class="Cub">
-    <div class="container-fluid p-5 font">
+    <div class="container-fluid p-5 font bg-light">
       <div class="container">
         <h1 class="display-4">
           Lista de Cubículos

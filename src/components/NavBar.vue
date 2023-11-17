@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary">
-      <div class="container">
+      <div class="container-md">
         <button
           class="navbar-toggler"
           type="button"
@@ -30,8 +30,8 @@
           class="collapse navbar-collapse"
         >
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li><hr class="dropdown-divider"></li>
-            <li class="nav-item">
+            <li><hr class="border-light"></li>
+            <li class="nav-item d-grid">
               <router-link
                 to="/cub"
                 class="btn btn-primary mx-2"
@@ -41,8 +41,8 @@
                 Cubículos
               </router-link>
             </li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="nav-item">
+            <li><hr class="border-light"></li>
+            <li class="nav-item d-grid">
               <router-link
                 to="/pc"
                 class="btn btn-primary mx-2"
@@ -52,8 +52,8 @@
                 Computadoras
               </router-link>
             </li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="nav-item">
+            <li><hr class="border-light"></li>
+            <li class="nav-item d-grid">
               <router-link
                 v-if="user.logged==false"
                 to="/login"

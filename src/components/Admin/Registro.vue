@@ -156,15 +156,16 @@
                 >
                 <label for="password">Contraseña</label>
               </div>
-
-              <button
-                class="btn btn-lg btn-primary btn-block"
-                type="submit"
-                :disabled="validation"
-                @click="addUser"
-              >
-                Registrarse
-              </button>
+              <div class="d-grid gap-2 mx-auto">
+                <button
+                  class="btn btn-lg btn-primary btn-block"
+                  type="submit"
+                  :disabled="validation"
+                  @click="addUser"
+                >
+                  Registrarse
+                </button>
+              </div>
             </form>
           </div>
         </div>
