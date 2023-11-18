@@ -1,18 +1,18 @@
-//Rename file to firebase.js and replace fbconf with Firebase web app configuration 
+//Rename file to firebase.js and replace fbconf with Firebase web app configuration
 const fbconf = {
-    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    authDomain: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    databaseURL: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    projectId: "xxxxxxxxxx",
-    storageBucket: "xxxxxxxxxxxxxxxxxxxxx",
-    messagingSenderId: "xxxxxxxxxxxxxxxxxx",
-    appId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    authDomain: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    databaseURL: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    projectId: 'xxxxxxxxxx',
+    storageBucket: 'xxxxxxxxxxxxxxxxxxxxx',
+    messagingSenderId: 'xxxxxxxxxxxxxxxxxx',
+    appId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 }
 
 //Firebase >=v9 Modular API
 import { initializeApp } from 'firebase/app'
-import { ref, getDatabase } from "firebase/database"
-import { getAuth } from "firebase/auth"
+import { ref, getDatabase } from 'firebase/database'
+import { getAuth } from 'firebase/auth'
 const app = initializeApp(fbconf)
 //Set Database references to path in Firebase DB
 export const db = getDatabase(app)

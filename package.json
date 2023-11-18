@@ -28,8 +28,12 @@
   },
   "devDependencies": {
     "@achrinza/node-ipc": "^10.1.10",
-    "eslint": "^8.53.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.18.1",
+    "prettier": "^3.1.0",
+    "prettier-eslint": "^16.1.2",
     "sass": "^1.69.5",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-mkcert": "^1.16.0"
