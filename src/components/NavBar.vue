@@ -2,17 +2,6 @@
   <div id="nav">
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary">
       <div class="container-md">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon" />
-        </button>
         <router-link
           to="/"
           class="navbar-brand"
