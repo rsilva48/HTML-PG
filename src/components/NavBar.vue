@@ -2,6 +2,17 @@
   <div id="nav">
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary">
       <div class="container-md">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
         <router-link
           to="/"
           class="navbar-brand"
@@ -28,9 +39,7 @@
           class="collapse navbar-collapse"
         >
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li>
-              <hr class="border-light">
-            </li>
+            <li><hr class="border-light"></li>
             <li class="nav-item d-grid">
               <router-link
                 to="/cub"
@@ -40,9 +49,7 @@
                 Cubículos
               </router-link>
             </li>
-            <li>
-              <hr class="border-light">
-            </li>
+            <li><hr class="border-light"></li>
             <li class="nav-item d-grid">
               <router-link
                 to="/pc"
