@@ -59,7 +59,14 @@
                             >
                                 Iniciar Sesión
                             </router-link>
-                            <button v-if="user.logged == true" class="btn btn-danger ml-2" @click="LogOut">
+                            <button
+                                v-if="user.logged == true"
+                                class="btn btn-danger ml-2"
+                                @click="
+                                    LogOut();
+                                    collapseNavbar()
+                                "
+                            >
                                 Cerrar sesión
                             </button>
                         </li>

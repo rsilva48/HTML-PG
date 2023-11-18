@@ -1,13 +1,12 @@
 <template>
-    <div class="container py-3">
-        <FormWizard @on-complete="addForm">
-            <form>
+    <div class="FormSolCub">
+        <FormWizard class="container p-3 p-md-5" @on-complete="addForm">
+            <form id="FormSolCub" @submit.prevent="addForm">
                 <TabContent title="Encargado" @next="validateStep1">
-                    <div class="container">
+                    <div>
                         <div>
-                            <h3>Información del Encargado</h3>
-                            <div class="mb-3">
-                                <label for="id" class="form-label">Cédula</label>
+                            <h3 class="mb-2 mb-md-4">Información del Encargado</h3>
+                            <div class="mb-2 form-floating">
                                 <input
                                     id="cedula"
                                     v-model="cub.user.ced"
@@ -18,10 +17,10 @@
                                     :disabled="cub.user.found"
                                     @blur="getUserData(1)"
                                 />
+                                <label for="id">Cédula</label>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nombre Completo</label>
+                            <div class="mb-2 form-floating">
                                 <input
                                     id="name"
                                     v-model="cub.user.name"
@@ -32,10 +31,10 @@
                                     placeholder="Ingrese su nombre completo"
                                     :disabled="cub.user.found"
                                 />
+                                <label for="name">Nombre Completo</label>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="sex" class="form-label">Sexo</label>
+                            <div class="mb-2 form-floating">
                                 <select
                                     id="sex"
                                     v-model="cub.user.sex"
@@ -50,14 +49,15 @@
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                 </select>
+                                <label for="sex">Sexo</label>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="ocup" class="form-label">Ocupación</label>
+                            <div class="mb-2 form-floating">
                                 <select
                                     id="ocup"
                                     v-model="cub.user.ocup"
                                     class="form-select"
+                                    placeholder="Elegir ocupación"
                                     :disabled="cub.user.found"
                                     required
                                 >
@@ -65,10 +65,10 @@
                                     <option value="Est">Estudiante</option>
                                     <option value="Adm">Administrativo</option>
                                 </select>
+                                <label for="ocup">Ocupación</label>
                             </div>
 
-                            <div v-if="cub.user.ocup == 'Est'" class="mb-3">
-                                <label class="form-label" for="fac">Facultad</label>
+                            <div class="mb-2 form-floating">
                                 <select id="fac" v-model="cub.user.fac" class="form-select" :disabled="cub.user.found">
                                     <option selected disabled value>Elija su facultad</option>
                                     <option value="CS">Ciencias de la Salud</option>
@@ -77,10 +77,11 @@
                                     <option value="CAMP">Ciencias Administrativas, Marítima y Portuaria</option>
                                     <option value="DCP">Derecho y Ciencias Políticas</option>
                                 </select>
+                                <label for="fac">Facultad</label>
                             </div>
 
-                            <div class="mb-3">
-                                <button type="button" class="btn btn-outline-danger mx-1" @click="delUserData(1)">
+                            <div class="mb-2 form-floating d-grid gap-2 d-md-block">
+                                <button type="button" class="btn btn-outline-danger" @click="delUserData(1)">
                                     Limpiar
                                 </button>
                             </div>
@@ -89,29 +90,28 @@
                 </TabContent>
                 <TabContent title="Condiciones" @next="validateStep2">
                     <div>
-                        <h3>Aceptar condiciones de uso y seguridad</h3>
-                        <div class="mb-3">
-                            <div class="container">
-                                <div class="row">
-                                    <ul class="col-md">
-                                        <li>No perder las llaves y devolverlas</li>
-                                        <li>Solo se usara hasta dos horas</li>
-                                        <li>Solo se estudiar o trabajara</li>
-                                        <li>No se elaboraran trabajos manuales</li>
-                                        <li>Se mantendran las luces encendidas y se comportara</li>
-                                        <li>Se llegara puntualmente a la hora de reserva</li>
-                                    </ul>
-                                    <ul class="col-md">
-                                        <li>Se dejara las mesas y sillas limpias</li>
-                                        <li>Se colocaran las sillas en su lugar</li>
-                                        <li>Se recogeran todas las pertenencias al salir</li>
-                                        <li>No se sentara ni en el piso ni mesa</li>
-                                        <li>Se reportara cualquier incidente</li>
-                                        <li>No se ingirira alimentos o bebidas</li>
+                        <h3 class="mb-2 mb-md-4">Aceptar condiciones de uso y seguridad</h3>
+                        <div class="mb-2 form-floating">
+                            <div class="container pb-3 row list-group">
+                                <div class="col-md-12">
+                                    <ul class="row">
+                                        <li class="col-md-5 mx-2">No perder las llaves y devolverlas</li>
+                                        <li class="col-md-5 mx-2">Solo se usara hasta dos horas</li>
+                                        <li class="col-md-5 mx-2">Solo se estudiar o trabajara</li>
+                                        <li class="col-md-5 mx-2">No se elaboraran trabajos manuales</li>
+                                        <li class="col-md-5 mx-2">
+                                            Se mantendran las luces encendidas y se comportara
+                                        </li>
+                                        <li class="col-md-5 mx-2">Se llegara puntualmente a la hora de reserva</li>
+                                        <li class="col-md-5 mx-2">Se dejara las mesas y sillas limpias</li>
+                                        <li class="col-md-5 mx-2">Se colocaran las sillas en su lugar</li>
+                                        <li class="col-md-5 mx-2">Se recogeran todas las pertenencias al salir</li>
+                                        <li class="col-md-5 mx-2">No se sentara ni en el piso ni mesa</li>
+                                        <li class="col-md-5 mx-2">Se reportara cualquier incidente</li>
+                                        <li class="col-md-5 mx-2">No se ingirira alimentos o bebidas</li>
                                     </ul>
                                 </div>
                             </div>
-                            <br />
                             <input v-model.number="cub.check" type="checkbox" name="terminos" class="center" /> Acepto y
                             estoy de acuerdo con todas las condiciones de uso y seguridad
                         </div>
@@ -119,13 +119,13 @@
                 </TabContent>
                 <TabContent title="Participantes" @next="validateStep3">
                     <div>
-                        <h3>Participantes/Integrantes del Grupo</h3>
+                        <h3 class="mb-2 mb-md-4">Participantes/Integrantes del Grupo</h3>
                         <small>Minimo un grupo de 4 estudiantes contando al representante.</small>
                         <br />
                         <br />
                         <div class="CList">
                             <div class="form-row">
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <label>Cédula</label>
                                     <input
                                         v-model="cub.integrantes.user1.ced"
@@ -136,7 +136,7 @@
                                     />
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <label>Nombre</label>
                                     <input
                                         v-model="cub.integrantes.user1.name"
@@ -144,7 +144,7 @@
                                         :disabled="cub.integrantes.user1.found"
                                     />
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <label class="label">Sexo</label>
                                     <select
                                         id="sex"
@@ -160,10 +160,10 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-2">
-                                    <label for="ocup">Ocupación</label>
+                                <div class="mb-2 form-floating col-2">
+                                    <label for="ocup1">Ocupación</label>
                                     <select
-                                        id="ocup"
+                                        id="ocup1"
                                         v-model="cub.integrantes.user1.ocup"
                                         class="form-select"
                                         :disabled="cub.integrantes.user1.found"
@@ -176,7 +176,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <label class="label">Facultad</label>
                                     <select
                                         v-model="cub.integrantes.user1.fac"
@@ -192,7 +192,7 @@
                                         <option value="DCP">Derecho y Ciencias Políticas</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <label>Eliminar</label>
                                     <button type="button" class="btn btn-outline-danger" @click="delUserData(2)">
                                         X
@@ -200,7 +200,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <input
                                         v-model="cub.integrantes.user2.ced"
                                         class="form-control"
@@ -209,7 +209,7 @@
                                         @blur="getUserData(3)"
                                     />
                                 </div>
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <input
                                         v-model="cub.integrantes.user2.name"
                                         class="form-control"
@@ -217,7 +217,7 @@
                                     />
                                     />
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <select
                                         id="sex"
                                         v-model="cub.integrantes.user2.sex"
@@ -230,9 +230,9 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <select
-                                        id="ocup"
+                                        id="ocup2"
                                         v-model="cub.integrantes.user2.ocup"
                                         class="form-select"
                                         :disabled="cub.integrantes.user2.found"
@@ -245,7 +245,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <select
                                         v-model="cub.integrantes.user2.fac"
                                         class="form-select"
@@ -260,14 +260,14 @@
                                         <option value="DCP">Derecho y Ciencias Políticas</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <button type="button" class="btn btn-outline-danger" @click="delUserData(3)">
                                         X
                                     </button>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <input
                                         v-model="cub.integrantes.user3.ced"
                                         class="form-control"
@@ -276,7 +276,7 @@
                                         @blur="getUserData(4)"
                                     />
                                 </div>
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <input
                                         v-model="cub.integrantes.user3.name"
                                         class="form-control"
@@ -284,7 +284,7 @@
                                     />
                                     />
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <select
                                         id="sex"
                                         v-model="cub.integrantes.user3.sex"
@@ -297,9 +297,9 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <select
-                                        id="ocup"
+                                        id="ocup3"
                                         v-model="cub.integrantes.user3.ocup"
                                         class="form-select"
                                         :disabled="cub.integrantes.user3.found"
@@ -312,7 +312,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <select
                                         v-model="cub.integrantes.user3.fac"
                                         class="form-select"
@@ -327,7 +327,7 @@
                                         <option value="DCP">Derecho y Ciencias Políticas</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <button type="button" class="btn btn-outline-danger" @click="delUserData(4)">
                                         X
                                     </button>
@@ -335,7 +335,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <input
                                         v-model="cub.integrantes.user4.ced"
                                         class="form-control"
@@ -344,7 +344,7 @@
                                         @blur="getUserData(5)"
                                     />
                                 </div>
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <input
                                         v-model="cub.integrantes.user4.name"
                                         class="form-control"
@@ -352,7 +352,7 @@
                                     />
                                     />
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <select
                                         id="sex"
                                         v-model="cub.integrantes.user4.sex"
@@ -365,9 +365,9 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <select
-                                        id="ocup"
+                                        id="ocup4"
                                         v-model="cub.integrantes.user4.ocup"
                                         class="form-select"
                                         :disabled="cub.integrantes.user4.found"
@@ -379,7 +379,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <select
                                         v-model="cub.integrantes.user4.fac"
                                         class="form-select"
@@ -394,14 +394,14 @@
                                         <option value="DCP">Derecho y Ciencias Políticas</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <button type="button" class="btn btn-outline-danger" @click="delUserData(5)">
                                         X
                                     </button>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <input
                                         v-model="cub.integrantes.user5.ced"
                                         class="form-control"
@@ -410,7 +410,7 @@
                                         @blur="getUserData(6)"
                                     />
                                 </div>
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <input
                                         v-model="cub.integrantes.user5.name"
                                         class="form-control"
@@ -418,7 +418,7 @@
                                     />
                                     />
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <select
                                         id="sex"
                                         v-model="cub.integrantes.user5.sex"
@@ -431,9 +431,9 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-2">
+                                <div class="mb-2 form-floating col-2">
                                     <select
-                                        id="ocup"
+                                        id="ocup5"
                                         v-model="cub.integrantes.user5.ocup"
                                         class="form-select"
                                         :disabled="cub.integrantes.user5.found"
@@ -445,7 +445,7 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-3">
+                                <div class="mb-2 form-floating col-3">
                                     <select
                                         v-model="cub.integrantes.user5.fac"
                                         class="form-select"
@@ -460,7 +460,7 @@
                                         <option value="DCP">Derecho y Ciencias Políticas</option>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-1">
+                                <div class="mb-2 form-floating col-1">
                                     <button type="button" class="btn btn-outline-danger" @click="delUserData(6)">
                                         X
                                     </button>
@@ -893,3 +893,9 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.floating {
+    transform: translateY(-1rem) scale(0.75);
+}
+</style>
