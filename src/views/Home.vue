@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container-fluid p-5 font bg-light">
+    <div class="container-fluid px-4 py-5 px-md-5 font bg-light">
       <div class="container">
         <h1 class="display-4">
           Biblioteca

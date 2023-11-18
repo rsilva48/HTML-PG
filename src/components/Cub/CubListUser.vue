@@ -13,21 +13,20 @@
     </div>
     <div
       v-if="!loading"
-      class="container px-4"
+      class="container px-4 py-3"
     >
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-6">
           <h3 style="color:green">
             VERDE
           </h3>Si esta disponible
         </div>
-        <div class="col-md-6">
+        <div class="col-6">
           <h3 style="color:red">
             ROJO
-          </h3>Cuando no esta disponible.
+          </h3>No esta disponible
         </div>
       </div>
-      <br>
     </div>
     <div
       v-if="!loading"
@@ -39,7 +38,7 @@
             <div class="row">
               <div
                 v-if="listado[0]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[0].status"
@@ -68,7 +67,7 @@
               </div>
               <div
                 v-if="listado[1]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[1].status"
@@ -97,7 +96,7 @@
               </div>
               <div
                 v-if="listado[2]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[2].status"
@@ -126,7 +125,7 @@
               </div>
               <div
                 v-if="listado[3]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[3].status"
@@ -155,7 +154,7 @@
               </div>
               <div
                 v-if="listado[4]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[4].status"
@@ -184,7 +183,7 @@
               </div>
               <div
                 v-if="listado[5]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[5].status"
@@ -211,12 +210,11 @@
                   {{ horas[5] }}
                 </li>
               </div>
-            </div>
-            <br>
-            <div class="row">
+
+  
               <div
                 v-if="listado[6]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[6].status"
@@ -245,7 +243,7 @@
               </div>
               <div
                 v-if="listado[7]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[7].status"
@@ -274,7 +272,7 @@
               </div>
               <div
                 v-if="listado[8]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[8].status"
@@ -303,7 +301,7 @@
               </div>
               <div
                 v-if="listado[9]"
-                class="col-md-2 py-2"
+                class="col-md-3 col-lg-2 py-2"
               >
                 <li
                   v-if="listado[9].status"

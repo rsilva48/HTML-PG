@@ -1,6 +1,6 @@
 <template>
   <div class="Cubs">
-    <div class="container-fluid p-5 font bg-light">
+    <div class="container-fluid px-4 py-5 px-md-5 font bg-light">
       <div class="container">
         <h1 class="display-4">
           Cubículos
@@ -13,7 +13,7 @@
         <hr class="my-4">
         <div class="d-grid gap-3 mx-auto d-md-block">
           <router-link
-          v-if="user.logged==true"
+            v-if="user.logged==true"
             to="/cub/solicitud/"
             class="btn btn-primary btn-lg mx-1"
             href

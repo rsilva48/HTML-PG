@@ -102,7 +102,6 @@ export default {
   emits: ['loginuser'],
   data() {
     return {
-      isNavbarOpen: false,
       navbarCollapse: null,
       user: {
         name: "",
@@ -115,7 +114,7 @@ export default {
     this.getLogin()
   },
   mounted() {
-    this.navbarCollapse = new Collapse(this.$refs.navbar);
+    this.navbarCollapse = new Collapse(this.$refs.navbar, { toggle: false });
   },
   methods: {
     getLogin() {
