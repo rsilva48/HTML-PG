@@ -1,7 +1,7 @@
 <template>
   <div class="login vertical-center">
     <form
-      class="form-signin"
+      class="form-signin border"
       @submit.prevent="login"
     >
       <div class="text-center mb-4">
@@ -42,13 +42,15 @@
         >
         <label for="inputPassword">Contraseña</label>
       </div>
-      <button
-        class="btn btn-lg btn-primary btn-block"
-        type="submit"
-        :disabled="enablelogin"
-      >
-        Iniciar Sesión
-      </button>
+      <div class="d-grid gap-2 mx-auto">
+        <button
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+          :disabled="enablelogin"
+        >
+          Iniciar Sesión
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -78,6 +80,7 @@ export default {
     }
   },
   created() {
+    this.getUsers();
   },
   methods: {
     getUsers() {
@@ -89,8 +92,7 @@ export default {
       })
     },
     login() {
-      this.getUsers();
-      let count = 1;
+      let count = 3;
       if (this.usuarios.length > 0) {
         this.usuarios.forEach(user => {
           if (
@@ -99,20 +101,48 @@ export default {
             this.user.password == user.password &&
             user.ocup == "Adm"
           ) {
-            alert("Ha iniciado sesión como Admin.");
+            count = 0;
             signInWithEmailAndPassword(auth, this.user.email, this.user.password).
               then((userCredential) => {
                 // Signed up 
                 const loggeduser = userCredential.user;
+                alert("Ha iniciado sesión como Admin.");
+                this.$router.push({ path: `/admin` });
                 // ...
               })
               .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert("Error en el inicio de sesion.");
+                count = 3;
                 // ..
               });
-            this.$router.push({ path: `/admin` });
-            count = 0;
+            
+            
+            return;
+          }  else if (
+            //Credenciales correctas no administrativo - COUNT 1
+            this.user.ced == user.ced &&
+            this.user.password == user.password &&
+            user.ocup != "Adm"
+          ) {
+            count = 1;
+            //console.log(user.email)
+            signInWithEmailAndPassword(auth, user.email, this.user.password).
+              then((userCredential) => {
+                // Signed up 
+                const loggeduser = userCredential.user;
+                alert("Ha accedido como estudiante.");
+                this.$router.push({ path: `/` });
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert("Error en el inicio de sesion.");
+                count = 3;
+                // ..
+              });
             return;
           } else if (
             //Contraseña incorrecta - COUNT 3
@@ -121,43 +151,12 @@ export default {
           ) {
             count = 3;
             return;
-          } else if (
-            //Sin privilegios suficientes - COUNT 2
-            this.user.ced == user.ced &&
-            this.user.password == user.password &&
-            user.ocup != "Adm"
-          ) {
-            alert("Ha accedido como estudiante.");
-            console.log(user.email)
-            signInWithEmailAndPassword(auth, user.email, this.user.password).
-              then((userCredential) => {
-                // Signed up 
-                const loggeduser = userCredential.user;
-                this.$router.push({ path: `/` });
-                // ...
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert("Error en las credenciales.");
-                // ..
-              });
-            count = 2;
-            return;
-          } else if (count > 0) {
-            //Credenciales Incorrectas - COUNT 0
-            count = 1;
           }
         });
       }
-      if (count == 1) {
+      if (count == 3) {
         alert("Verifique sus datos e ingreselos nuevamente.");
         this.user.ced = "";
-        this.user.password = "";
-      } else if (count == 2) {
-
-      } else if (count == 3) {
-        alert("Ingrese su contraseña correctamente.");
         this.user.password = "";
       }
     }

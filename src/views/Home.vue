@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="jumbotron jumbotron-fluid font">
+    <div class="container-fluid p-5 font bg-light">
       <div class="container">
         <h1 class="display-4">
           Biblioteca
@@ -16,22 +16,20 @@
         >
           Haga clic en uno de los siguientes enlaces para utilizar nuestos servicios.
         </p>
-        <router-link
-          to="/cub"
-          role="button"
-          class="btn btn-primary btn-lg mr-1"
-          href
-        >
-          Cubículos
-        </router-link>
-        <router-link
-          to="/pc"
-          role="button"
-          class="btn btn-primary btn-lg ml-1"
-          href
-        >
-          Computadoras
-        </router-link>
+        <div class="d-grid gap-3 mx-auto d-md-block">
+          <router-link
+            to="/cub"
+            class="btn btn-primary btn-lg mx-1"
+          >
+            Cubículos
+          </router-link>
+          <router-link
+            to="/pc"
+            class="btn btn-primary btn-lg mx-1"
+          >
+            Computadoras
+          </router-link>
+        </div>
       </div>
     </div>
   </div>

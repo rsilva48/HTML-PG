@@ -1,6 +1,10 @@
 # Proyecto Universitario: CRAI
 Proyecto para digitalizar el proceso de prestamos de computadoras y cubiculos en la biblioteca de la Universidad
 
+Usuario de prueba:
+Usuario: 123
+Contaseña: 11223344
+
 
 Demo: https://rsilva.zef.ro/
 

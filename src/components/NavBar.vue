@@ -1,22 +1,11 @@
 <template>
   <div id="nav">
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon" />
-        </button>
+      <div class="container-md">
         <router-link
           to="/"
           class="navbar-brand"
-          href
+          @click="collapseNavbar"
         >
           <img
             src="@/assets/logo.png"
@@ -26,61 +15,81 @@
             alt="logo"
           > CRAI
         </router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          @click="toggleNavbar"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
         <div
           id="navbarSupportedContent"
+          ref="navbar"
           class="collapse navbar-collapse"
         >
-          <ul class="navbar-nav mr-auto">
-            <div class="nav-item dropdown-divider" />
-            <li class="nav-item">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li>
+              <hr class="border-light">
+            </li>
+            <li class="nav-item d-grid">
               <router-link
                 to="/cub"
-                role="button"
                 class="btn btn-primary mx-2"
-                href
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
+                @click="collapseNavbar"
               >
                 Cubículos
               </router-link>
             </li>
-            <div class="nav-item dropdown-divider" />
-            <li class="nav-item">
+            <li>
+              <hr class="border-light">
+            </li>
+            <li class="nav-item d-grid">
               <router-link
                 to="/pc"
-                role="button"
                 class="btn btn-primary mx-2"
-                href
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
+                @click="collapseNavbar"
               >
                 Computadoras
               </router-link>
             </li>
-            <div class="nav-item dropdown-divider" />
+            <li>
+              <hr
+                v-if="user.ocup == 'Adm'"
+                class="border-light"
+              >
+            </li>
+            <li class="nav-item d-grid">
+              <router-link
+                v-if="user.ocup == 'Adm'"
+                to="/admin"
+                role="button"
+                class="btn btn-primary mx-2"
+                @click="collapseNavbar"
+              >
+                Admin
+              </router-link>
+            </li>
+            <li>
+              <hr class="border-light">
+            </li>
+            <li class="nav-item d-grid">
+              <router-link
+                v-if="user.logged == false"
+                to="/login"
+                class="btn btn-outline-light ml-2"
+                @click="collapseNavbar"
+              >
+                Iniciar Sesión
+              </router-link>
+              <button
+                v-if="user.logged == true"
+                class="btn btn-danger ml-2"
+                @click="LogOut"
+              >
+                Cerrar sesión
+              </button>
+            </li>
           </ul>
-          <router-link
-            v-if="user.logged==false"
-            to="/login"
-            role="button"
-            class="btn btn-outline-light ml-2"
-            href
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-          >
-            Iniciar Sesión
-          </router-link>
-          <button
-            v-if="user.logged==true"
-            role="button"
-            class="btn btn-danger ml-2"
-            href
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-            @click="LogOut()"
-          >
-            Cerrar sesión
-          </button>
         </div>
       </div>
     </nav>
@@ -90,22 +99,29 @@
 <script>
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '@/services/firebase'
+import { Collapse } from 'bootstrap';
 
 export default {
   name: 'NavBar',
-emits: ['loginuser'],
+  emits: ['loginuser'],
   data() {
     return {
+      isNavbarOpen: false,
+      navbarCollapse: null,
       user: {
         name: "",
-        logged: ""
+        logged: "",
+        ocup: ""
       },
     };
   },
   created() {
     this.getLogin()
-    },
-    methods: {
+  },
+  mounted() {
+    this.navbarCollapse = new Collapse(this.$refs.navbar);
+  },
+  methods: {
     getLogin() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -131,7 +147,15 @@ emits: ['loginuser'],
       }).catch((error) => {
         // An error happened.
       });
-    }
+    },
+    collapseNavbar() {
+      const navbarMenu = document.getElementById('navbarSupportedContent');
+      const bsCollapse = new Collapse(navbarMenu, { toggle: false });
+      bsCollapse.hide();
+    },
+    toggleNavbar() {
+      this.navbarCollapse.toggle();
+    },
   }
 }
 </script>

@@ -35,38 +35,42 @@
               </div>
               <div class="panel-body">
                 <table class="table table-striped table-hover">
-                  <tr>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Ocupación</th>
-                    <th>Correo electronico</th>
-                    <th>Eliminar</th>
-                  </tr>
-                  <tr
-                    v-for="(usuario, index) in usuarios"
-                    :key="index"
-                  >
-                    <td>{{ usuario.ced }}</td>
-                    <td>{{ usuario.name }}</td>
-                    <td>{{ usuario.ocup }}</td>
-                    <td>
-                      {{ usuario.email }} <a
-                        v-if="false"
-                        href="#"
-                        class="badge badge-pill badge-secondary"
-                        @click="editEmail(usuario.ced)"
-                      >Editar</a>
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-outline-danger"
-                        @click="delUser(usuario.ced)"
-                      >
-                        X
-                      </button>
-                    </td>
-                  </tr>
+                  <thead>
+                    <tr>
+                      <th>Cédula</th>
+                      <th>Nombre</th>
+                      <th>Ocupación</th>
+                      <th>Correo electronico</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="(usuario, index) in usuarios"
+                      :key="index"
+                    >
+                      <td>{{ usuario.ced }}</td>
+                      <td>{{ usuario.name }}</td>
+                      <td>{{ usuario.ocup }}</td>
+                      <td>
+                        {{ usuario.email }} <a
+                          v-if="false"
+                          href="#"
+                          class="badge badge-pill badge-secondary"
+                          @click="editEmail(usuario.ced)"
+                        >Editar</a>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger"
+                          @click="delUser(usuario.ced)"
+                        >
+                          X
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>

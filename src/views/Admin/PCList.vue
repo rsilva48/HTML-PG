@@ -1,6 +1,6 @@
 <template>
   <div class="PC">
-    <div class="jumbotron jumbotron-fluid font">
+    <div class="container-fluid p-5 font">
       <div class="container">
         <h1 class="display-4">
           Lista de Computadoras
@@ -52,7 +52,7 @@
     <div v-if="!loading && admin">
       <!--vista de admin -->
       <div class="container">
-        <table class="table">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">
