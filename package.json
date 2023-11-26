@@ -37,7 +37,8 @@
     "prettier-eslint": "^16.1.2",
     "sass": "^1.69.5",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-mkcert": "^1.17.1"
+    "vite-plugin-mkcert": "^1.17.1",
+    "vite-plugin-pwa": "^0.17.2"
   },
   "browserslist": [
     "> 1%",

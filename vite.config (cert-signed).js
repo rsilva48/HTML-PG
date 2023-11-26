@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue';
 import postcssNesting from 'postcss-nesting';
 import eslint from 'vite-plugin-eslint';
 import fs from 'fs';
+import { VitePWA } from 'vite-plugin-pwa';
 const path = require("path");
 
 // https://vitejs.dev/config/
@@ -17,7 +18,12 @@ export default defineConfig({
       cert: fs.readFileSync('./fullchain.pem')
     }
   },
-  plugins: [vue(), eslint()],
+  plugins: [vue(), eslint(), VitePWA({
+    registerType: 'autoUpdate',
+    devOptions: {
+      enabled: true
+    }
+  })],
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     alias: {
