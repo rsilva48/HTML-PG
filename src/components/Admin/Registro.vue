@@ -22,6 +22,7 @@
                                     placeholder="Numero de Cédula"
                                     required
                                     autofocus
+                                    autocomplete="username"
                                     @blur="exist"
                                 />
                                 <label for="id">Numero de Cédula</label>
@@ -35,21 +36,36 @@
                                     class="form-control"
                                     placeholder="Nombre Completo"
                                     required
+                                    autocomplete="name"
                                 />
                                 <label for="name">Nombre Completo</label>
                             </div>
 
                             <div class="mb-3">
-                                <select id="sex" v-model="user.sex" type="text" class="form-select" required>
+                                <select
+                                    id="sex"
+                                    v-model="user.sex"
+                                    type="text"
+                                    class="form-select"
+                                    required
+                                    autocomplete="sex"
+                                >
                                     <option selected disabled value>Eliga su Sexo</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Femenino</option>
+                                    <option value="Male">Masculino</option>
+                                    <option value="Female">Femenino</option>
                                 </select>
                                 <label for="fac">Sexo</label>
                             </div>
 
                             <div class="mb-3">
-                                <select id="ocup" v-model="user.ocup" type="text" class="form-select" required>
+                                <select
+                                    id="ocup"
+                                    v-model="user.ocup"
+                                    type="text"
+                                    class="form-select"
+                                    required
+                                    autocomplete="off"
+                                >
                                     <option selected disabled value>Elija su Ocupación</option>
                                     <option value="Est">Estudiante</option>
                                     <option value="Adm">Administrativo</option>
@@ -57,7 +73,14 @@
                                 <label for="ocup">Ocupación</label>
                             </div>
                             <div class="mb-3">
-                                <select id="fac" v-model="user.fac" type="text" class="form-select" required>
+                                <select
+                                    id="fac"
+                                    v-model="user.fac"
+                                    type="text"
+                                    class="form-select"
+                                    required
+                                    autocomplete="off"
+                                >
                                     <option selected disabled value>Eliga su facultad</option>
                                     <option value="CS">Ciencias de la Salud</option>
                                     <option value="HGT">Hotelería, Gastronomía y Turismo</option>
@@ -76,6 +99,7 @@
                                     class="form-control"
                                     placeholder="Correo electronico"
                                     required
+                                    autocomplete="email"
                                 />
                                 <label for="id">Correo electronico</label>
                             </div>
@@ -86,6 +110,7 @@
                                     type="password"
                                     class="form-control"
                                     placeholder="Ingrese Contraseña"
+                                    autocomplete="new-password"
                                     required
                                 />
                                 <label for="password">Contraseña</label>
@@ -129,6 +154,7 @@ export default {
                 ocup: '',
                 email: '',
                 password: '',
+                uid: '',
             },
             usuarios: [],
         }
@@ -173,13 +199,14 @@ export default {
         this.user.password = "";
       }*/
             let form = Object.assign({}, this.user)
-            let NewUserRef = ref(db, 'users/' + this.user.ced)
-            set(NewUserRef, form)
             createUserWithEmailAndPassword(auth, this.user.email, this.user.password)
                 .then((userCredential) => {
                     // Signed up
                     const loggeduser = userCredential.user
                     console.log(loggeduser)
+                    this.uid = loggeduser.uid
+                    let NewUserRef = ref(db, 'users/' + loggeduser.uid)
+                    set(NewUserRef, form)
                     // ...
                 })
                 .catch((error) => {

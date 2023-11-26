@@ -2,12 +2,12 @@
     <div id="nav">
         <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary">
             <div class="container-md">
-                <router-link to="/" class="navbar-brand" @click="collapseNavbar">
+                <router-link to="/" class="navbar-brand d-flex align-items-center" @click="collapseNavbar">
                     <img
                         src="@/assets/logo.png"
-                        width="59"
+                        width="38"
                         height="32"
-                        class="d-inline-block align-center"
+                        class="d-inline-block align-text-top me-2"
                         alt="logo"
                     />
                     CRAI
@@ -62,10 +62,7 @@
                             <button
                                 v-if="user.logged == true"
                                 class="btn btn-danger ml-2"
-                                @click="
-                                    LogOut();
-                                    collapseNavbar()
-                                "
+                                @click="LogOut(), collapseNavbar()"
                             >
                                 Cerrar sesión
                             </button>
@@ -78,21 +75,23 @@
 </template>
 
 <script>
-import { signOut, onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/services/firebase'
+import { useUserStore } from '@/stores/login'
 import { Collapse } from 'bootstrap'
 
 export default {
     name: 'NavBar',
     emits: ['loginuser'],
+    setup() {
+        const userStore = useUserStore()
+        const user = userStore.user
+        return {
+            user,
+            // other reactive properties...
+        }
+    },
     data() {
         return {
             navbarCollapse: null,
-            user: {
-                name: '',
-                logged: '',
-                ocup: '',
-            },
         }
     },
     created() {
@@ -103,33 +102,12 @@ export default {
     },
     methods: {
         getLogin() {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/auth.user
-                    //const uid = user.uid
-                    this.user.logged = true
-                    return true
-                    // ...
-                } else {
-                    // User is signed out
-                    // ...
-                    this.user.logged = false
-                    return false
-                }
-            })
+            const userStore = useUserStore()
+            userStore.getLogin()
         },
         LogOut() {
-            signOut(auth)
-                .then(() => {
-                    // Sign-out successful.
-                    alert('Sesión cerrada correctamente.')
-                    this.$router.push({ path: `/` })
-                })
-                .catch((error) => {
-                    // An error happened.
-                    console.log(error)
-                })
+            const userStore = useUserStore()
+            userStore.LogOut()
         },
         collapseNavbar() {
             const navbarMenu = document.getElementById('navbarSupportedContent')

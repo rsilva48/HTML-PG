@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <NavBar />
         <router-view @loginuser="getLogin()" />
     </div>
@@ -8,10 +8,9 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import moment from 'moment'
-import { cubRef, PCsRef, db, auth } from './services/firebase'
+import { cubRef, PCsRef, db } from './services/firebase'
 import { setInterval } from 'timers-browserify'
 import { onValue, query, set, ref } from 'firebase/database'
-import { onAuthStateChanged } from 'firebase/auth'
 export default {
     name: 'App',
     components: {
@@ -25,7 +24,6 @@ export default {
         }
     },
     created() {
-        this.getLogin()
         moment.locale('es')
         setInterval(() => {
             this.rutina()
@@ -92,23 +90,6 @@ export default {
                     onlyOnce: true,
                 },
             )
-        },
-        getLogin() {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/auth.user
-                    //const uid = user.uid
-                    this.logged = true
-                    return true
-                    // ...
-                } else {
-                    // User is signed out
-                    // ...
-                    this.logged = false
-                    return false
-                }
-            })
         },
     },
 }

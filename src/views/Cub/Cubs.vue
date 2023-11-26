@@ -7,6 +7,12 @@
                     Reserve o vea información de los cubículos que tenemos disponible en el CRAI para grupo de
                     estudiantes que necesiten reunirse para realizar proyectos o trabajos de la universidad.
                 </p>
+                <div v-if="user.logged == false" class="card my-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Nota</h5>
+                        <p class="card-text">Para poder solicitar un cubículo debe iniciar sesión.</p>
+                    </div>
+                </div>
                 <hr class="my-4" />
                 <div class="d-grid gap-3 mx-auto d-md-block">
                     <router-link

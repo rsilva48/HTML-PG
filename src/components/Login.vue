@@ -2,7 +2,7 @@
     <div class="login vertical-center">
         <form class="form-signin border" @submit.prevent="login">
             <div class="text-center mb-4">
-                <img class="mb-4" src="../assets/logocolor.png" alt width="76" height="72" />
+                <img class="mb-4" src="../assets/logocolor.png" alt width="72" height="72" />
                 <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
                 <p>Para usar los servicios administrativos de CRAI debe iniciar sesión primero</p>
             </div>
@@ -11,11 +11,12 @@
                 <input
                     id="inputEmail"
                     v-model="user.ced"
-                    type="cedula"
+                    type="text"
                     class="form-control"
                     placeholder="Cédula"
                     required
                     autofocus
+                    autocomplete="username"
                 />
                 <label for="inputEmail">Numero de Cédula</label>
             </div>
@@ -27,6 +28,7 @@
                     type="password"
                     class="form-control"
                     placeholder="Contraseña"
+                    autocomplete="current-password"
                     required
                 />
                 <label for="inputPassword">Contraseña</label>
@@ -91,7 +93,7 @@ export default {
                         user.ocup == 'Adm'
                     ) {
                         count = 0
-                        signInWithEmailAndPassword(auth, this.user.email, this.user.password)
+                        signInWithEmailAndPassword(auth, user.email, this.user.password)
                             .then(() => {
                                 // Signed up
                                 //const loggeduser = userCredential.user
@@ -100,8 +102,10 @@ export default {
                                 // ...
                             })
                             .catch(() => {
-                                //const errorCode = error.code
-                                //const errorMessage = error.message
+                                /*const errorCode = error.code
+                                const errorMessage = error.message
+                                console.log(errorCode)
+                                console.log(errorMessage)*/
                                 alert('Error en el inicio de sesion.')
                                 count = 3
                                 // ..

@@ -7,6 +7,12 @@
                     Necesita realizar una investigación o tarea y no dispone de una computadora, el CRAI le ofrece este
                     servicio a los estudiantes que lo necesiten.
                 </p>
+                <div v-if="user.logged == false" class="card my-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Nota</h5>
+                        <p class="card-text">Para poder solicitar una computadora debe iniciar sesión.</p>
+                    </div>
+                </div>
                 <hr class="my-4" />
                 <div class="d-grid gap-3 mx-auto d-md-block">
                     <router-link
