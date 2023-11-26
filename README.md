@@ -5,12 +5,16 @@ Proyecto para digitalizar el proceso de prestamos de computadoras y cubiculos en
 
 URL: https://rsilva.zef.ro/
 
-### Usuario de prueba / Test user
+### Credenciales de usuario de prueba / Test user credentials
 ```
 Usuario: 123
 Contaseña: 11223344
 ```
-
+### Credenciales de admin de prueba / Test admin credentials
+```
+Usuario: 456
+Contaseña: 44556677
+```
 
 ## Project setup (para instalar dependencias y plugins)
 ```
