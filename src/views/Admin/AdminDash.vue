@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="user.logged == true && user.ocup == 'Adm'">
         <AdminTitulo />
         <section id="main">
             <div class="container">
@@ -63,6 +63,19 @@
             </div>
         </section>
     </div>
+    <div v-if="user.logged != true || user.ocup != 'Adm'">
+        <div class="container-fluid p-5 font bg-light">
+            <div class="container">
+                <h1 class="display-4">Acceso no autorizado</h1>
+                <p class="lead">
+                    No tiene permisos para acceder a esta sección, por favor inicie sesión con una cuenta de
+                    administrador.
+                </p>
+                <hr />
+                <router-link to="/" class="btn btn-primary btn-lg mr-2" role="button"> Volver </router-link>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -70,11 +83,20 @@ import AdminTitulo from '@/components/Admin/Titulo.vue'
 import AdminMenu from '@/components/Admin/Menu.vue'
 import { userRef, db } from '@/services/firebase'
 import { onValue, query, remove, ref } from 'firebase/database'
+import { useUserStore } from '@/stores/login'
 export default {
     name: 'AdminView',
     components: {
         AdminMenu,
         AdminTitulo,
+    },
+    setup() {
+        const userStore = useUserStore()
+        const user = userStore.user
+        return {
+            user,
+            // other reactive properties...
+        }
     },
     data() {
         return {
@@ -84,8 +106,13 @@ export default {
     },
     created() {
         this.getUsers()
+        this.getLogin()
     },
     methods: {
+        getLogin() {
+            const userStore = useUserStore()
+            userStore.getLogin()
+        },
         getUsers() {
             this.loading = true
             onValue(

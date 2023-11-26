@@ -10,7 +10,7 @@ import CRAICubs from '../src/views/Cub/Cubs.vue'
 import CubList from '../src/views/Cub/CubList.vue'
 import CubSol from '../src/views/Cub/CubSol.vue'
 import CubSolReal from '../src/views/Cub/CubSolReal.vue'
-import AdminUsers from '../src/views/Admin/Users.vue'
+import AdminDashboard from '../src/views/Admin/AdminDash.vue'
 import AdminCub from '../src/views/Admin/Cub.vue'
 import AdminPC from '../src/views/Admin/PC.vue'
 import AdminCubSol from '../src/views/Admin/CubSol.vue'
@@ -77,43 +77,43 @@ const routes = [{
 
 {
     path: '/admin',
-    name: 'AdminUsers',
-    component: AdminUsers
+    name: 'Dashboard Admin',
+    component: AdminDashboard
 },
 
 {
     path: '/admin/cub',
-    name: ' AdminCub',
+    name: 'Cubiculos Admin',
     component: AdminCub
 },
 {
     path: '/admin/pc',
-    name: 'AdminPC',
+    name: 'PCs Admin',
     component: AdminPC
 },
 {
     path: '/admin/cub/solicitud',
-    name: 'AdminCubSol',
+    name: 'Solicitud Cubiculo Admin',
     component: AdminCubSol
 },
 {
     path: '/admin/cub/list',
-    name: 'AdminCubList',
+    name: 'Lista Cubiculo Admin',
     component: AdminCubList
 },
 {
     path: '/admin/pc/solicitud',
-    name: 'AdminPCsol',
+    name: 'Solicitud PCs Admin',
     component: AdminPCSol
 },
 {
     path: '/admin/pc/list',
-    name: 'AdminPCList',
+    name: 'Lista PCs Admin',
     component: AdminPCList
 },
 {
     path: '/admin/reporte',
-    name: 'AdminReporte',
+    name: 'Dashboard Reportes',
     component: AdminReporte
 }
 
@@ -122,5 +122,5 @@ const routes = [{
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes
-  })
-  export default router
+})
+export default router

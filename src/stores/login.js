@@ -40,7 +40,6 @@ export const useUserStore = defineStore({
                 .then(() => {
                     // Sign-out successful.
                     alert('Sesión cerrada correctamente.')
-                    this.$router.push({ path: `/` })
                 })
                 .catch((error) => {
                     // An error happened.

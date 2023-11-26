@@ -108,6 +108,7 @@ export default {
         LogOut() {
             const userStore = useUserStore()
             userStore.LogOut()
+            this.$router.push({ path: `/` })
         },
         collapseNavbar() {
             const navbarMenu = document.getElementById('navbarSupportedContent')
