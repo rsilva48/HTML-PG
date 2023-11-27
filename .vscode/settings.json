@@ -8,7 +8,7 @@
         "editor.formatOnSave": true
     },
     "[vue]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": false
     },
     "[php]": {
         "editor.formatOnSave": true
