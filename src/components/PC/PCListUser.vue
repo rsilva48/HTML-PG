@@ -2,7 +2,7 @@
     <div class="PC">
         <div v-if="loading" class="text-center">
             <div class="spinner-border text-primary m-5" role="status">
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only">Cargando...</span>
             </div>
         </div>
         <div v-if="!loading" class="container px-4 py-3">

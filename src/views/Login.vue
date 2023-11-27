@@ -1,4 +1,3 @@
-F
 <template>
     <div>
         <Login />
@@ -7,6 +6,7 @@ F
 
 <script>
 import Login from '@/components/Login.vue'
+
 export default {
     name: 'LoginView',
     components: {

@@ -1,44 +1,56 @@
 <template>
-    <div class="login vertical-center">
-        <form class="form-signin border" @submit.prevent="login">
-            <div class="text-center mb-4">
-                <img class="mb-4" src="../assets/logocolor.png" alt width="72" height="72" />
-                <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
-                <p>Para usar los servicios administrativos de CRAI debe iniciar sesión primero</p>
-            </div>
+    <div class="root" :style="backgroundStyle">
+        <div v-if="userstoreuser.logged == false" class="login vertical-center">
+            <form class="form-signin border" @submit.prevent="login">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="../assets/logocolor.png" alt width="72" height="72" />
+                    <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión para Administrador</h1>
+                    <p>Para usar los servicios administrativos de CRAI debe iniciar sesión primero</p>
+                </div>
 
-            <div class="form-label-group">
-                <input
-                    id="inputEmail"
-                    v-model="user.ced"
-                    type="text"
-                    class="form-control"
-                    placeholder="Cédula"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-                <label for="inputEmail">Numero de Cédula</label>
-            </div>
+                <div class="form-label-group">
+                    <input
+                        id="inputEmail"
+                        v-model="user.ced"
+                        type="text"
+                        class="form-control"
+                        placeholder="Cédula"
+                        required
+                        autofocus
+                        autocomplete="username"
+                    />
+                    <label for="inputEmail">Numero de Cédula</label>
+                </div>
 
-            <div class="form-label-group">
-                <input
-                    id="inputPassword"
-                    v-model="user.password"
-                    type="password"
-                    class="form-control"
-                    placeholder="Contraseña"
-                    autocomplete="current-password"
-                    required
-                />
-                <label for="inputPassword">Contraseña</label>
+                <div class="form-label-group">
+                    <input
+                        id="inputPassword"
+                        v-model="user.password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Contraseña"
+                        autocomplete="current-password"
+                        required
+                    />
+                    <label for="inputPassword">Contraseña</label>
+                </div>
+                <div class="d-grid gap-2 mx-auto">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div v-else-if="userstoreuser.logged == true">
+            <div class="container-fluid p-5 font bg-light">
+                <div class="container">
+                    <h1 class="display-4">Ya ha iniciado sesión</h1>
+                    <p class="lead">Regrese a la pagina principal para seguir navegando</p>
+                    <hr />
+                    <router-link to="/" class="btn btn-primary btn-lg mr-2" role="button"> Volver </router-link>
+                </div>
             </div>
-            <div class="d-grid gap-2 mx-auto">
-                <button class="btn btn-lg btn-primary btn-block" type="submit" :disabled="enablelogin">
-                    Iniciar Sesión
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -46,8 +58,29 @@
 import { userRef, auth } from '@/services/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { onValue, query } from 'firebase/database'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/login'
+import LoginBG from '@/assets/LoginBG.jpg'
+
 export default {
     name: 'CRAILogin',
+    setup() {
+        const userStore = useUserStore()
+        const userstoreuser = userStore.user
+        const router = useRouter()
+        const backgroundStyle = {
+            backgroundImage: `url(${LoginBG})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }
+
+        return {
+            userstoreuser,
+            router,
+            backgroundStyle,
+            // other reactive properties...
+        }
+    },
     data() {
         return {
             user: {
@@ -68,8 +101,13 @@ export default {
     },
     created() {
         this.getUsers()
+        this.getLogin()
     },
     methods: {
+        getLogin() {
+            const userStore = useUserStore()
+            userStore.getLogin()
+        },
         getUsers() {
             onValue(
                 query(userRef),
@@ -98,7 +136,7 @@ export default {
                                 // Signed up
                                 //const loggeduser = userCredential.user
                                 alert('Ha iniciado sesión como Admin.')
-                                this.$router.push({ path: `/admin` })
+                                this.router.push({ path: `/admin` })
                                 // ...
                             })
                             .catch(() => {
@@ -125,7 +163,7 @@ export default {
                                 // Signed up
                                 //const loggeduser = userCredential.user
                                 alert('Ha accedido como estudiante.')
-                                this.$router.push({ path: `/` })
+                                this.router.push({ path: `/` })
                                 // ...
                             })
                             .catch(() => {
@@ -157,6 +195,15 @@ export default {
 </script>
 
 <style>
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .login {
     padding-top: 5%;
     padding-bottom: 5%;
@@ -167,7 +214,8 @@ export default {
     max-width: 420px;
     padding: 45px;
     margin: auto;
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
 }
 
 .form-label-group {
@@ -247,12 +295,21 @@ export default {
 }
 
 .vertical-center {
-    min-height: 100%;
-    /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh;
-    /* These two lines are counted as one :-)       */
-
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+    .vertical-center {
+        max-width: 100%;
+    }
 }
 </style>
