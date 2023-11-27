@@ -1,9 +1,18 @@
 <template>
     <div class="FormSolPC">
-        <FormWizard class="container p-3 p-md-5" @on-complete="addForm">
+        <FormWizard
+            class="container p-3 p-md-5"
+            step-size="sm"
+            color="#0d6efd"
+            back-button-text="Regresar"
+            next-button-text="Siguiente"
+            finish-button-text="Solicitar"
+            @on-complete="addForm"
+            @before-change="validateStep"
+        >
             <form id="FormSolPC" @submit.prevent="addForm">
                 <div class="container p-3 p-md-5">
-                    <TabContent title="Encargado" @next="validateStep1">
+                    <TabContent title="Arrendador" icon="fa fa-user-circle-o" @next="validateStep1">
                         <div>
                             <h3 class="mb-2 mb-md-4">Información del Arrendador</h3>
                             <div class="mb-2 form-floating">
@@ -44,8 +53,8 @@
                                     required
                                 >
                                     <option selected disabled value>Elija su Sexo</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Femenino</option>
+                                    <option value="Male">Masculino</option>
+                                    <option value="Female">Femenino</option>
                                 </select>
                                 <label for="sex">Sexo</label>
                             </div>
@@ -84,7 +93,7 @@
                             </div>
                         </div>
                     </TabContent>
-                    <TabContent title="Condiciones" @next="validateStep2">
+                    <TabContent title="Condiciones" icon="fa fa-check-square-o" @next="validateStep2">
                         <div>
                             <h3 class="mb-2 mb-md-4">Aceptar condiciones de uso y seguridad</h3>
                             <div class="mb-2 form-floating">
@@ -161,19 +170,6 @@ export default {
     },
     data() {
         return {
-            currentstep: 1,
-            steps: [
-                {
-                    id: 1,
-                    title: 'Arrendador',
-                    icon_class: 'fa fa-user-circle-o',
-                },
-                {
-                    id: 2,
-                    title: 'Condiciones',
-                    icon_class: 'fa fa-check-square-o',
-                },
-            ],
             pc: {
                 id: 1,
                 user: {

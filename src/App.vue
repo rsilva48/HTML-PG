@@ -2,12 +2,14 @@
     <div>
         <NavBar />
         <router-view @loginuser="getLogin()" />
+        <AppFooter />
     </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
 import moment from 'moment'
+import AppFooter from './components/Footer.vue'
 import { cubRef, PCsRef, db } from './services/firebase'
 import { setInterval } from 'timers-browserify'
 import { onValue, query, set, ref } from 'firebase/database'
@@ -15,6 +17,7 @@ export default {
     name: 'App',
     components: {
         NavBar,
+        AppFooter,
     },
     data() {
         return {

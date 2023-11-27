@@ -1,8 +1,17 @@
 <template>
     <div class="FormSolCub">
-        <FormWizard class="container p-3 p-md-5" @on-complete="addForm">
+        <FormWizard
+            :step="currentStep"
+            class="container p-3 p-md-5"
+            step-size="sm"
+            color="#0d6efd"
+            back-button-text="Regresar"
+            next-button-text="Siguiente"
+            finish-button-text="Solicitar"
+            @on-complete="addForm"
+        >
             <form id="FormSolCub" @submit.prevent="addForm">
-                <TabContent title="Encargado" @next="validateStep1">
+                <TabContent title="Encargado" icon="fa fa-user-circle-o">
                     <div>
                         <div>
                             <h3 class="mb-2 mb-md-4">Información del Encargado</h3>
@@ -15,6 +24,7 @@
                                     class="form-control"
                                     placeholder="Ingrese su numero de cédula con guiones"
                                     :disabled="cub.user.found"
+                                    required
                                     @blur="getUserData(1)"
                                 />
                                 <label for="id">Cédula</label>
@@ -29,6 +39,7 @@
                                     class="form-control"
                                     aria-describedby="nameHelp"
                                     placeholder="Ingrese su nombre completo"
+                                    required
                                     :disabled="cub.user.found"
                                 />
                                 <label for="name">Nombre Completo</label>
@@ -86,7 +97,7 @@
                         </div>
                     </div>
                 </TabContent>
-                <TabContent title="Condiciones" @next="validateStep2">
+                <TabContent title="Condiciones" icon="fa fa-check-square-o">
                     <div>
                         <h3 class="mb-2 mb-md-4">Aceptar condiciones de uso y seguridad</h3>
                         <div class="mb-2 form-floating">
@@ -115,7 +126,7 @@
                         </div>
                     </div>
                 </TabContent>
-                <TabContent title="Participantes" @next="validateStep3">
+                <TabContent title="Participantes" icon="fa fa-users">
                     <div class="container">
                         <h3 class="mb-1 mb-md-2">Participantes/Integrantes del Grupo</h3>
                         <small class="mb-3 b-md-5">Minimo un grupo de 4 estudiantes contando al representante.</small>
@@ -360,8 +371,8 @@
                                         :disabled="cub.integrantes.user4.found"
                                     >
                                         <option selected disabled value>Sexo</option>
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Femenino</option>
+                                        <option value="Male">Masculino</option>
+                                        <option value="Female">Femenino</option>
                                     </select>
                                 </div>
 
@@ -493,24 +504,6 @@ export default {
     },
     data() {
         return {
-            currentstep: 1,
-            steps: [
-                {
-                    id: 1,
-                    title: 'Encargado',
-                    icon_class: 'fa fa-user-circle-o',
-                },
-                {
-                    id: 2,
-                    title: 'Condiciones',
-                    icon_class: 'fa fa-check-square-o',
-                },
-                {
-                    id: 3,
-                    title: 'Participantes',
-                    icon_class: 'fa fa-users',
-                },
-            ],
             cub: {
                 id: 1,
                 user: {
@@ -579,11 +572,63 @@ export default {
         this.getUsers()
     },
     methods: {
+        validateStep1() {
+            // Perform validation logic for step 1
+            // Return true if validation passes, false otherwise
+            if (
+                this.cub.user.name != '' &&
+                this.cub.user.ced != '' &&
+                this.cub.user.fac != '' &&
+                this.cub.user.sex != '' &&
+                this.cub.user.ocup != ''
+            ) {
+                this.currentStep++
+                return true
+            } else {
+                return false
+            }
+        },
+        validateStep2() {
+            // Perform validation logic for step 2
+            // Return true if validation passes, false otherwise
+            if (this.cub.check) {
+                return true
+            } else {
+                return false
+            }
+        },
+        validateStep3() {
+            // Perform validation logic for step 3
+            // Return true if validation passes, false otherwise
+            if (
+                this.cub.integrantes.user1.name &&
+                this.cub.integrantes.user1.ced &&
+                this.cub.integrantes.user1.fac &&
+                this.cub.integrantes.user1.ocup &&
+                this.cub.integrantes.user2.name &&
+                this.cub.integrantes.user2.ced &&
+                this.cub.integrantes.user2.fac &&
+                this.cub.integrantes.user2.ocup &&
+                this.cub.integrantes.user3.name &&
+                this.cub.integrantes.user3.ced &&
+                this.cub.integrantes.user3.fac &&
+                this.cub.integrantes.user3.ocup &&
+                this.cub.integrantes.user4.name &&
+                this.cub.integrantes.user4.ced &&
+                this.cub.integrantes.user4.fac &&
+                this.cub.integrantes.user4.ocup &&
+                this.cub.integrantes.user5.name &&
+                this.cub.integrantes.user5.ced &&
+                this.cub.integrantes.user5.fac &&
+                this.cub.integrantes.user5.ocup
+            ) {
+                return true
+            } else {
+                return false
+            }
+        },
         moment() {
             return moment()
-        },
-        stepChanged(step) {
-            this.currentstep = step
         },
         addForm() {
             this.cub.date_start = moment().format('dddd D/M/YY HH:mm:ss')
