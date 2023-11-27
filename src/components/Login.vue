@@ -42,8 +42,8 @@
             </form>
         </div>
         <div v-else-if="userstoreuser.logged == true">
-            <div class="container-fluid p-5 font bg-light">
-                <div class="container">
+            <div class="container-fluid px-4 py-5 px-md-5 font bg-light">
+                <div class="container pt-5">
                     <h1 class="display-4">Ya ha iniciado sesión</h1>
                     <p class="lead">Regrese a la pagina principal para seguir navegando</p>
                     <hr />

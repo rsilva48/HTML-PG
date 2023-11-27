@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <NavBar />
-        <router-view @loginuser="getLogin()" />
-        <AppFooter />
+    <div class="d-flex flex-column vh-100">
+        <NavBar class="" />
+        <router-view class="mb-auto" @loginuser="getLogin()" />
+        <AppFooter class="mt-auto" />
     </div>
 </template>
 
@@ -105,8 +105,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     margin-top: 60px;
-    -ms-flex-align: center;
-    align-items: center;
 }
 
 .centertext {
