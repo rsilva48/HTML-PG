@@ -78,7 +78,6 @@ export default {
             userstoreuser,
             router,
             backgroundStyle,
-            // other reactive properties...
         }
     },
     data() {
