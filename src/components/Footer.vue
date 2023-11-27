@@ -1,5 +1,5 @@
 <template>
-    <div class="container-flex fixed-md-bottom bg-white" style="--bs-bg-opacity: 0.9">
+    <div class="container-flex sticky-bottom fixed-md-bottom bg-white" style="--bs-bg-opacity: 0.9">
         <div class="container">
             <footer
                 class="footer d-flex flex-wrap justify-content-between align-items-center px-1 py-2 py-md-3 my-4 my-md-4 border-top"
