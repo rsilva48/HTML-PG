@@ -26,7 +26,7 @@
     "vite": "^6.1.0",
     "vue": "^3.3.8",
     "vue-chartjs": "^5.2.0",
-    "vue-router": "^4.2.5",
+    "vue-router": "^4.5.0",
     "vue3-form-wizard": "^0.2.4"
   },
   "devDependencies": {
